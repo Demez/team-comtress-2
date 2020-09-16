@@ -1,0 +1,60 @@
+// ---------------------------------------------------------------
+// inputsystem.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "inputsystem"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/thirdparty/SDL2" [!$SDL$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" "IOKit" "Carbon" "ForceFeedback" [$MACOS$]
+			"steam_api" [($WINDOWS$ || $POSIX$ || $PS3$) && !$NO_STEAM$]
+			"tier1"
+			"tier2"
+			"SDL2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"inputsystem.cpp"
+		"inputsystem.h"
+		"joystick_sdl.cpp"
+		"novint.cpp" [$WIN32$]
+		"key_translation.cpp"
+		"key_translation.h"
+		"steamcontroller.cpp"
+	}
+
+	folder "Public Headers"
+	{
+		"$SRCDIR$/public/inputsystem/AnalogCode.h"
+		"$SRCDIR$/public/inputsystem/ButtonCode.h"
+		"$SRCDIR$/public/inputsystem/iinputsystem.h"
+		"$SRCDIR$/public/inputsystem/InputEnums.h"
+		"$SRCDIR$/dx9sdk/include/xinput.h" [$WIN32$]
+	}
+}

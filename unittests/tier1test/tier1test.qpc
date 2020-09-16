@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// tier1test.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "tier1test"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/unittests"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"TIER1TEST_EXPORTS"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"mathlib"
+			"unitlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"commandbuffertest.cpp"
+		"processtest.cpp"
+		"tier1test.cpp"
+		"utlstringtest.cpp"
+	}
+
+	folder "Header Files"
+	{
+	}
+}

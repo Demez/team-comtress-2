@@ -1,0 +1,20 @@
+// ---------------------------------------------------------------
+// Base Commands for debugging games in visual studio
+// ---------------------------------------------------------------
+
+macro ARG_W "1920"
+macro ARG_H "1080"
+
+macro ARG_BASE "-console -sw -noborder -w $ARG_W$ -h $ARG_H$ -game \"$GAMENAME$\""
+
+config
+{	
+	debug
+	{
+		command "$ROOT_DIR_ABS$/../game/default$EXT_APP$"
+		working_dir "$ROOT_DIR_ABS$/../game"
+		
+		arguments "-hushasserts -noasserts $ARG_BASE$" [$DEBUG$]
+		arguments "$ARG_BASE$" [$RELEASE$]
+	}
+}

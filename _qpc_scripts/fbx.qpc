@@ -1,0 +1,24 @@
+// ---------------------------------------------------------------
+// fbx.qpc
+// ---------------------------------------------------------------
+macro SRCDIR [!$SRCDIR$]
+
+include "$SRCDIR$/_qpc_scripts/fbx_base.qpc"
+
+macro FBXLIB "$FBXDIR$/lib/vs2012/x86/release/libfbxsdk.lib"  [$WIN32$ && $RELEASE$]
+macro FBXLIB "$FBXDIR$/lib/vs2012/x64/release/libfbxsdk.lib"  [$WIN64$ && $RELEASE$]
+macro FBXLIB "$FBXDIR$/lib/$VSDIR$/x86/release/libfbxsdk.lib" [$WIN32$ && $DEBUG$]
+macro FBXLIB "$FBXDIR$/lib/$VSDIR$/x64/release/libfbxsdk.lib" [$WIN64$ && $DEBUG$]
+
+config
+{
+	link
+	{
+		libs [$WINDOWS$]
+		{
+			"wininet.lib"
+			"$FBXLIB$"
+		}
+	}
+}
+

@@ -1,0 +1,37 @@
+// ---------------------------------------------------------------
+// rpt.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "rpt"
+
+macro PLATSUBDIR [!$PLATSUBDIR$]
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			- "$LIBPUBLIC$/tier0" "$LIBPUBLIC$/tier1" "$LIBPUBLIC$/vstdlib" [!$WIN64$]
+			- "$LIBPUBLIC$$PLATSUBDIR$/tier0" "$LIBPUBLIC$$PLATSUBDIR$/tier1" "$LIBPUBLIC$$PLATSUBDIR$/vstdlib" [$WIN64$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+	}
+}
+files
+{
+	folder "Source Files"
+	{
+		"rpt.cpp"
+	}
+}

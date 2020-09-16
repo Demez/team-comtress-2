@@ -1,0 +1,26 @@
+// ---------------------------------------------------------------
+// tf_gcmessages_include.qpc
+// ---------------------------------------------------------------
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/game/shared/tf/tf_gcmessages.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/game/shared/tf/tf_gcmessages.h"
+		"$SRCDIR$/game/shared/tf/tf_matchmaking_scoring.h"
+	}
+
+	folder "Protobuf Files"
+	{
+		"$SRCDIR$/game/shared/tf/tf_gcmessages.proto"
+		"$GENERATED_PROTO_DIR$/tf_gcmessages.pb.h"
+		"$GENERATED_PROTO_DIR$/tf_gcmessages.pb.cc" [!$OSX$]
+		{
+			pch "none"
+		}
+	}
+}

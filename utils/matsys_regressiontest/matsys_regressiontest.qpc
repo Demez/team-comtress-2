@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------
+// matsys_regressiontest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Matsys_regressiontest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$SRCDIR$/lib/public/nvtc.lib"
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"matsys_regressiontest.cpp"
+	}
+}

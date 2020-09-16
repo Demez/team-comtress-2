@@ -1,0 +1,66 @@
+// ---------------------------------------------------------------
+// vbspinfo.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vbspinfo"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DONT_PROTECT_FILEIO_FUNCTIONS"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"odbc32.lib"
+			"odbccp32.lib"
+			"mathlib"
+			"tier2"
+			"$LIBCOMMON$/lzma"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"../common/tools_minidump.cpp"
+		"../common/bsplib.cpp"
+		"../common/cmdlib.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+		"$SRCDIR$/public/iscratchpad3d.h"
+		"$SRCDIR$/public/lumpfiles.cpp"
+		"$SRCDIR$/public/scratchpad3d.cpp"
+		"../common/scriplib.cpp"
+		"vbspinfo.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"../common/bsplib.h"
+		"$SRCDIR$/public/tier1/characterset.h"
+		"$SRCDIR$/public/tier1/checksum_crc.h"
+		"$SRCDIR$/public/filesystem_helpers.h"
+		"$SRCDIR$/public/lumpfiles.h"
+	}
+}

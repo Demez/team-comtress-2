@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------
+// mdlobjects.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "mdlobjects"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MDLOBJECTS_LIB"
+		}
+	}
+}
+
+files
+{
+	folder "Header Files"
+	{
+	}
+
+	folder "Source Files"
+	{
+		"dmebodygroup.cpp"
+		"dmebodygrouplist.cpp"
+		"dmecollisionmodel.cpp"
+		"dmehitbox.cpp"
+		"dmehitboxset.cpp"
+		"dmebodypart.cpp"
+		"dmeblankbodypart.cpp"
+		"dmelod.cpp"
+		"dmelodlist.cpp"
+		"dmemdllist.cpp"
+		"dmeboneweight.cpp"
+		"dmebonemask.cpp"
+		"dmebonemasklist.cpp"
+		"dmesequence.cpp"
+		"dmesequencelist.cpp"
+		"dmeboneflexdriver.cpp"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/mdlobjects/dmebodygroup.h"
+		"$SRCDIR$/public/mdlobjects/dmebodygrouplist.h"
+		"$SRCDIR$/public/mdlobjects/dmecollisionmodel.h"
+		"$SRCDIR$/public/mdlobjects/dmehitbox.h"
+		"$SRCDIR$/public/mdlobjects/dmehitboxset.h"
+		"$SRCDIR$/public/mdlobjects/dmebodypart.h"
+		"$SRCDIR$/public/mdlobjects/dmeblankbodypart.h"
+		"$SRCDIR$/public/mdlobjects/dmelod.h"
+		"$SRCDIR$/public/mdlobjects/dmelodlist.h"
+		"$SRCDIR$/public/mdlobjects/dmemdllist.h"
+		"$SRCDIR$/public/mdlobjects/dmeboneweight.h"
+		"$SRCDIR$/public/mdlobjects/dmebonemask.h"
+		"$SRCDIR$/public/mdlobjects/dmebonemasklist.h"
+		"$SRCDIR$/public/mdlobjects/dmesequence.h"
+		"$SRCDIR$/public/mdlobjects/dmesequencelist.h"
+		"$SRCDIR$/public/mdlobjects/mdlobjects.h"
+	}
+
+	folder "external"
+	{
+		"$SRCDIR$/public/mdlobjects/dmeboneflexdriver.h"
+	}
+}

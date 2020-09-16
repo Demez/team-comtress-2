@@ -1,0 +1,32 @@
+// ---------------------------------------------------------------
+// vpccrccheck.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vpccrccheck"
+
+macro PLATSUBDIR [!$PLATSUBDIR$]
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"tier0" "tier1" "vstdlib" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"vpccrccheck.cpp"
+		"crccheck_shared.cpp"
+		"$SRCDIR$/tier1/checksum_crc.cpp"
+	}
+}

@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// unicode.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Unicode"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"UNICODE_EXPORTS"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"unicows.lib" [$RELEASE$]
+			"iconv" "z" [$MACOS$ && $RELEASE$]
+			"rt" [$LINUX$ && $RELEASE$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"unicode.cpp"
+	}
+}

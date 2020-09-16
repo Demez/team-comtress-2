@@ -1,0 +1,76 @@
+// ---------------------------------------------------------------
+// qc_eyes.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "QC_Eyes"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"NO_WARN_MBCS_MFC_DEPRECATION"
+		}
+		
+		pch "use"
+		pch_out "Debug/QC_Eyes.pch"
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"windowscodecs.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"QC_Eyes.cpp"
+		"QC_Eyes.rc"
+		"QC_EyesDlg.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"QC_Eyes.h"
+		"QC_EyesDlg.h"
+		"Resource.h"
+		"StdAfx.h"
+	}
+
+	folder "Resources"
+	{
+		"res/eye_default.bmp"
+		"res/eye_lower_hi.bmp"
+		"res/eye_lower_lo.bmp"
+		"res/eye_lower_mid.bmp"
+		"res/eye_upper_hi.bmp"
+		"res/eye_upper_lo.bmp"
+		"res/eye_upper_mid.bmp"
+		"res/eye_XY_L.bmp"
+		"res/eye_XY_R.bmp"
+		"res/eye_Z_L.bmp"
+		"res/eye_Z_R.bmp"
+		"res/QC_Eyes.ico"
+		"res/QC_Eyes.rc2"
+	}
+}

@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------
+// shadercompile_dll.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Shadercompile_dll"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SHADERCOMPILE_EXPORTS"
+			"MPI"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+			"../vmpi"
+			"$SRCDIR$/dx9sdk/include"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"tier2"
+			"vmpi"
+			"$LIBCOMMON$/lzma"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../common/cmdlib.cpp"
+		"cmdsink.cpp"
+		"d3dxfxc.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"../common/pacifier.cpp"
+		"shadercompile.cpp"
+		"subprocess.cpp"
+		"cfgprocessor.cpp"
+		"../common/threads.cpp"
+		"../common/vmpi_tools_shared.cpp"
+		"../common/tools_minidump.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"cmdsink.h"
+		"d3dxfxc.h"
+		"$SRCDIR$/public/ishadercompiledll.h"
+		"shadercompile.h"
+		"utlnodehash.h"
+		"cfgprocessor.h"
+		"$SRCDIR$/public/tier1/UtlStringMap.h"
+	}
+}

@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------
+// launcher_main.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "launcher_main"
+
+macro PLATSUBDIR [!$PLATSUBDIR$]
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game"
+macro OUTBINNAME "default"
+macro OUTBINNAME "hl2_osx" [$MACOS$]
+macro OUTBINNAME "hl2_linux" [$LINUX$]
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"fopen=dont_use_fopen"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			- "tier0" "tier1" "vstdlib" [$WINDOWS$]
+		}
+		
+		options
+		{
+			"/LARGEADDRESSAWARE" "/FIXED:NO" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+	}
+}
+files
+{
+	folder "Source Files"
+	{
+		"main.cpp"
+	}
+
+	folder "Resources" [$WIN32$]
+	{
+		"launcher_main.rc"
+		"$SRCDIR$/launcher/res/launcher.ico"
+	}
+}

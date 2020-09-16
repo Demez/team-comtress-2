@@ -1,0 +1,48 @@
+// ---------------------------------------------------------------
+// swig_python.qpc
+// ---------------------------------------------------------------
+macro PYTHONVER [!$PYTHONVER$]
+macro SWIGFILE [!$SWIGFILE$]
+
+// probably not setup correctly
+// https://github.com/quiverteam/QuiverProjectCreator/wiki/Build-Events
+
+build_event "swig_python"
+{
+	"$SRCDIR$\vpc_scripts\swig_python.cmd $SWIGFILE$ $SRCDIR$ $OUTBINDIR$ $PYTHONVER$"
+}
+
+build_event "swig_depend"
+{
+	"call $SRCDIR$\vpc_scripts\swig_depend.cmd $SWIGFILE$ $SRCDIR$ $PYTHONVER$"
+}
+
+config
+{
+	pre_build
+	{
+		"swig_python"
+		"swig_depend"
+	}
+}
+
+files
+{
+	folder "SWIG Source"
+	{
+		"$SWIGFILE$.i"
+	}
+
+	folder "Read Only"
+	{
+		folder "SWIG Generated Python Files"
+		{
+			"$OUTBINDIR$/$SWIGFILE$.py"
+		}
+
+		folder "SWIG Generated Source Files"
+		{
+			"\"$SWIGFILE$_wrap_python$PYTHONVER$.cpp\"$"
+		}
+	}
+}

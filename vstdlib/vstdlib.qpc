@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------
+// vstdlib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vstdlib"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VSTDLIB_DLL_EXPORT"
+		}
+	}
+	
+	link
+	{
+		import_lib "$OUTLIBDIR$/$OUT_NAME$$EXT_LIB$"
+		
+		libs
+		{
+			"odbc32.lib" "odbccp32.lib" [$WINDOWS$]
+			"iconv" "CoreServices" [$MACOS$]
+			"coroutine_osx" [$MACOS$]
+			- "vstdlib"
+		}
+}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"xbox/___FirstModule.cpp" [$X360$]
+		"GetStackPtr64.masm" [$WIN64$]
+		"coroutine_win64.masm" [$WIN64$]
+		"coroutine.cpp" [!$X360$ && !$OSX$]
+		"cvar.cpp"
+		"jobthread.cpp"
+		"KeyValuesSystem.cpp"
+		"osversion.cpp"
+		"processutils.cpp" [$WINDOWS$]
+		"random.cpp"
+		"vcover.cpp"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/vstdlib/cvar.h"
+		"$SRCDIR$/public/vstdlib/coroutine.h"
+		"$SRCDIR$/public/vstdlib/jobthread.h"
+		"$SRCDIR$/public/vstdlib/IKeyValuesSystem.h"
+		"$SRCDIR$/public/vstdlib/iprocessutils.h"
+		"$SRCDIR$/public/tier1/mempool.h"
+		"$SRCDIR$/public/vstdlib/osversion.h"
+		"$SRCDIR$/public/vstdlib/random.h"
+		"$SRCDIR$/public/vstdlib/vcover.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+}

@@ -1,0 +1,99 @@
+// ---------------------------------------------------------------
+// jpeglib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Jpeglib"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$LIBCOMMON$"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	general
+	{
+		language "c" [!$LINUX$]
+	}
+	
+	compile
+	{
+		defines
+		{
+			"STRICT"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/public/jpeglib"
+			"."
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		
+		"jaricom.c"
+		"jcapimin.c"
+		"jcapistd.c"
+		"jcarith.c"
+		"jccoefct.c"
+		"jccolor.c"
+		"jcdctmgr.c"
+		"jchuff.c"
+		"jcinit.c"
+		"jcmainct.c"
+		"jcmarker.c"
+		"jcmaster.c"
+		"jcomapi.c"
+		"jcparam.c"
+		"jcprepct.c"
+		"jcsample.c"
+		"jctrans.c"
+		"jdapimin.c"
+		"jdapistd.c"
+		"jdarith.c"
+		"jdatadst.c"
+		"jdatasrc.c"
+		"jdcoefct.c"
+		"jdcolor.c"
+		"jddctmgr.c"
+		"jdhuff.c"
+		"jdinput.c"
+		"jdmainct.c"
+		"jdmarker.c"
+		"jdmaster.c"
+		"jdmerge.c"
+		"jdpostct.c"
+		"jdsample.c"
+		"jdtrans.c"
+		"jerror.c"
+		"jfdctflt.c"
+		"jfdctfst.c"
+		"jfdctint.c"
+		"jidctflt.c"
+		"jidctfst.c"
+		"jidctint.c"
+		"jmemmgr.c"
+		"jmemnobs.c"
+		"jquant1.c"
+		"jquant2.c"
+		"jutils.c"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/jpeglib/jconfig.h"
+		"jdct.h"
+		"jerror.h"
+		"jinclude.h"
+		"jmemsys.h"
+		"jmorecfg.h"
+		"jpegint.h"
+		"$SRCDIR$/public/jpeglib/jpeglib.h"
+		"jversion.h"
+	}
+}

@@ -1,0 +1,43 @@
+// ---------------------------------------------------------------
+// tier2test.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "tier2test"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/unittests"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"TIER2TEST_EXPORTS"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"mathlib"
+			"unitlib"
+			"bitmap"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"tier2test.cpp"
+	}
+
+	folder "Header Files"
+	{
+	}
+}

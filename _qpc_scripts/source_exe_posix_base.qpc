@@ -1,0 +1,52 @@
+// ---------------------------------------------------------------
+// source_exe_posix_base.qpc
+// ---------------------------------------------------------------
+include "$SRCDIR$/_qpc_scripts/version.qpc"
+
+macro SRCDIR [!$SRCDIR$]
+macro OUTBINNAME "$PROJECT_NAME$" [!$OUTBINNAME$]
+macro IS_LIB_PROJECT "1"
+
+include "$SRCDIR$/_qpc_scripts/source_posix_base.qpc"
+include "$SRCDIR$/_qpc_scripts/loadaddress.qpc"
+
+config
+{
+	general
+	{
+		config_type "application"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"EXENAME=$OUTBINNAME$"
+		}
+	}
+	
+	link
+	{
+		output_file "$SRCDIR$/../game/$OUTBINNAME$"
+		
+		libs
+		{
+			"$SRCDIR$/thirdparty/gperftools-2.0/.libs/libtcmalloc_minimal" [$LINUX$ && !$DEDICATED$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/tier0/memoverride.cpp"
+		{
+			pch "none"
+		}
+	}
+
+	folder "Resources"
+	{
+	}
+}

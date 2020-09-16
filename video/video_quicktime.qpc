@@ -1,0 +1,63 @@
+// ---------------------------------------------------------------
+// video_quicktime.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "video_quicktime"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/quicktime"
+	}
+	
+	compile
+	{
+		inc_dirs
+		{
+			"../common/quicktime_win32/" "$SRCDIR$/dx9sdk/include" [$WIN32$]
+		}
+	}
+	
+	link
+	{
+		ignore_import_lib "true" [$WIN32$]
+		
+		libs
+		{
+			"vfw32.lib" "$LIBCOMMON$/quicktime/QTMLClient" "$SRCDIR$/DX9SDK/lib/dsound" "$SRCDIR$/DX9SDK/lib/dxguid" [$WIN32$]
+			"iconv" "Quicktime" "Carbon" [$MACOS$]
+			"tier2"
+		}
+		
+		lib_dirs
+		{
+			"$SRCDIR$/dx9sdk/lib" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files" [$MACOS$ || $WIN32$]
+	{
+		"quicktime_video.cpp"
+		"quicktime_material.cpp"
+		"quicktime_recorder.cpp"
+	}
+
+	folder "Header Files" [$MACOS$ || $WIN32$]
+	{
+		"videosubsystem.h"
+		"video_macros.h"
+		"quicktime_common.h"
+		"quicktime_video.h"
+		"quicktime_material.h"
+		"quicktime_recorder.h"
+		"$SRCDIR$/public/pixelwriter.h"
+	}
+}

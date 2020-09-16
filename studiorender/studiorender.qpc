@@ -1,0 +1,116 @@
+// ---------------------------------------------------------------
+// studiorender.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "StudioRender"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"fopen=dont_use_fopen" [$WIN32$]
+			"STUDIORENDER_EXPORTS"
+			"PROTECTED_THINGS_ENABLE"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"bitmap"
+			"mathlib"
+			"tier2"
+			"tier3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"studiorender.cpp"
+		"studiorendercontext.cpp"
+		"flexrenderdata.cpp"
+		"r_studio.cpp"
+		"r_studiodecal.cpp"
+		"r_studiodraw.cpp"
+		"r_studiodraw_computeflexedvertex.cpp"
+		"r_studioflex.cpp"
+		"r_studiogettriangles.cpp"
+		"r_studiolight.cpp"
+		"r_studiostats.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"r_studiolight.h"
+		"studiorender.h"
+		"studiorendercontext.h"
+		"flexrenderdata.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/mathlib/amd3dx.h"
+		"$SRCDIR$/public/basehandle.h"
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/bspflags.h"
+		"$SRCDIR$/public/clientstats.h"
+		"$SRCDIR$/public/cmodel.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/mathlib/compressed_vector.h"
+		"$SRCDIR$/public/const.h"
+		"$SRCDIR$/public/tier1/convar.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/gametrace.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier0/icommandline.h"
+		"$SRCDIR$/public/ihandleentity.h"
+		"$SRCDIR$/public/materialsystem/imaterial.h"
+		"$SRCDIR$/public/materialsystem/imaterialsystem.h"
+		"$SRCDIR$/public/materialsystem/imaterialsystemhardwareconfig.h"
+		"$SRCDIR$/public/materialsystem/imaterialvar.h"
+		"$SRCDIR$/public/materialsystem/imesh.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/istudiorender.h"
+		"$SRCDIR$/public/materialsystem/itexture.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"$SRCDIR$/public/measure_section.h"
+		"$SRCDIR$/public/tier0/mem.h"
+		"$SRCDIR$/public/tier0/memalloc.h"
+		"$SRCDIR$/public/tier0/memdbgoff.h"
+		"$SRCDIR$/public/tier0/memdbgon.h"
+		"$SRCDIR$/public/model_types.h"
+		"$SRCDIR$/public/optimize.h"
+		"$SRCDIR$/public/pixelwriter.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/studio.h"
+		"$SRCDIR$/public/tier1/utlbuffer.h"
+		"$SRCDIR$/public/tier1/utllinkedlist.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/vcollide.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/mathlib/vector4d.h"
+		"$SRCDIR$/public/mathlib/vmatrix.h"
+		"$SRCDIR$/public/mathlib/vplane.h"
+		"$SRCDIR$/public/tier0/vprof.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+		"$SRCDIR$/public/vtf/vtf.h"
+		"$SRCDIR$/public/tier1/UtlStringMap.h"
+	}
+}

@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// testprocess.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Testprocess"
+
+macro PLATSUBDIR [!$PLATSUBDIR$]
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/unittests/testprocess"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE" [$DEBUG$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"winmm.lib" [$DEBUG$]
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"testprocess.cpp"
+	}
+}

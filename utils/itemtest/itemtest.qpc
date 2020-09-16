@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------
+// itemtest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "itemtest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+include "$SRCDIR$/utils/itemtest_lib/itemtest_lib_support.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"Rpcrt4.lib"
+			"$LIBPUBLIC$/appframework"
+			"$LIBPUBLIC$/bitmap"
+			"$LIBPUBLIC$/mathlib"
+			"$LIBPUBLIC$/tier2"
+			"$LIBPUBLIC$/tier3"
+			"$LIBPUBLIC$/steam_api"
+			"$LIBPUBLIC$/vtf"
+			"$LIBPUBLIC$/itemtest_controls"
+			"$LIBPUBLIC$/vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"itemtest_vgui.cpp"
+		"itemtestapp.cpp"
+
+		folder "External"
+		{
+			"$SRCDIR$/public/interpolatortypes.cpp"
+			"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+			"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"itemtestapp.h"
+
+		folder "External"
+		{
+			"$SRCDIR$/public/interpolatortypes.h"
+		}
+	}
+
+	folder "Resources" [$WIN32$]
+	{
+		"res/itemtest.rc"
+		"res/itemtest.ico"
+	}
+}

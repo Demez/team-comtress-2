@@ -1,0 +1,99 @@
+// ---------------------------------------------------------------
+// ServerBrowser.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "ServerBrowser"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+			"SERVERBROWSER_EXPORTS"
+			"GAME_SRC"
+			"_USE_32BIT_TIME_T"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"Advapi32.lib" "wsock32.lib" "Ws2_32.lib" "User32.lib" [$WIN32$]
+			"Xonline.lib" [$X360$]
+			"iconv" [$MACOS$]
+			"steam_api"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+			"mathlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"BaseGamesPage.cpp"
+		"BlacklistedServers.cpp"
+		"CustomGames.cpp"
+		"DialogAddServer.cpp"
+		"DialogGameInfo.cpp"
+		"DialogServerPassword.cpp"
+		"FavoriteGames.cpp"
+		"FriendsGames.cpp"
+		"HistoryGames.cpp"
+		"InternetGames.cpp"
+		"LanGames.cpp"
+		"ModList.cpp"
+		"ServerBrowser.cpp"
+		"ServerBrowserDialog.cpp"
+		"ServerContextMenu.cpp"
+		"ServerListCompare.cpp"
+		"SpectateGames.cpp"
+		"VACBannedConnRefusedDialog.cpp"
+		"VACBannedConnRefusedDialog.h"
+		"QuickListPanel.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		"$SRCDIR$/common/ServerBrowser/blacklisted_server_manager.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"BaseGamesPage.h"
+		"BlacklistedServers.h"
+		"CustomGames.h"
+		"DialogAddServer.h"
+		"DialogGameInfo.h"
+		"DialogServerPassword.h"
+		"FavoriteGames.h"
+		"FriendsGames.h"
+		"HistoryGames.h"
+		"InternetGames.h"
+		"LanGames.h"
+		"ModList.h"
+		"ServerBrowser.h"
+		"ServerBrowserDialog.h"
+		"ServerContextMenu.h"
+		"ServerListCompare.h"
+		"SpectateGames.h"
+		"QuickListPanel.h"
+		"$SRCDIR$/common/ServerBrowser/blacklisted_server_manager.h"
+	}
+
+	folder "Resource Files"
+	{
+	}
+
+	folder "Exposed interfaces"
+	{
+		"$SRCDIR$/common/ServerBrowser/IServerBrowser.h"
+	}
+}

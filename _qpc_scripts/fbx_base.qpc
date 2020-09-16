@@ -1,0 +1,25 @@
+// ---------------------------------------------------------------
+// fbx.qpc
+// ---------------------------------------------------------------
+macro SRCDIR [!$SRCDIR$]
+
+macro FBXVER "2015.1"
+macro FBXDIR "$SRCDIR$/thirdparty/fbx/FbxSdk/$FBXVER$"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"FBXSDK_SHARED"
+			"FBXSDK_NEW_API"
+		}
+		
+		inc_dirs
+		{
+			"$FBXDIR$/include"
+		}
+	}
+}
+

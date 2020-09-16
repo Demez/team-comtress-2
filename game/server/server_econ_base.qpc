@@ -1,0 +1,82 @@
+// ---------------------------------------------------------------
+// server_econ_base.qpc
+// ---------------------------------------------------------------
+include "$SRCDIR$/gcsdk/gcsdk_game_include.qpc"
+include "$SRCDIR$/game/shared/base_gcmessages_include.qpc"
+include "$SRCDIR$/game/shared/econ_gcmessages_include.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"USES_ECON_ITEMS"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/gcsdk/steamextra"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		folder "Economy"
+		{
+			"$SRCDIR$/game/shared/econ/econ_item_view.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_view.h"
+			"$SRCDIR$/game/shared/econ/econ_item_interface.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_interface.h"
+			"$SRCDIR$/game/shared/econ/econ_item_system.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_system.h"
+			"$SRCDIR$/game/shared/econ/attribute_manager.cpp"
+			"$SRCDIR$/game/shared/econ/attribute_manager.h"
+			"$SRCDIR$/game/shared/econ/ihasattributes.h"
+			"$SRCDIR$/game/shared/econ/econ_entity.cpp"
+			"$SRCDIR$/game/shared/econ/econ_entity.h"
+			"$SRCDIR$/game/shared/econ/econ_entity_creation.cpp"
+			"$SRCDIR$/game/shared/econ/econ_entity_creation.h"
+			"$SRCDIR$/game/shared/econ/econ_gcmessages.h"
+			"$SRCDIR$/game/shared/econ/econ_item_inventory.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_inventory.h"
+			"$SRCDIR$/game/shared/econ/econ_wearable.cpp"
+			"$SRCDIR$/game/shared/econ/econ_wearable.h"
+			"$SRCDIR$/game/shared/econ/econ_holidays.cpp"
+			"$SRCDIR$/game/shared/econ/econ_holidays.h"
+			"$SRCDIR$/game/shared/econ/econ_item.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item.h"
+			"$SRCDIR$/game/shared/econ/econ_item_constants.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_constants.h"
+			"$SRCDIR$/game/shared/econ/econ_item_preset.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_preset.h"
+			"$SRCDIR$/game/shared/econ/econ_item_schema.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_schema.h"
+			"$SRCDIR$/game/shared/econ/econ_item_tools.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_tools.h"
+			"$SRCDIR$/game/shared/econ/item_selection_criteria.cpp"
+			"$SRCDIR$/game/shared/econ/item_selection_criteria.h"
+			"$SRCDIR$/game/shared/econ/econ_dynamic_recipe.cpp"
+			"$SRCDIR$/game/shared/econ/econ_dynamic_recipe.h"
+			"$SRCDIR$/game/shared/econ/econ_quests.cpp"
+			"$SRCDIR$/game/shared/econ/econ_quests.h"
+			"$SRCDIR$/game/shared/gc_clientsystem.h"
+			"$SRCDIR$/game/shared/gc_clientsystem.cpp"
+			"$SRCDIR$/game/shared/gc_replicated_convars.cpp"
+			"$SRCDIR$/game/shared/econ/localization_provider.cpp"
+			"$SRCDIR$/game/shared/econ/localization_provider.h"
+		}
+	}
+}

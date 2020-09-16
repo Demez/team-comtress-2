@@ -1,0 +1,25 @@
+// ---------------------------------------------------------------
+// source_cryptlib_include.qpc
+// ---------------------------------------------------------------
+config
+{
+	link
+	{
+		libs
+		{
+			"cryptlib"
+			"vpklib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/common/crypto.cpp"
+		{
+			pch "none"
+		}
+	}
+}

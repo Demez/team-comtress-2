@@ -1,0 +1,20 @@
+// ---------------------------------------------------------------
+// vstdlib_exclude.qpc
+// ---------------------------------------------------------------
+macro PLATSUBDIR [!$PLATSUBDIR$]
+
+config
+{
+	link
+	{
+		libs
+		{
+			- "$LIBPUBLIC$/vstdlib" [$POSIX$ && !$IS_LIB_PROJECT$]
+			- "vstdlib" [$POSIX$]
+			- "$LIBPUBLIC$/$_IMPLIB_PREFIXvstdlib$$_IMPLIB_EXT$" [$WIN32$]
+			- "$LIBPUBLIC$$PLATSUBDIR$/$_IMPLIB_PREFIXvstdlib$$_IMPLIB_EXT$" [$WIN64$]
+			- "$LIBPUBLIC$/vstdlib_360" [$X360$]
+		}
+	}
+}
+

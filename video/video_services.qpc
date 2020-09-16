@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------
+// video_services.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "video_services"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/services"
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" "Carbon" [$MACOS$]
+			"tier2"
+			"tier3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"videoservices.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"video_macros.h"
+		"videoservices.h"
+		"videosubsystem.h"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/video/ivideoservices.h"
+	}
+}

@@ -1,0 +1,18 @@
+// ---------------------------------------------------------------
+// zipalign.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "ZipAlign"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"align.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+}

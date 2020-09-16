@@ -1,0 +1,22 @@
+// ---------------------------------------------------------------
+// source_dll_base.qpc
+// ---------------------------------------------------------------
+include "$SCRIPT_DIR$/base_dll_exe_shared.qpc"
+
+config
+{
+	general
+	{
+		config_type  "dynamic_lib"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"DLLNAME=$OUTBINNAME$"
+		}
+	}
+}
+
+

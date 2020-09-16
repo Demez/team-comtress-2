@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// smtpmail.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Smtpmail"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "../bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MACRO_MATHLIB"
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+			"../vmpi"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"smtpmail.cpp"
+		"simplesocket.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"simplesocket.h"
+	}
+}

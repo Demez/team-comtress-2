@@ -1,0 +1,111 @@
+// ---------------------------------------------------------------
+// panel_zoo.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Panel_zoo"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+include "$SRCDIR$/game/protobuf_include.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/vgui2/vlocalize"
+			"$SRCDIR$/vgui2/controls"
+			"$SRCDIR$/vgui2/include"
+			"$SRCDIR$/vgui2/controls"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+			"mathlib"
+			"steam_api"
+		}
+		
+		lib_dirs
+		{
+			"$LIBCOMMON$"
+			"$LIBPUBLIC$"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"AnimatingImagePanelDemo.cpp"
+		"ButtonDemo.cpp"
+		"ButtonDemo2.cpp"
+		"CascadingMenu.cpp"
+		"CControlCatalog.cpp"
+		"CheckButtonDemo.cpp"
+		"ComboBox2.cpp"
+		"ComboBoxDemo.cpp"
+		"DefaultColors.cpp"
+		"DemoPage.cpp"
+		"EditablePanel2Demo.cpp"
+		"EditablePanelDemo.cpp"
+		"FileOpenDialogDemo.cpp"
+		"FrameDemo.cpp"
+		"HTMLDemo.cpp"
+		"HTMLDemo2.cpp"
+		"ImageDemo.cpp"
+		"ImagePanelDemo.cpp"
+		"Label2Demo.cpp"
+		"LabelDemo.cpp"
+		"ListPanelDemo.cpp"
+		"MenuBarDemo.cpp"
+		"MenuDemo.cpp"
+		"MenuDemo2.cpp"
+		"MessageBoxDemo.cpp"
+		"ProgressBarDemo.cpp"
+		"QueryBoxDemo.cpp"
+		"RadioButtonDemo.cpp"
+		"SampleButtons.cpp"
+		"SampleCheckButtons.cpp"
+		"SampleDropDowns.cpp"
+		"SampleEditFields.cpp"
+		"SampleListCategories.cpp"
+		"SampleListPanelBoth.cpp"
+		"SampleListPanelColumns.cpp"
+		"SampleMenus.cpp"
+		"SampleRadioButtons.cpp"
+		"SampleSliders.cpp"
+		"SampleTabs.cpp"
+		"ScrollBar2Demo.cpp"
+		"ScrollBarDemo.cpp"
+		"testfile.cpp"
+		"TextEntryDemo.cpp"
+		"TextEntryDemo2.cpp"
+		"TextEntryDemo3.cpp"
+		"TextEntryDemo4.cpp"
+		"TextEntryDemo5.cpp"
+		"TextImageDemo.cpp"
+		"ToggleButtonDemo.cpp"
+		"TooltipDemo.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		"WizardPanelDemo.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"CControlCatalog.h"
+		"DemoPage.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"MenuDemo.h"
+		"SampleListPanelBoth.h"
+	}
+}

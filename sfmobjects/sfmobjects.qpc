@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// sfmobjects.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "sfmobjects"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SFMOBJECTS_LIB"
+		}
+	}
+}
+
+files
+{
+	folder "Header Files"
+	{
+	}
+
+	folder "Source Files"
+	{
+		"exportfacialanimation.cpp"
+		"flexcontrolbuilder.cpp"
+		"sfmsession.cpp"
+		"sfmanimationsetutils.cpp"
+		"sfmphonemeextractor.cpp"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/sfmobjects/exportfacialanimation.h"
+		"$SRCDIR$/public/sfmobjects/flexcontrolbuilder.h"
+		"$SRCDIR$/public/sfmobjects/sfmanimationsetutils.h"
+		"$SRCDIR$/public/sfmobjects/sfmphonemeextractor.h"
+		"$SRCDIR$/public/sfmobjects/sfmsession.h"
+	}
+}

@@ -1,0 +1,18 @@
+// ---------------------------------------------------------------
+// texturecompile_launcher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Texturecompile_launcher"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "texturecompile"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"texturecompile_launcher.cpp"
+	}
+}

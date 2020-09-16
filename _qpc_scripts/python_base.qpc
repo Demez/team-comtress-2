@@ -1,0 +1,35 @@
+// ---------------------------------------------------------------
+// python_base.qpc
+// ---------------------------------------------------------------
+macro PYTHONVER [!$PYTHONVER$]
+
+include "$SRCDIR$/_qpc_scripts/python_inc_$PYTHONVER$.qpc"
+
+config
+{
+	general
+	{
+		out_dir "Debug_Python$PYTHONVER$" [$DEBUG$]
+		out_dir "Release_Python$PYTHONVER$" [$RELEASE$]
+		build_dir "Debug_Python$PYTHONVER$" [$DEBUG$]
+		build_dir "Release_Python$PYTHONVER$" [$RELEASE$]
+	}
+	
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/common/python/$PYTHONVER$"
+			"$SRCDIR$/public/python"
+		}
+	}
+	
+	link
+	{
+		lib_dirs
+		{
+			"$SRCDIR$/lib/common/python/$PYTHONVER$"
+		}
+	}
+}
+

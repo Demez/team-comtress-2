@@ -1,0 +1,29 @@
+// ---------------------------------------------------------------
+// inputtest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Inputtest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"appframework"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"inputtest.cpp"
+	}
+}

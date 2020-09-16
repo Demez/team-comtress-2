@@ -1,0 +1,87 @@
+// ---------------------------------------------------------------
+// msvc_base.qpc
+// ---------------------------------------------------------------
+
+macro VS2015 "1"
+
+macro AT_LEAST_VS2015 "true" [$VS2015$]
+macro AT_LEAST_VS2013 "true" [$VS2013$ || ($AT_LEAST_VS2015$ == true)]
+
+config
+{
+	general
+	{
+		compiler     "msvc_142" [$WINDOWS$]
+		
+		options
+		{
+			"/ltcg" [$LTCG$ && $RELEASE$]
+		}
+	}
+	
+	compile
+	{
+		defines
+		{
+			"_HAS_ITERATOR_DEBUGGING=0" [!$WIN64$ && !$VS2015$ && $DEBUG$]
+			"_ALLOW_RUNTIME_LIBRARY_MISMATCH" "_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH" "_ALLOW_MSC_VER_MISMATCH" [!$WIN64$ && !$VS2015$]
+			"WIN64" "_WIN64" "COMPILER_MSVC64" [$WIN64$]
+			"COMPILER_MSVC32" [$WIN32$]
+			
+			"COMPILER_MSVC"
+			"MBCS"
+			"_WINDOWS"
+			"WIN32"
+			"_USRDLL"
+			"_CRT_SECURE_NO_DEPRECATE"
+			"_CRT_NONSTDC_NO_DEPRECATE"
+			"_ENABLE_ATOMIC_ALIGNMENT_FIX"
+		}
+		
+		options
+		{
+			"/arch:SSE" [$WIN32$]
+			"/ZI" [$WIN32$ && $DEBUG$]
+			"/Zi" [$WIN64$]
+			"/Od" "/MTd" [$DEBUG$]
+			"/O2" "/Ob2" "/Oi" "/Ot" "/MT" "/Gy" [$RELEASE$]
+			"/GF" "/fp:fast" "/Zc:forScope" "/GR" "/FC" "/errorReport:prompt"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"shell32.lib" "user32.lib" "advapi32.lib" "gdi32.lib" "comdlg32.lib" "ole32.lib"
+		}
+		
+		ignore_libs
+		{
+			"libcmt" "libcpmt" "libcpmt1" [$DEBUG$]
+			"libcmtd" "libcpmtd" "libcpmtd0" "libcpmtd1" [$RELEASE$]
+			"libc"
+			"libcd"
+		}
+		
+		options
+		{
+			"/INCREMENTAL" [$DEBUG$]
+			"/INCREMENTAL:NO" "/OPT:REF" [$RELEASE$]
+			"/NOLOGO"
+			"/SUBSYSTEM:WINDOWS"
+			"/ERRORREPORT:PROMPT"
+			"/SAFESEH:NO"
+		}
+	}
+}
+
+/*files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/tier0/pointeroverride.asm" [$WIN32$]
+	}
+}*/
+
+

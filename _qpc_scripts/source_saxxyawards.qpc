@@ -1,0 +1,16 @@
+// ---------------------------------------------------------------
+// source_saxxyawards.qpc
+// ---------------------------------------------------------------
+macro SAXXYAWARDS_ENABLE "0"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SAXXYMAINMENU_ENABLED" [$SAXXYAWARDS_ENABLE$]
+		}
+	}
+}
+

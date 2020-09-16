@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------
+// getmirror.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Getmirror"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		pch "use"
+		pch_out "Debug/getmirror.pch"
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"getmirror.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"StdAfx.h"
+	}
+}

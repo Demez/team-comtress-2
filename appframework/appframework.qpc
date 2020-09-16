@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// appframework.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "appframework"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"Carbon" "OpenGL" "Quartz" "Cocoa" "IOKit" [$MACOS$]
+			"togl" [!$IS_LIB_PROJECT$ && $GL$]
+			"SDL2" [!$IS_LIB_PROJECT$ && $SDL$]
+		}
+	}
+}
+
+requires
+{
+	"togl"	[!$IS_LIB_PROJECT$ && $GL$]
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"AppSystemGroup.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"vguimatsysapp.cpp" [$WIN32$]
+		"winapp.cpp" [$WIN32$]
+		"posixapp.cpp" [$POSIX$]
+		"sdlmgr.cpp" [$SDL$]
+		"glmrendererinfo_osx.mm" [$MACOS$]
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/appframework/AppFramework.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/appframework/IAppSystemGroup.h"
+		"$SRCDIR$/public/appframework/tier2app.h"
+		"$SRCDIR$/public/appframework/tier3app.h"
+		"$SRCDIR$/public/appframework/VguiMatSysApp.h"
+		"$SRCDIR$/public/appframework/ilaunchermgr.h"
+	}
+}

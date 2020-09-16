@@ -1,0 +1,55 @@
+// ---------------------------------------------------------------
+// vp4.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vp4"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		pch "use"
+		pch_out "Debug/vp4.pch"
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"tier3"
+			"tier2"
+			"vgui_controls"
+			"mathlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vp4dialog.cpp"
+
+		"main.cpp"	\
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		{
+			pch "none"
+		}
+
+		"stdafx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"stdafx.h"
+		"vp4dialog.h"
+	}
+}

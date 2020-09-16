@@ -1,0 +1,261 @@
+// ---------------------------------------------------------------
+// GameUI.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "GameUI"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+include "$SRCDIR$/_qpc_scripts/source_saxxyawards.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"GAMEUI_EXPORTS"
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"$SRCDIR$/vgui2/include"
+			"$SRCDIR$/vgui2/controls"
+			"$SRCDIR$/common/GameUI"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"Ws2_32.lib" "odbc32.lib" "odbccp32.lib" "Shlwapi.lib" [$WIN32$]
+			"iconv" "z" [$MACOS$]
+			"rt" [$LINUX$ && !$DEDICATED$]
+			"Xonlined.lib" [$X360$ && $DEBUG$]
+			"Xonline.lib" [$X360$ && $RELEASE$]
+			"jpeglib" "libz" "libpng" [!$DEDICATED$]
+			"SDL2" [$SDL$]
+			"bitmap"
+			"mathlib"
+			"matsys_controls"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+			"vtf"
+			"steam_api"
+		}
+	}
+}
+
+requires
+{
+	"libz" "jpeglib" [!$DEDICATED$]
+	"bitmap"
+	"mathlib"
+	"matsys_controls"
+	"tier2"
+	"tier3"
+	"vgui_controls"
+	"vtf"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"BackgroundMenuButton.cpp"
+		"BasePanel.cpp"
+		"GameConsole.cpp"
+		"GameUI_Interface.cpp"
+		"LogoFile.cpp" [!$POSIX$]
+		"ModInfo.cpp"
+		"MouseMessageForwardingPanel.cpp"
+		"$SRCDIR$/Tracker/common/msgbuffer.cpp" [!$POSIX$]
+		"$SRCDIR$/Tracker/common/netapi.cpp" [!$POSIX$]
+		"$SRCDIR$/common/GameUI/ObjectList.cpp"
+		"PanelListPanel.cpp"
+		"RunGameEngine.cpp"
+		"$SRCDIR$/common/GameUI/scriptobject.cpp"
+		"$SRCDIR$/Tracker/common/Socket.cpp" [!$POSIX$]
+		"Sys_Utils.cpp"
+		"TextEntryBox.cpp"
+		"TGAImagePanel.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		"VGuiSystemModuleLoader.cpp"
+		"BonusMapsDatabase.cpp"
+		"BonusMapsDatabase.h"
+		"$SRCDIR$/common/language.cpp"
+		"$SRCDIR$/common/imageutils.cpp"
+		"SaveGameBrowserDialog.cpp"
+		"gameui_util.cpp"
+		"gameui_util.h"
+	}
+
+	folder "Header Files"
+	{
+		"BackgroundMenuButton.h"
+		"BasePanel.h"
+		"BaseSaveGameDialog.h"
+		"CDKeyEntryDialog.h"
+		"ChangeGameDialog.h"
+		"CreateMultiplayerGameBotPage.h"
+		"CreateMultiplayerGameDialog.h"
+		"CreateMultiplayerGameGameplayPage.h"
+		"CreateMultiplayerGameServerPage.h"
+		"EngineInterface.h"
+		"GameConsole.h"
+		"GameUI_Interface.h"
+		"LoadingDialog.h"
+		"$SRCDIR$/vgui2/src/Memorybitmap.h"
+		"ModInfo.h"
+		"MouseMessageForwardingPanel.h"
+		"PanelListPanel.h"
+		"$SRCDIR$/common/GameUI/scriptobject.h"
+		"Sys_Utils.h"
+		"TextEntryBox.h"
+		"TGAImagePanel.h"
+		"VGuiSystemModuleLoader.h"
+		"SaveGameBrowserDialog.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/iachievementmgr.h"
+		"$SRCDIR$/public/game/client/IGameClientExports.h"
+		"$SRCDIR$/common/GameUI/IGameUI.h"
+		"$SRCDIR$/public/IGameUIFuncs.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/common/IObjectContainer.h"
+		"$SRCDIR$/common/IRunGameEngine.h"
+		"$SRCDIR$/common/IVguiModule.h"
+		"$SRCDIR$/common/IVGuiModuleLoader.h"
+		"$SRCDIR$/common/GameUI/ObjectList.h"
+		"$SRCDIR$/public/savegame_version.h"
+		"$SRCDIR$/Tracker/common/TrackerMessageFlags.h"
+		"$SRCDIR$/common/ValveCDKeyGameAndTerritoryCodes.h"
+		"$SRCDIR$/common/language.h"
+		"$SRCDIR$/common/imageutils.h"
+	}
+
+	folder "Controls"
+	{
+		"BitmapImagePanel.cpp"
+		"BitmapImagePanel.h"
+		"CommandCheckButton.cpp"
+		"CommandCheckButton.h"
+		"CvarNegateCheckButton.cpp"
+		"CvarNegateCheckButton.h"
+		"$SRCDIR$/common/GameUI/cvarslider.cpp"
+		"$SRCDIR$/common/GameUI/cvarslider.h"
+		"CvarTextEntry.cpp"
+		"CvarTextEntry.h"
+		"CvarToggleCheckButton.cpp"
+		"CvarToggleCheckButton.h"
+		"HapticControlBox.cpp"
+		"HapticControlBox.h"
+		"KeyToggleCheckButton.cpp"
+		"KeyToggleCheckButton.h"
+		"LabeledCommandComboBox.cpp"
+		"LabeledCommandComboBox.h"
+		"URLButton.cpp"
+		"URLButton.h"
+		"vcontrolslistpanel.cpp"
+		"vcontrolslistpanel.h"
+	}
+
+	folder "Dialogs"
+	{
+		"BenchmarkDialog.cpp"
+		"BenchmarkDialog.h"
+		"BonusMapsDialog.cpp"
+		"BonusMapsDialog.h"
+		"CommentaryDialog.cpp"
+		"CommentaryDialog.h"
+		"CommentaryExplanationDialog.cpp"
+		"CommentaryExplanationDialog.h"
+		"ContentControlDialog.cpp"
+		"ContentControlDialog.h"
+		"CustomTabExplanationDialog.cpp"
+		"CustomTabExplanationDialog.h"
+		"GameConsoleDialog.cpp"
+		"GameConsoleDialog.h"
+		"LoadGameDialog_Xbox.cpp"
+		"LoadGameDialog.cpp"
+		"LoadGameDialog.h"
+		"MultiplayerAdvancedDialog.cpp"
+		"MultiplayerAdvancedDialog.h"
+		"NewGameDialog.cpp"
+		"NewGameDialog.h"
+		"PlayerListDialog.cpp"
+		"PlayerListDialog.h"
+		"SaveGameDialog_Xbox.cpp"
+		"SaveGameDialog.cpp"
+		"SaveGameDialog.h"
+		"LoadCommentaryDialog.cpp"
+		"LoadingDialog.cpp"
+		"BaseSaveGameDialog.cpp"
+		"ChangeGameDialog.cpp" [!$POSIX$]
+		"CreateMultiplayerGameBotPage.cpp"
+		"CreateMultiplayerGameDialog.cpp"
+		"CreateMultiplayerGameGameplayPage.cpp"
+		"CreateMultiplayerGameServerPage.cpp"
+		"OptionsDialog_Xbox.cpp"
+		"ControllerDialog.cpp"
+		"ControllerDialog.h"
+	}
+
+	folder "Matchmaking"
+	{
+		"matchmaking/achievementsdialog.cpp"
+		"matchmaking/achievementsdialog.h"
+		"matchmaking/basedialog.cpp"
+		"matchmaking/basedialog.h"
+		"matchmaking/dialogmenu.cpp"
+		"matchmaking/dialogmenu.h"
+		"matchmaking/leaderboarddialog.cpp"
+		"matchmaking/leaderboarddialog.h"
+		"matchmaking/matchmakingbasepanel.cpp"
+		"matchmaking/matchmakingbasepanel.h"
+		"matchmaking/pausedialog.cpp"
+		"matchmaking/pausedialog.h"
+		"matchmaking/sessionlobbydialog.cpp"
+		"matchmaking/sessionlobbydialog.h"
+		"matchmaking/sessionoptionsdialog.cpp"
+		"matchmaking/sessionoptionsdialog.h"
+		"matchmaking/sessionbrowserdialog.cpp"
+		"matchmaking/sessionbrowserdialog.h"
+		"matchmaking/welcomedialog.cpp"
+		"matchmaking/welcomedialog.h"
+	}
+
+	folder "Options Dialog"
+	{
+		"OptionsDialog.cpp"
+		"OptionsDialog.h"
+		"OptionsSubAudio.cpp"
+		"OptionsSubAudio.h"
+		"OptionsSubDifficulty.cpp"
+		"OptionsSubDifficulty.h"
+		"OptionsSubGame.cpp"
+		"OptionsSubGame.h"
+		"OptionsSubHaptics.cpp" [$WIN32$]
+		"OptionsSubHaptics.h" [$WIN32$]
+		"OptionsSubKeyboard.cpp"
+		"OptionsSubKeyboard.h"
+		"OptionsSubMouse.cpp"
+		"OptionsSubMouse.h"
+		"OptionsSubMultiplayer.cpp"
+		"OptionsSubMultiplayer.h"
+		"OptionsSubPortal.cpp"
+		"OptionsSubPortal.h"
+		"OptionsSubVideo.cpp"
+		"OptionsSubVideo.h"
+		"OptionsSubVoice.cpp"
+		"OptionsSubVoice.h"
+	}
+}

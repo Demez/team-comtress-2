@@ -1,0 +1,80 @@
+// ---------------------------------------------------------------
+// vmpi_service_install.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vmpi_service_install"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vmpi_service_install"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+			"WINVER=0x400"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"../"
+			"../../common"
+			"../../../public"
+		}
+		
+		pch "use"
+		pch_file "stdafx.h"
+	}
+	
+	link
+	{
+		libs
+		{
+			"nafxcwd.lib" [$DEBUG$]
+			"nafxcw.lib" "libcmt.lib" [$RELEASE$]
+			"$LIBPUBLIC$/vmpi"
+		}
+		
+		ignore_libs
+		{
+			"nafxcw.lib" "libcmt.lib" [$DEBUG$]
+			"nafxcwd.lib" [$RELEASE$]
+			"libcmtd.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+
+		"ServiceInstallDlg.cpp"
+		"vmpi_service_install.cpp"
+		"vmpi_service_install.rc"
+	}
+
+	folder "Header Files"
+	{
+		"ServiceInstallDlg.h"
+		"Resource.h"
+		"StdAfx.h"
+		"vmpi_service_install.h"
+	}
+
+	folder "Resource Files"
+	{
+		"res/vmpi_service_install.ico"
+		"res/vmpi_service_install.rc2"
+	}
+}

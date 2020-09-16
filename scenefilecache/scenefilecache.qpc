@@ -1,0 +1,52 @@
+// ---------------------------------------------------------------
+// scenefilecache.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "SceneFileCache"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"_WINDOWS"
+			"PROTECTED_THINGS_ENABLE"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"SceneFileCache.cpp"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/scenefilecache/ISceneFileCache.h"
+		"$SRCDIR$/public/tier1/utlbuffer.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+}

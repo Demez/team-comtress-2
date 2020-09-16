@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------
+// valve_avi.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "valve_avi"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+include "$SRCDIR$/_qpc_scripts/source_video_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common/quicktime_win32/" [$QUICKTIME_WINDOWS$]
+			"$SRCDIR$/dx9sdk/include" [$WINDOWS$]
+			"$SRCDIR$/thirdparty/sdl/include" "$SRCDIR$/thirdparty/sdl_mixer" [$LINUX$]
+		}
+	}
+	
+	link
+	{
+		ignore_import_lib "true" [$WINDOWS$]
+		
+		libs
+		{
+			"vfw32.lib" [$WINDOWS$]
+			"iconv" [$MACOS$]
+			"SDL2" [$LINUX$]
+			"tier2" "tier3" [$WINDOWS$ || $X360$ || $POSIX$]
+			"$LIBCOMMON$/quicktime/QTMLClient" "$SRCDIR$/DX9SDK/lib/dsound" "$SRCDIR$/DX9SDK/lib/dxguid" [$QUICKTIME_WINDOWS$ && $WINDOWS$ || $X360$ || $POSIX$]
+			"$LIBCOMMON$/libSDL2_mixer" [$LINUX$ && $WINDOWS$ || $X360$]
+			"Quicktime"
+			"Carbon"
+		}
+		
+		lib_dirs
+		{
+			"$SRCDIR$/dx9sdk/lib" [$WINDOWS$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"avi.cpp" [$WINDOWS$]
+		"avi_osx.cpp" [$MACOS$]
+		"bink.cpp" [!$OSX$]
+		"quicktime.cpp" [$QUICKTIME_VIDEO$ || $QUICKTIME_WINDOWS$]
+	}
+
+	folder "Header Files"
+	{
+		"avi.h"
+		"quicktime.h"
+		"$SRCDIR$/public/pixelwriter.h"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/avi/iavi.h"
+		"$SRCDIR$/public/avi/ibik.h"
+		"$SRCDIR$/public/avi/iquicktime.h"
+	}
+}

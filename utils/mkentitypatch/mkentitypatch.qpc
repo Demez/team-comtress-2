@@ -1,0 +1,62 @@
+// ---------------------------------------------------------------
+// mkentitypatch.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "mkentitypatch"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DONT_PROTECT_FILEIO_FUNCTIONS"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"mathlib"
+			"tier2"
+			"$LIBCOMMON$/lzma"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"mkentitypatch.cpp"
+	}
+
+	folder "External"
+	{
+		"$SRCDIR$/utils/common/bsplib.cpp"
+		"$SRCDIR$/utils/common/filesystem_tools.cpp"
+		"$SRCDIR$/utils/common/scriplib.cpp"
+		"$SRCDIR$/utils/common/cmdlib.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/lumpfiles.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+
+	folder "External Header Files"
+	{
+		"$SRCDIR$/utils/common/bsplib.h"
+		"$SRCDIR$/public/lumpfiles.h"
+		"$SRCDIR$/public/filesystem_helpers.h"
+	}
+}

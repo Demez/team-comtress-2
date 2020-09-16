@@ -1,0 +1,63 @@
+// ---------------------------------------------------------------
+// mdlcheck.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Mdlcheck"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+		
+		pch "use"
+		pch_out "Debug/mdlcheck.pch"
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"mdlcheck.cpp"
+		"mdlcheck_util.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"mdlcheck_util.h"
+		"$SRCDIR$/public/tier0/memdbgon.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"StdAfx.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/studio.h"
+		"$SRCDIR$/public/tier1/utldict.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlrbtree.h"
+		"$SRCDIR$/public/tier1/utlsymbol.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/mathlib/vector4d.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+}

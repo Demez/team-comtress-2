@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------
+// video_webm.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "video_webm"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/webm"
+	}
+	
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/dx9sdk/include" [$WIN32$]
+			"$SRCDIR$/thirdparty/libvpx-v1.1.0"
+			"$SRCDIR$/thirdparty/libvorbis-1.3.2/include"
+			"$SRCDIR$/thirdparty/libwebm"
+			"$SRCDIR$/thirdparty/libogg-1.2.2/include"
+		}
+	}
+	
+	link
+	{
+		ignore_import_lib "true" [$WIN32$]
+		
+		libs
+		{
+			"vfw32.lib" [$WIN32$]
+			"iconv" "Carbon" [$MACOS$]
+			"tier1"
+			"tier2"
+			"$LIBCOMMON$/libvorbis"
+			"$LIBCOMMON$/libvpx"
+			"$LIBCOMMON$/libwebm"
+			"$LIBCOMMON$/libvorbisenc"
+			"$LIBCOMMON$/libogg"
+		}
+		
+		lib_dirs
+		{
+			"$SRCDIR$/dx9sdk/lib" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files" [$WIN32$ || $POSIX$]
+	{
+		"webm_video.cpp"
+		"webm_recorder.cpp"
+	}
+
+	folder "Header Files" [$WIN32$ || $POSIX$]
+	{
+		"videosubsystem.h"
+		"video_macros.h"
+		"webm_video.h"
+		"webm_recorder.h"
+		"webm_common.h"
+		"$SRCDIR$/public/pixelwriter.h"
+	}
+}

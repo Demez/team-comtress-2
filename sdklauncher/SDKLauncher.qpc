@@ -1,0 +1,89 @@
+// ---------------------------------------------------------------
+// SDKLauncher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "SDKLauncher"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/utils/common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"odbc32.lib"
+			"odbccp32.lib"
+			"WS2_32.LIB"
+			"appframework"
+			"steam_api"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+			"mathlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/common/ConfigManager.cpp"
+		"$SRCDIR$/common/SourceAppInfo.cpp"
+		"configs.cpp"
+		"CreateModWizard.cpp"
+		"CreateModWizard.h"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"$SRCDIR$/public/registry.cpp"
+		"Main.cpp"
+		"min_footprint_files.cpp"
+		"ModConfigsHelper.cpp"
+		"ModWizard_CopyFiles.cpp"
+		"ModWizard_Finished.cpp"
+		"ModWizard_GetModInfo.cpp"
+		"ModWizard_Intro.cpp"
+		"ModWizard_TemplateOptions.cpp"
+		"$SRCDIR$/public/registry.cpp"
+		"sdklauncher_main.h"
+		"SDKLauncherDialog.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/common/ConfigManager.h"
+		"configs.h"
+		"$SRCDIR$/public/filesystem_init.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"min_footprint_files.h"
+		"ModConfigsHelper.h"
+		"ModWizard_CopyFiles.h"
+		"ModWizard_GetModInfo.h"
+		"ModWizard_Intro.h"
+		"ModWizard_TemplateOptions.h"
+		"SDKLauncherDialog.h"
+	}
+
+	folder "Resource Files"
+	{
+		"icon2.ico"
+		"Script1.rc"
+		"steam.ico"
+	}
+}

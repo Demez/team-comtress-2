@@ -1,0 +1,185 @@
+// ---------------------------------------------------------------
+// client_econ_base.qpc
+// ---------------------------------------------------------------
+include "$SRCDIR$/gcsdk/gcsdk_game_include.qpc"
+include "$SRCDIR$/game/shared/base_gcmessages_include.qpc"
+include "$SRCDIR$/game/shared/econ_gcmessages_include.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"USES_ECON_ITEMS"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/game/shared/econ"
+			"$SRCDIR$/gcsdk/steamextra"
+			"./econ"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"z" [$MACOS$]
+			"libpng"
+			"jpeglib"
+			"libz"
+		}
+	}
+}
+
+requires
+{
+	"jpeglib"
+	"libz"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		folder "Economy"
+		{
+			"$SRCDIR$/game/shared/econ/econ_item_view.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_view.h"
+			"$SRCDIR$/game/shared/econ/econ_item_interface.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_interface.h"
+			"$SRCDIR$/game/shared/econ/econ_item_description.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_description.h"
+			"$SRCDIR$/game/shared/econ/econ_item_system.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_system.h"
+			"$SRCDIR$/game/shared/econ/attribute_manager.cpp"
+			"$SRCDIR$/game/shared/econ/attribute_manager.h"
+			"$SRCDIR$/game/shared/econ/ihasattributes.h"
+			"$SRCDIR$/game/shared/econ/econ_entity.cpp"
+			"$SRCDIR$/game/shared/econ/econ_entity.h"
+			"$SRCDIR$/game/shared/econ/econ_entity_creation.cpp"
+			"$SRCDIR$/game/shared/econ/econ_entity_creation.h"
+			"$SRCDIR$/game/shared/econ/econ_item_inventory.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_inventory.h"
+			"$SRCDIR$/game/shared/econ/econ_gcmessages.h"
+			"$SRCDIR$/game/shared/econ/econ_wearable.cpp"
+			"$SRCDIR$/game/shared/econ/econ_wearable.h"
+			"$SRCDIR$/game/shared/econ/econ_holidays.cpp"
+			"$SRCDIR$/game/shared/econ/econ_holidays.h"
+			"$SRCDIR$/game/shared/econ/econ_item.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item.h"
+			"$SRCDIR$/game/shared/econ/econ_item_preset.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_preset.h"
+			"$SRCDIR$/game/shared/econ/econ_item_constants.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_constants.h"
+			"$SRCDIR$/game/shared/econ/econ_item_schema.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_schema.h"
+			"$SRCDIR$/game/shared/econ/econ_item_tools.cpp"
+			"$SRCDIR$/game/shared/econ/econ_item_tools.h"
+			"$SRCDIR$/game/shared/econ/econ_store.cpp"
+			"$SRCDIR$/game/shared/econ/econ_store.h"
+			"$SRCDIR$/game/shared/econ/econ_storecategory.cpp"
+			"$SRCDIR$/game/shared/econ/econ_storecategory.h"
+			"$SRCDIR$/game/shared/econ/item_selection_criteria.cpp"
+			"$SRCDIR$/game/shared/econ/item_selection_criteria.h"
+			"$SRCDIR$/game/shared/econ/econ_dynamic_recipe.cpp"
+			"$SRCDIR$/game/shared/econ/econ_dynamic_recipe.h"
+			"$SRCDIR$/game/shared/econ/econ_quests.cpp"
+			"$SRCDIR$/game/shared/econ/econ_quests.h"
+			"$SRCDIR$/game/client/econ/econ_consumables.cpp"
+			"$SRCDIR$/game/shared/gc_clientsystem.h"
+			"$SRCDIR$/game/shared/gc_clientsystem.cpp"
+			"$SRCDIR$/game/shared/gc_replicated_convars.cpp"
+			"$SRCDIR$/game/shared/econ/localization_provider.cpp"
+			"$SRCDIR$/game/shared/econ/localization_provider.h"
+		}
+
+		folder "Economy Client"
+		{
+			"econ/econ_ui.h"
+			"econ/backpack_panel.cpp"
+			"econ/backpack_panel.h"
+			"econ/base_loadout_panel.cpp"
+			"econ/base_loadout_panel.h"
+			"econ/trading_start_dialog.cpp"
+			"econ/trading_start_dialog.h"
+			"econ/iconrenderreceiver.h"
+			"econ/item_model_panel.cpp"
+			"econ/item_model_panel.h"
+			"econ/item_pickup_panel.cpp"
+			"econ/item_pickup_panel.h"
+			"econ/confirm_dialog.cpp"
+			"econ/confirm_dialog.h"
+			"econ/confirm_delete_dialog.cpp"
+			"econ/confirm_delete_dialog.h"
+			"econ/item_confirm_delete_dialog.cpp"
+			"econ/item_confirm_delete_dialog.h"
+			"econ/item_style_select_dialog.cpp"
+			"econ/item_style_select_dialog.h"
+			"econ/econ_controls.cpp"
+			"econ/econ_controls.h"
+			"econ/econ_notifications.cpp"
+			"econ/econ_notifications.h"
+			"econ/item_rental_ui.cpp"
+			"econ/item_rental_ui.h"
+			"econ/client_community_market.cpp"
+			"econ/client_community_market.h"
+			"econ/local_steam_shared_object_listener.cpp"
+			"econ/local_steam_shared_object_listener.h"
+			"econ/econ_sample_rootui.cpp"
+			"econ/econ_sample_rootui.h"
+
+			folder "Trading"
+			{
+				"econ/econ_trading.cpp"
+				"econ/econ_trading.h"
+			}
+
+			folder "VGUI dependencies"
+			{
+				"game_controls/navigationpanel.cpp"
+				"game_controls/navigationpanel.h"
+			}
+
+			folder "Store"
+			{
+				"econ/store/store_page.cpp"
+				"econ/store/store_page.h"
+				"econ/store/store_page_new.cpp"
+				"econ/store/store_page_new.h"
+				"econ/store/store_panel.cpp"
+				"econ/store/store_panel.h"
+				"econ/store/store_preview_item.cpp"
+				"econ/store/store_preview_item.h"
+				"econ/store/store_viewcart.cpp"
+				"econ/store/store_viewcart.h"
+			}
+
+			folder "tool_items"
+			{
+				"econ/tool_items/tool_items.cpp"
+				"econ/tool_items/tool_items.h"
+				"econ/tool_items/rename_tool_ui.cpp"
+				"econ/tool_items/rename_tool_ui.h"
+				"econ/tool_items/decoder_ring_tool.cpp"
+				"econ/tool_items/decoder_ring_tool.h"
+				"econ/tool_items/paint_can_tool.cpp"
+				"econ/tool_items/paint_can_tool.h"
+				"econ/tool_items/custom_texture_cache.cpp"
+				"econ/tool_items/custom_texture_cache.h"
+				"econ/tool_items/custom_texture_tool.cpp"
+				"econ/tool_items/gift_wrap_tool.cpp"
+				"econ/tool_items/gift_wrap_tool.h"
+			}
+		}
+
+		"$SRCDIR$/common/imageutils.h"
+		"$SRCDIR$/common/imageutils.cpp"
+		{
+			pch "none"
+		}
+	}
+}

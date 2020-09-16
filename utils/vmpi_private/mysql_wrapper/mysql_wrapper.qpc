@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// mysql_wrapper.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Mysql_wrapper"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MYSQL_WRAPPER_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			".."
+			"../mysql/include"
+			"../../vmpi"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"../mysql/lib/opt/libmySQL"
+			"../mysql/lib/opt/zlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"mysql_wrapper.cpp"
+		"StdAfx.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"../../vmpi/imysqlwrapper.h"
+		"StdAfx.h"
+	}
+}

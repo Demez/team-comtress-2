@@ -1,0 +1,75 @@
+// ---------------------------------------------------------------
+// sampletool.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Sampletool"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/tools"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SAMPLETOOL_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"../common"
+			"$SRCDIR$/game/shared"
+		}
+		
+		pch "use"
+		pch_file "cbase.h"
+	}
+	
+	link
+	{
+		libs
+		{
+			"Psapi.lib"
+			"datamodel"
+			"dme_controls"
+			"dmserializers"
+			"mathlib"
+			"matsys_controls"
+			"movieobjects"
+			"sfmobjects"
+			"tier2"
+			"tier3"
+			"toolutils"
+			"vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"sampletool.cpp"
+		"cbase.cpp"
+		{
+			pch "create"
+		}
+
+		"$SRCDIR$/public/interpolatortypes.cpp"	\
+		"$SRCDIR$/public/registry.cpp"	\
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		{
+			pch "none"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"cbase.h"
+		"$SRCDIR$/public/interpolatortypes.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+	}
+}

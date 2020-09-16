@@ -1,0 +1,19 @@
+// ---------------------------------------------------------------
+// gcsdk_gcmessages_include.qpc
+// ---------------------------------------------------------------
+files
+{
+	folder "Protobuf Files"
+	{
+		"$SRCDIR$/gcsdk/gcsdk_gcmessages.proto"
+
+		folder "Generated Files"
+		{
+			"$GENERATED_PROTO_DIR$/gcsdk_gcmessages.pb.h"
+			"$GENERATED_PROTO_DIR$/gcsdk_gcmessages.pb.cc"
+			{
+				pch "none"
+			}
+		}
+	}
+}

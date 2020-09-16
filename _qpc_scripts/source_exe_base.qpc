@@ -1,0 +1,22 @@
+// ---------------------------------------------------------------
+// source_exe_base.qpc
+// ---------------------------------------------------------------
+include "$SCRIPT_DIR$/base_dll_exe_shared.qpc"
+
+config
+{
+	general
+	{
+		config_type  "application"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"EXENAME=$OUTBINNAME$"
+			"EXT_DLL=$EXT_DLL$"
+		}
+	}
+}
+

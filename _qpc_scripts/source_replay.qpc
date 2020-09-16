@@ -1,0 +1,26 @@
+// ---------------------------------------------------------------
+// source_replay.qpc
+// ---------------------------------------------------------------
+macro BUILD_REPLAY "1"
+
+// config [$BUILD_REPLAY$ && !$X360$]
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"REPLAY_ENABLED"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"replay_common"
+		}
+	}
+}
+

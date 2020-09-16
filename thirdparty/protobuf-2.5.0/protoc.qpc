@@ -1,0 +1,60 @@
+// ---------------------------------------------------------------
+// tier0.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "protoc"
+
+macro SRCDIR "$ROOT_DIR$"
+macro OUT_DIR "$SRCDIR$/devtools/bin/$PLAT_DIR$"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/protoc"
+	}
+	
+	compile
+	{
+		inc_dirs
+		{
+			"src"
+		}
+		
+		options
+		{
+			"/wd4244 /wd4267 /wd4018 /wd4355 /wd4800 /wd4251 /wd4996 /wd4146 /wd4305" [$WINDOWS$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			- "tier0" "tier1" "vstdlib"
+			
+			"libprotobuf"
+			"libprotoc"
+		}
+	}
+}
+
+requires
+{
+	- "tier0" "tier1" "vstdlib"
+	
+	"libprotobuf"
+	"libprotoc"
+}
+
+files
+{
+	- "$SRCDIR$/public/tier0/memoverride.cpp"
+	
+	folder "Source Files"
+	{
+		"src/google/protobuf/compiler/main.cc"
+	}
+}
+

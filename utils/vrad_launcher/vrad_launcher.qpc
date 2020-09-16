@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------
+// vrad_launcher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vrad_launcher"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vrad"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		pch "use"
+		pch_out "$(IntDir)/vrad_launcher.pch"
+	}
+	
+	link
+	{
+		options
+		{
+			"/LARGEADDRESSAWARE" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"vrad_launcher.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/ivraddll.h"
+		"StdAfx.h"
+	}
+}

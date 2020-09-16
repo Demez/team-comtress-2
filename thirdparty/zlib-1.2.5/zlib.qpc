@@ -1,0 +1,66 @@
+// ---------------------------------------------------------------
+// libz.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "libz"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$SRCDIR$/lib/public" [!$WIN64$]
+macro OUTLIBDIR "$SRCDIR$/lib/public/x64" [$WIN64$]
+macro OUTLIBNAME "libz"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	general
+	{
+		language "c"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"_CRT_SECURE_NO_WARNINGS"
+			"_CRT_SECURE_NO_DEPRECATE"
+		}
+		
+		inc_dirs
+		{
+			"include"
+		}
+	}
+}
+
+files
+{
+	- "$SRCDIR$/public/tier0/memoverride.cpp"
+	
+	folder "Header Files"
+	{
+		"gzguts.h"
+		"deflate.h"
+		"inffast.h"
+		"inftrees.h"
+		"zutil.h"
+	}
+
+	folder "Source Files"
+	{
+		"adler32.c"
+		"compress.c"
+		"crc32.c"
+		"deflate.c"
+		"gzclose.c"
+		"gzlib.c"
+		"gzread.c"
+		"gzwrite.c"
+		"infback.c"
+		"inffast.c"
+		"inflate.c"
+		"inftrees.c"
+		"trees.c"
+		"uncompr.c"
+		"zutil.c"
+	}
+}

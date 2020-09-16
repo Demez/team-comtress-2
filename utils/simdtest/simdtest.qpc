@@ -1,0 +1,49 @@
+// ---------------------------------------------------------------
+// simdtest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Simdtest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier0" "tier1" [$POSIX$]
+			"mathlib"
+			"tier2"
+		}
+		
+		options
+		{
+			"/ASSEMBLYDEBUG" [$WIN32$ && $DEBUG$]
+		}
+	}
+	
+	post_build
+	{
+		"call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$OUTBINDIR$\tier0_360.dll			xE:\simdtest\tier0_360.dll" "call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$OUTBINDIR$\vstdlib_360.dll			xE:\simdtest\vstdlib_360.dll" "call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$(TargetDir)simdtest.xex			xE:\simdtest\simdtest.xex" [$DEBUG$]
+		"call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$OUTBINDIR$\tier0_360.dll			xE:\simdtest\tier0_360.dll" "call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$OUTBINDIR$\vstdlib_360.dll			xE:\simdtest\vstdlib_360.dll" "call $SRCDIR$\vpc_scripts\valve_xbcp_wrapper.cmd 	$(TargetDir)simdtest.xex			xE:\simdtest\simdtest.xex" [$RELEASE$]
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"simdtest.cpp"
+	}
+}

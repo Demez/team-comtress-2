@@ -1,0 +1,143 @@
+// ---------------------------------------------------------------
+// shaderapidx9.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "shaderapidx9"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "shaderapidx9"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"USE_ACTUAL_DX" [($WIN32$ || $X360$) && !$GL$]
+			"GL_GLEXT_PROTOTYPES" "DX_TO_GL_ABSTRACTION" [$GL$]
+			"SHADERAPIDX9"
+			"SHADER_DLL_EXPORT"
+			"PROTECTED_THINGS_ENABLE"
+			"strncpy=use_Q_strncpy_instead"
+			"_snprintf=use_Q_snprintf_instead"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/dx9sdk/include" [$WIN32$ && !$GL$]
+			"$SRCDIR$/x360xdk/include/xbox" [$X360$]
+			"../"
+		}
+	}
+	
+	link
+	{
+		lib_dirs
+		{
+			"$DX9_LIB$"
+		}
+		
+		libs
+		{
+			"iconv" "Carbon" "OpenGL" "Quartz" "Cocoa" "IOKit" [$MACOS$]
+			"ws2_32.lib" [$WINDOWS$]
+			"d3dx9d.lib" "xuirund.lib" "xuirenderd.lib" "xaudiod2.lib" "xmcored.lib" [$X360$ && $DEBUG$]
+			"d3dx9.lib" "xuirun.lib" "xuirender.lib" "xaudio2.lib" "xmcore.lib" [$X360$ && $RELEASE$]
+			"d3d9" "d3dx9" [$WINDOWS$ && !$GL$]
+			"togl" [!$IS_LIB_PROJECT$ && $GL$]
+			"bitmap"
+			"mathlib"
+			"tier2"
+			"bzip2"
+		}
+	}
+}
+
+requires
+{
+	"togl" [!$IS_LIB_PROJECT$ && $GL$]
+	"bitmap"
+	"mathlib"
+	"tier2"
+	"bzip2"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"colorformatdx8.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"hardwareconfig.cpp"
+		"meshbase.cpp"
+		"meshdx8.cpp"
+		"recording.cpp" [$WIN32$ && !$GL$]
+		"shaderapidx8.cpp"
+		"shaderdevicebase.cpp"
+		"shaderapibase.cpp"
+		"shaderdevicedx8.cpp"
+		"shadershadowdx8.cpp"
+		"texturedx8.cpp"
+		"TransitionTable.cpp"
+		"cvballoctracker.cpp"
+		"vertexdecl.cpp"
+		"vertexshaderdx8.cpp"
+		"wmi.cpp" [$WIN32$ && !$GL$]
+		"textureheap.cpp" [$X360$]
+		"winutils.cpp" [!$WIN32$]
+	}
+
+	folder "DirectX Header Files" [$WIN32$ && !$GL$]
+	{
+		"$SRCDIR$/dx9sdk/include/d3dx9.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9anim.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9core.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9effect.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9math.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9math.inl"
+		"$SRCDIR$/dx9sdk/include/d3dx9mesh.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9shader.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9shape.h"
+		"$SRCDIR$/dx9sdk/include/d3dx9tex.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/shaderapi/IShaderDevice.h"
+		"$SRCDIR$/public/shaderapi/ishaderutil.h"
+		"$SRCDIR$/public/shaderapi/ishaderapi.h"
+		"$SRCDIR$/public/shaderapi/ishaderdynamic.h"
+		"$SRCDIR$/public/shaderapi/ishadershadow.h"
+		"$SRCDIR$/public/materialsystem/idebugtextureinfo.h"
+		"$SRCDIR$/public/materialsystem/ivballoctracker.h"
+		"$SRCDIR$/public/materialsystem/shader_vcs_version.h"
+	}
+
+	folder "Header Files"
+	{
+		"TransitionTable.h"
+		"vertexdecl.h"
+		"colorformatdx8.h"
+		"dynamicib.h"
+		"dynamicvb.h"
+		"hardwareconfig.h"
+		"meshbase.h"
+		"imeshdx8.h"
+		"locald3dtypes.h"
+		"recording.h"
+		"shaderapidx8.h"
+		"shaderdevicebase.h"
+		"shaderapibase.h"
+		"shaderdevicedx8.h"
+		"shaderapidx8_global.h"
+		"shadershadowdx8.h"
+		"stubd3ddevice.h"
+		"texturedx8.h"
+		"vertexshaderdx8.h"
+		"wmi.h" [$WIN32$ && !$GL$]
+		"textureheap.h" [$X360$]
+		"winutils.h" [!$WIN32$]
+	}
+}

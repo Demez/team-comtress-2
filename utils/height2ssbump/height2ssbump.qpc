@@ -1,0 +1,45 @@
+// ---------------------------------------------------------------
+// height2ssbump.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Height2ssbump"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"raytrace"
+			"tier2"
+		}
+		
+		options
+		{
+			"/ASSEMBLYDEBUG" [$DEBUG$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"height2ssbump.cpp"
+	}
+}

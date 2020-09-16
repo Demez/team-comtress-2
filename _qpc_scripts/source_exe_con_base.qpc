@@ -1,0 +1,16 @@
+// ---------------------------------------------------------------
+// source_exe_con_base.qpc
+// ---------------------------------------------------------------
+include "$SCRIPT_DIR$/source_exe_base.qpc"
+
+config
+{
+	link
+	{
+		options
+		{
+			"/SUBSYSTEM:CONSOLE" [$WINDOWS$]
+		}
+	}
+}
+

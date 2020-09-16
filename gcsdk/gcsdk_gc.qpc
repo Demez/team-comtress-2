@@ -1,0 +1,216 @@
+// ---------------------------------------------------------------
+// gcsdk_gc.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "gcsdk_gc"
+
+macro PLATSUBDIR [!$PLATSUBDIR$]
+macro SRCDIR ".."
+macro OUTLIBDIR "$LIBPUBLIC$"
+macro GENERATED_PROTO_DIR "$SRCDIR$/gcsdk/generated_proto_gc"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+include "$SRCDIR$/_qpc_scripts/protobuf_builder.qpc"
+include "$SRCDIR$/gcsdk/steammessages_include.qpc"
+include "$SRCDIR$/gcsdk/gcsdk_gcmessages_include.qpc"
+
+config
+{
+	general
+	{
+		build_dir "./Release_gc$PLATSUBDIR$" [$RELEASE$]
+		build_dir "./Debug_gc$PLATSUBDIR$" [$DEBUG$]
+	}
+	
+	compile
+	{
+		defines
+		{
+			"RELEASEASSERTS" [$RELEASE$]
+			"GC"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/gcsdk/steamextra"
+			".."
+			"../public"
+			"../public/gcsdk"
+			"."
+			"$SRCDIR$/thirdparty/JSON_parser"
+		}
+		
+		pch "use"
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/common/debug_lib_check.cpp"
+		"stdafx.cpp"
+		{
+			pch "create"
+		}
+
+		"accountdetails.cpp"
+		"bufferpool.cpp"
+		"directory.cpp"
+		"framefunction.cpp"
+		"gcbase.cpp"
+		"gcconstants.cpp"
+		"gc_convar.cpp"
+		"gchost.cpp"
+		"gcjob.cpp"
+		"gcleaderboardapi.cpp"
+		"gclogger.cpp"
+		"gcmsg.cpp"
+		"gcdirtyfield.cpp"
+		"gcreportprinter.cpp"
+		"gcsession.cpp"
+		"gcsqlquery.cpp"
+		"gcparalleljobfarm.cpp"
+		"gcwebapi.cpp"
+		"gcwebapikey.cpp"
+		"gcwgjobmgr.cpp"
+		"gc_sharedobjectcache.cpp"
+		"http.cpp"
+		"job.cpp"
+		"jobmgr.cpp"
+		"jobtime.cpp"
+		"messagelist.cpp"
+		"msgprotobuf.cpp"
+		"netpacket.cpp"
+		"netpacketpool.cpp"
+		"protobufsharedobject.cpp"
+		"scheduledfunction.cpp"
+		"schemasharedobject.cpp"
+		"sdocache.cpp"
+		"sharedobject.cpp"
+		"sharedobjectcache.cpp"
+		"sharedobjecttransaction.cpp"
+		"webapi_response.cpp"
+		"workthreadpool.cpp"
+		"$SRCDIR$/thirdparty/JSON_parser/JSON_parser.c"
+		{
+			pch "none"
+		}
+
+		"steamextra/misc.cpp"
+		"steamextra/rtime.cpp"
+		"steamextra/steamid.cpp"
+		"steamextra/tier1/hashglobals.cpp"
+		"steamextra/tier1/murmurhash3.cpp"
+		"steamextra/tier1/tsmempool.cpp"
+		"steamextra/tier1/tsmultimempool.cpp"
+
+		folder "SQLAccess"
+		{
+			"sqlaccess/columnset.cpp"
+			"sqlaccess/record.cpp"
+			"sqlaccess/recordinfo.cpp"
+			"sqlaccess/schema.cpp"
+			"sqlaccess/schemafull.cpp"
+			"sqlaccess/schemaupdate.cpp"
+			"sqlaccess/sqlaccess.cpp"
+			"sqlaccess/sqlrecord.cpp"
+			"sqlaccess/sqlutil.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"stdafx.h"
+		"$SRCDIR$/public/gcsdk/accountdetails.h"
+		"$SRCDIR$/public/gcsdk/bufferpool.h"
+		"$SRCDIR$/public/gcsdk/directory.h"
+		"$SRCDIR$/public/gcsdk/enumutils.h"
+		"$SRCDIR$/public/gcsdk/framefunction.h"
+		"$SRCDIR$/public/gcsdk/gcbase.h"
+		"$SRCDIR$/public/gcsdk/gcclient.h"
+		"$SRCDIR$/public/gcsdk/gcclientsdk.h"
+		"$SRCDIR$/public/gcsdk/gcconstants.h"
+		"$SRCDIR$/public/gcsdk/gc_convar.h"
+		"$SRCDIR$/public/gcsdk/gclogger.h"
+		"$SRCDIR$/public/gcsdk/gcleaderboardapi.h"
+		"$SRCDIR$/public/gcsdk/gchost.h"
+		"$SRCDIR$/public/gcsdk/gcjob.h"
+		"$SRCDIR$/public/gcsdk/gcclientjob.h"
+		"$SRCDIR$/public/gcsdk/gcmsg.h"
+		"$SRCDIR$/public/gcsdk/gcdirtyfield.h"
+		"$SRCDIR$/public/gcsdk/gcreportprinter.h"
+		"$SRCDIR$/public/gcsdk/gcsdk.h"
+		"$SRCDIR$/public/gcsdk/gcschema.h"
+		"$SRCDIR$/public/gcsdk/gcsession.h"
+		"$SRCDIR$/public/gcsdk/gcsqlquery.h"
+		"$SRCDIR$/public/gcsdk/gcsqlwritequeue.h"
+		"$SRCDIR$/public/gcsdk/gcsystemaccess.h"
+		"$SRCDIR$/public/gcsdk/gcsystemmsgs.h"
+		"$SRCDIR$/public/gcsdk/gcparalleljobfarm.h"
+		"$SRCDIR$/public/gcsdk/gcwebapi.h"
+		"$SRCDIR$/public/gcsdk/gcwebapikey.h"
+		"$SRCDIR$/public/gcsdk/gcwgjobmgr.h"
+		"$SRCDIR$/public/gcsdk/gc_sharedobjectcache.h"
+		"$SRCDIR$/public/gcsdk/http.h"
+		"$SRCDIR$/public/gcsdk/job.h"
+		"$SRCDIR$/public/gcsdk/jobmgr.h"
+		"$SRCDIR$/public/gcsdk/jobtime.h"
+		"$SRCDIR$/public/gcsdk/messagelist.h"
+		"$SRCDIR$/public/gcsdk/msgbase.h"
+		"$SRCDIR$/public/gcsdk/netpacket.h"
+		"$SRCDIR$/public/gcsdk/msgprotobuf.h"
+		"$SRCDIR$/public/gcsdk/netpacketpool.h"
+		"$SRCDIR$/public/gcsdk/protobufsharedobject.h"
+		"$SRCDIR$/public/gcsdk/refcount.h"
+		"$SRCDIR$/public/gcsdk/scheduledfunction.h"
+		"$SRCDIR$/public/gcsdk/schemasharedobject.h"
+		"$SRCDIR$/public/gcsdk/sdocache.h"
+		"$SRCDIR$/public/gcsdk/sharedobject.h"
+		"$SRCDIR$/public/gcsdk/sharedobjectcache.h"
+		"$SRCDIR$/public/gcsdk/sharedobjecttransaction.h"
+		"$SRCDIR$/public/gcsdk/webapi_response.h"
+		"$SRCDIR$/public/gcsdk/workthreadpool.h"
+		"steamextra/clientenums.h"
+		"steamextra/misc.h"
+		"steamextra/rtime.h"
+		"steamextra/gamecoordinator/igamecoordinator.h"
+		"steamextra/gamecoordinator/igamecoordinatorhost.h"
+		"steamextra/gamecoordinator/igcsqlquery.h"
+		"steamextra/gamecoordinator/igcsqlresultsetlist.h"
+		"steamextra/steam/isteamgamecoordinator.h"
+		"steamextra/tier0/t0constants.h"
+		"steamextra/tier1/murmurhash3.h"
+		"steamextra/tier1/pearsonshash.h"
+		"steamextra/tier1/tsmempool.h"
+		"steamextra/tier1/tsmultimempool.h"
+		"steamextra/tier1/utlhashmaplarge.h"
+		"$SRCDIR$/thirdparty/JSON_parser/JSON_parser.h"
+
+		folder "SQLAccess"
+		{
+			"$SRCDIR$/public/gcsdk/sqlaccess/columnset.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/record.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/recordinfo.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/schema.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/schemafull.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/schemaupdate.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/sqlaccess.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/sqlrecord.h"
+			"$SRCDIR$/public/gcsdk/sqlaccess/sqlutil.h"
+		}
+	}
+
+	folder "Protobuf Files"
+	{
+		"gcsystemmsgs.proto"
+
+		folder "Generated Files"
+		{
+			"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.h"
+			"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.cc"
+			{
+				pch "none"
+			}
+		}
+	}
+}

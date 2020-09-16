@@ -1,0 +1,30 @@
+// ---------------------------------------------------------------
+// vxbdm.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vxbdm"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_x360_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			- "$LIBPUBLIC$/tier1_360"
+			- "$LIBPUBLIC$/vstdlib_360"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"console.cpp"
+		"rcommands.cpp"
+	}
+}

@@ -1,0 +1,82 @@
+// ---------------------------------------------------------------
+// launcher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "launcher"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"LAUNCHERONLY"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"shlwapi.lib" "winmm.lib" "wsock32.lib" "odbc32.lib" "odbccp32.lib" "$SRCDIR$/dx9sdk/lib/dinput8.lib" "$SRCDIR$/dx9sdk/lib/ddraw.lib" [$WIN32$]
+			"iconv" "Carbon" "AppKit" "OpenGL" "IOKit" [$MACOS$]
+			"Xonlined.lib" [$X360$ && $DEBUG$]
+			"Xonline.lib" [$X360$ && $RELEASE$]
+			"togl" [!$IS_LIB_PROJECT$ && $GL$]
+			"SDL2" [$SDL$]
+			"appframework"
+			"tier2"
+			"tier3"
+			"steam_api"
+		}
+	}
+}
+
+requires
+{
+	"togl"	[$MACOS$]
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"launcher.cpp"
+		"reslistgenerator.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/common/engine_launcher_api.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier0/icommandline.h"
+		"ifilesystem.h"
+		"$SRCDIR$/public/vgui/IHTML.h"
+		"$SRCDIR$/public/vgui/IImage.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/vgui/ISurface.h"
+		"$SRCDIR$/public/vgui/KeyCode.h"
+		"$SRCDIR$/public/tier0/mem.h"
+		"$SRCDIR$/public/tier0/memalloc.h"
+		"$SRCDIR$/public/vgui/MouseCode.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"reslistgenerator.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/tier0/vcr_shared.h"
+		"$SRCDIR$/public/tier0/vcrmode.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/vgui/VGUI.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+}

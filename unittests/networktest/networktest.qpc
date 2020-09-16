@@ -1,0 +1,28 @@
+// ---------------------------------------------------------------
+// networktest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Networktest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"$LIBPUBLIC$/appframework"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"networktest.cpp"
+	}
+}

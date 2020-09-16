@@ -1,0 +1,19 @@
+// ---------------------------------------------------------------
+// econ_gcmessages_include.qpc
+// ---------------------------------------------------------------
+files
+{
+	folder "Protobuf Files"
+	{
+		"$SRCDIR$/game/shared/econ/econ_gcmessages.proto"
+
+		folder "Generated Files" [!$OSX$]
+		{
+			"$GENERATED_PROTO_DIR$/econ_gcmessages.pb.h"
+			"$GENERATED_PROTO_DIR$/econ_gcmessages.pb.cc"
+			{
+				pch "none" [$WINDOWS$]
+			}
+		}
+	}
+}

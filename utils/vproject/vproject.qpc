@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// vproject.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "VProject"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			- "tier0"
+			- "tier1"
+			- "vstdlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vproject.cpp"
+		"sys_utils.cpp"
+		- "memoverride.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"sys_utils.h"
+		"vproject.h"
+	}
+
+	folder "Resources"
+	{
+		"vproject.rc"
+		"vproject.ico"
+	}
+}

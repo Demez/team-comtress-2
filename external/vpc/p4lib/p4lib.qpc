@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// p4lib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "P4lib"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/common/p4api"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"wsock32.lib"
+			"$LIBCOMMON$/libclient"
+			"$LIBCOMMON$/librpc"
+			"$LIBCOMMON$/libsupp"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"p4.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/p4lib/ip4.h"
+	}
+}

@@ -1,0 +1,55 @@
+// ---------------------------------------------------------------
+// vcdupdate.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vcdupdate"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"choreoobjects"
+			"mathlib"
+			"tier2"
+			"tier3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vcdupdate.cpp"
+	}
+
+	folder "External"
+	{
+		"$SRCDIR$/public/bone_setup.cpp"
+		"$SRCDIR$/public/collisionutils.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/studio.cpp"
+		"$SRCDIR$/public/sentence.cpp"
+	}
+
+	folder "External Header Files"
+	{
+		"$SRCDIR$/public/sentence.h"
+		"$SRCDIR$/public/interpolatortypes.h"
+	}
+}

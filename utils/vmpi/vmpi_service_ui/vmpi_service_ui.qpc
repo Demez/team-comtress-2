@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------
+// vmpi_service_ui.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vmpi_service_ui"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../../common"
+			"../"
+			"../vmpi_service"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../iphelpers.cpp"
+		"shell_icon_mgr.cpp"
+		"vmpi_service_ui.cpp"
+		"vmpi_service_ui.rc"
+		"StdAfx.cpp"
+		"../tcpsocket_helpers.cpp"
+		"../ThreadedTCPSocket.cpp"
+		"../../common/consolewnd.cpp"
+		"../vmpi_service/service_conn_mgr.cpp"
+		"../ThreadedTCPSocketEmu.cpp"
+		"../threadhelpers.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"shell_icon_mgr.h"
+		"resource.h"
+		"StdAfx.h"
+	}
+
+	folder "Resource Files"
+	{
+		"idi_busy_icon.ico"
+		"idi_disabled_icon.ico"
+		"idi_waiting_icon.ico"
+		"unconnec.ico"
+		"vmpi_service.ico"
+	}
+}

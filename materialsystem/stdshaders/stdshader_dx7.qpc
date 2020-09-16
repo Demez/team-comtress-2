@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------
+// stdshader_dx7.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Stdshader_dx7"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro DISABLE_FTOL3_OVERRIDE "1"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/dx7"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"STDSHADER_DX7_DLL_EXPORT"
+			"FAST_MATERIALVAR_ACCESS"
+		}
+		
+		inc_dirs
+		{
+			"../../dx9sdk/include"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"odbc32.lib"
+			"odbccp32.lib"
+			"mathlib"
+			"shaderlib"
+		}
+	}
+}
+
+requires
+{
+	"mathlib"
+	"shaderlib"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"core_dx7.cpp"
+		"filmdust_dx7.cpp"
+		"filmgrain_dx7.cpp"
+		"shatteredglass_dx7.cpp"
+		"vertexlitgeneric_dx7.cpp"
+		"vortwarp_dx7.cpp"
+
+		folder "remove me when VAC2 is out"
+		{
+			"$SRCDIR$/tier1/checksum_crc.cpp"
+			"$SRCDIR$/tier1/checksum_md5.cpp"
+			"../shader_dll_verify.cpp"
+			"../shader_dll_verify.h"
+		}
+	}
+}

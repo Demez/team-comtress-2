@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------
+// tier0_exclude.qpc
+// ---------------------------------------------------------------
+config
+{
+	link
+	{
+		libs
+		{
+			- "$LIBPUBLIC$/tier0" [$POSIX$ && !$IS_LIB_PROJECT$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+	}
+}

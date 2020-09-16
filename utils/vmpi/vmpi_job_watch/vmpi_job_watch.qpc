@@ -1,0 +1,89 @@
+// ---------------------------------------------------------------
+// vmpi_job_watch.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vmpi_job_watch"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vmpi_job_watch"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+			"WINVER=0x501"
+			"NO_WARN_MBCS_MFC_DEPRECATION"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"../"
+			"../../common"
+			"../mysql/include"
+		}
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"nafxcwd.lib" [$DEBUG$]
+			"nafxcw.lib" "libcmt.lib" [$RELEASE$]
+		}
+		
+		ignore_libs
+		{
+			"nafxcw.lib" "libcmt.lib" [$DEBUG$]
+			"nafxcwd.lib" "libcmtd.lib" [$RELEASE$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"../../common/consolewnd.cpp"
+		"GraphControl.cpp"
+		"../idle_dialog.cpp"
+		"JobWatchDlg.cpp"
+		"../mysql_async.cpp"
+		"../vmpi_browser_helpers.cpp"
+		"vmpi_browser_job_watch.cpp"
+		"vmpi_browser_job_watch.rc"
+		"../win_idle.cpp"
+		"../window_anchor_mgr.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"../../common/consolewnd.h"
+		"GraphControl.h"
+		"../idle_dialog.h"
+		"JobWatchDlg.h"
+		"../mysql_async.h"
+		"../mysql_wrapper.h"
+		"Resource.h"
+		"StdAfx.h"
+		"vmpi_browser_job_watch.h"
+		"../win_idle.h"
+	}
+
+	folder "Resource Files"
+	{
+		"res/vmpi_browser_job_watch.ico"
+		"res/vmpi_browser_job_watch.rc2"
+	}
+}

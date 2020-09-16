@@ -1,0 +1,184 @@
+// ---------------------------------------------------------------
+// tier0.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "tier0"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"TIER0_DLL_EXPORT"
+		}
+		
+		inc_dirs
+		{
+			"../public/WindowsSDK" [$WINDOWS$]
+		}
+		
+		pch "use"
+		pch_file "pch_tier0.h"
+		pch_out "$BUILD_DIR$/tier0.pch"
+	}
+	
+	link
+	{
+		import_lib "$OUTLIBDIR$/$OUT_NAME$$EXT_LIB$"
+		
+		libs
+		{
+			"ws2_32.lib" [$WINDOWS$]
+			"rt" [$LINUX$]
+			"$SRCDIR$/thirdparty/telemetry/lib/telemetry32" [$WIN32$ && $RAD_TELEMETRY_ENABLED$ && !$RAD_TELEMETRY_DISABLED$]
+			"$SRCDIR$/thirdparty/telemetry/lib/telemetry64" [$WIN64$ && $RAD_TELEMETRY_ENABLED$ && !$RAD_TELEMETRY_DISABLED$]
+			"$SRCDIR$/thirdparty/telemetry/lib/libtelemetryx86" [$LINUX32$ && $RAD_TELEMETRY_ENABLED$]
+			"$SRCDIR$/thirdparty/telemetry/lib/libtelemetryx64" [$LINUX64$ && $RAD_TELEMETRY_ENABLED$]
+			- "tier0"
+			- "tier1"
+			- "vstdlib"
+		}
+	}
+}
+
+requires
+{
+	- "tier0"
+	- "tier1"
+	- "vstdlib"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp" [$WINDOWS$ || $X360$]
+		
+		"assert_dialog.cpp"
+		"assert_dialog.rc" [$WINDOWS$]
+		"commandline.cpp"
+		"cpu.cpp"
+		"cpumonitoring.cpp"
+		"cpu_posix.cpp" [$POSIX$]
+		"cpu_usage.cpp"
+		"dbg.cpp"
+		"dynfunction.cpp"
+		"etwprof.cpp" [$WINDOWS$]
+		"fasttimer.cpp"
+		"InterlockedCompareExchange128.masm" [$WIN64$]
+		"mem.cpp"
+		"mem_helpers.cpp"
+		"memdbg.cpp"
+		"memstd.cpp"
+		"memvalidate.cpp"
+		"minidump.cpp"
+		"pch_tier0.cpp"
+		{
+			pch "create"
+		}
+
+		"platform.cpp" [$WINDOWS$ || $X360$]
+		"platform_posix.cpp" [$POSIX$]
+		"pmc360.cpp" [$X360$]
+		"pme.cpp" [$WINDOWS$]
+		"pme_posix.cpp" [$POSIX$]
+		"PMELib.cpp" [$WINDOWS$ || $POSIX$]
+		{
+			pch "none"
+		}
+
+		"progressbar.cpp"
+		"security.cpp"
+		"systeminformation.cpp"
+		"stacktools.cpp"
+		"thread.cpp" [$WINDOWS$ || $POSIX$]
+		"threadtools.cpp"
+		"tier0_strtools.cpp"
+		"tslist.cpp"
+		"vcrmode.cpp" [$WINDOWS$]
+		"vcrmode_posix.cpp" [$POSIX$]
+		"vprof.cpp"
+		"win32consoleio.cpp" [$WINDOWS$]
+		"../tier1/pathmatch.cpp" [$LINUX$]
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/cpumonitoring.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/dbgflag.h"
+		"$SRCDIR$/public/tier0/EventMasks.h"
+		"$SRCDIR$/public/tier0/EventModes.h"
+		"$SRCDIR$/public/tier0/etwprof.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/tier0/ia32detect.h"
+		"$SRCDIR$/public/tier0/icommandline.h"
+		"$SRCDIR$/public/tier0/IOCTLCodes.h"
+		"$SRCDIR$/public/tier0/K8PerformanceCounters.h"
+		"$SRCDIR$/public/tier0/l2cache.h"
+		"$SRCDIR$/public/tier0/pmc360.h" [$X360$]
+		"$SRCDIR$/public/tier0/mem.h"
+		"$SRCDIR$/public/tier0/memalloc.h"
+		"$SRCDIR$/public/tier0/memdbgoff.h"
+		"$SRCDIR$/public/tier0/memdbgon.h"
+		"$SRCDIR$/public/tier0/minidump.h"
+		"$SRCDIR$/public/tier0/P4PerformanceCounters.h"
+		"$SRCDIR$/public/tier0/P5P6PerformanceCounters.h"
+		"pch_tier0.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/PMELib.h"
+		"$SRCDIR$/public/tier0/progressbar.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"resource.h"
+		"$SRCDIR$/public/tier0/systeminformation.h"
+		"$SRCDIR$/public/tier0/threadtools.h"
+		"$SRCDIR$/public/tier0/tslist.h"
+		"$SRCDIR$/public/tier0/validator.h"
+		"$SRCDIR$/public/tier0/valobject.h"
+		"$SRCDIR$/public/tier0/valve_off.h"
+		"$SRCDIR$/public/tier0/valve_on.h"
+		"$SRCDIR$/public/tier0/vcr_shared.h"
+		"$SRCDIR$/public/tier0/vcrmode.h"
+		"$SRCDIR$/public/tier0/vprof.h"
+		"$SRCDIR$/public/tier0/wchartypes.h"
+		"$SRCDIR$/public/tier0/xbox_codeline_defines.h"
+		"mem_helpers.h"
+	}
+
+	folder "DESKey" [$WINDOWS$]
+	{
+		"DESKey/ALGO.H"
+		"DESKey/ALGO32.LIB"
+		"DESKey/DK2WIN32.H"
+		"DESKey/DK2WIN32.LIB"
+	}
+
+	folder "Xbox" [$X360$]
+	{
+		folder "Source Files"
+		{
+			"xbox/xbox_console.cpp"
+			"xbox/xbox_system.cpp"
+			"xbox/xbox_win32stubs.cpp"
+		}
+
+		folder "Header Files"
+		{
+			"$SRCDIR$/common/xbox/xbox_console.h"
+			"$SRCDIR$/common/xbox/xbox_core.h"
+			"$SRCDIR$/common/xbox/xbox_win32stubs.h"
+		}
+	}
+
+	folder "Manifest Files" [$WINDOWS$]
+	{
+		"ValveETWProvider.man"
+	}
+}

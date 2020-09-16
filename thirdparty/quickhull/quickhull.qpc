@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// quickhull.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "quickhull"
+
+macro SRCDIR "../.."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/public"
+			"$SRCDIR$/common"
+			"$SRCDIR$/public/quickhull"
+		}
+		
+		options
+		{
+			"/arch:SSE2" [$WINDOWS$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"qhTypes.h"
+		"qhMath.h"
+		"qhMath.inl"
+		"qhMath.cpp"
+		"qhMemory.h"
+		"qhMemory.inl"
+		"qhMemory.cpp"
+		"qhArray.h"
+		"qhArray.inl"
+		"qhList.h"
+		"qhList.inl"
+		"qhHalfEdge.h"
+		"qhHalfEdge.cpp"
+		"qhConvex.h"
+		"qhConvex.inl"
+		"qhConvex.cpp"
+		"qhMass.h"
+		"qhMass.cpp"
+	}
+}

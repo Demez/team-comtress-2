@@ -1,0 +1,35 @@
+// ---------------------------------------------------------------
+// newdat.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Newdat"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"newdat.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier1/checksum_md5.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+	}
+}

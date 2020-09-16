@@ -1,0 +1,83 @@
+// ---------------------------------------------------------------
+// source_base.qpc
+// ---------------------------------------------------------------
+
+include "$SCRIPT_DIR$/base_macros.qpc"
+include "$SCRIPT_DIR$/source_video_base.qpc"
+
+include "$SCRIPT_DIR$/platforms/msvc_base.qpc"      [$WINDOWS$]
+include "$SCRIPT_DIR$/platforms/posix_base.qpc"     [$POSIX$]
+
+config
+{
+	general
+	{
+		out_name     "$OUT_NAME$"
+		out_dir      "$OUT_DIR$"
+		build_dir    "$BUILD_DIR$"
+		
+		language     "cpp14"
+	}
+	
+	compile
+	{
+		defines
+		{
+			// "TF_BETA" [$TF_BETA$]
+			"STAGING_ONLY" [$STAGING_ONLY$]
+			"RAD_TELEMETRY_DISABLED"
+			
+			"DEV_BUILD"         [!$PUBLISH$]
+			"_PROFILE"          [$PROFILE$ && !$RETAIL$]
+			"RETAIL_ASSERTS"    [$RETAIL$ && $RETAILASSERTS$]
+			
+			"PLATFORM_64BITS"   [$64BITS$]
+			"PLATFORM_32BITS"   [$32BITS$]
+			
+			"NDEBUG"            [$RELEASE$]
+			"RELEASEASSERTS"    [$RELEASEASSERTS$ && $RELEASE$]
+			"_DEBUG" "DEBUG" "_SCL_SECURE_NO_WARNINGS" [$DEBUG$]
+			
+			"DISABLE_ETW" [$DISABLE_ETW$]
+			
+			"FRAME_POINTER_OMISSION_DISABLED"
+			"_DLL_EXT=$EXT_DLL$"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/common"
+			"$SRCDIR$/public"
+			"$SRCDIR$/public/tier0"
+			"$SRCDIR$/public/tier1"
+		}
+		
+		pch "none"
+	}
+	
+	link
+	{
+		lib_dirs
+		{
+			"$LIBCOMMON$"
+			"$LIBPUBLIC$"
+			"$LIBCOMMON_CFG$"
+			"$LIBPUBLIC_CFG$"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/tier0/memoverride.cpp"
+		{
+			pch "none"
+		}
+
+		"$SRCDIR$/public/tier0/pointeroverride.asm" [$WIN32$]
+	}
+}
+
+

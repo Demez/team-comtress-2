@@ -1,0 +1,135 @@
+// ---------------------------------------------------------------
+// MakeScenesImage.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "MakeScenesImage"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+macro GAMENAME "MakeScenesImage"
+
+config
+{
+	general
+	{
+		out_dir "./Debug_$GAMENAME$" [$DEBUG$]
+		out_dir "./Release_$GAMENAME$" [$RELEASE$]
+		build_dir "./Debug_$GAMENAME$" [$DEBUG$]
+		build_dir "./Release_$GAMENAME$" [$RELEASE$]
+	}
+	
+	compile
+	{
+		defines
+		{
+			"NO_X360_XDK" [$VS2015$]
+			"MAKESCENESIMAGE"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/x360xdk/include/win32/vs2005"
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"xmaencoder.lib" [!$VS2015$]
+			"xgraphics.lib"
+			"d3d9.lib"
+			"legacy_stdio_definitions.lib"
+			"appframework"
+			"mathlib"
+			"vtf"
+			"tier2"
+			"choreoobjects"
+			"bitmap"
+			"datamodel"
+			"dmserializers"
+			"$LIBCOMMON$/lzma"
+		}
+		
+		lib_dirs
+		{
+			"$SRCDIR$/x360xdk/lib/win32/vs2005"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"MakeGameData.cpp"
+		"MakeMaps.cpp"
+		"MakeMisc.cpp"
+		"MakeModels.cpp"
+		"MakeParticles.cpp"
+		"MakeResources.cpp"
+		"MakeScenes.cpp"
+		"MakeShaders.cpp"
+		"MakeSounds.cpp"
+		"MakeTextures.cpp"
+		"MakeZip.cpp"
+
+		folder "Audio"
+		{
+			"imaadpcm.cpp"
+			"sound_io.cpp"
+			"resample.cpp"
+		}
+
+		folder "Public Modules"
+		{
+			"$SRCDIR$/common/compiledcaptionswap.cpp"
+			"$SRCDIR$/common/studiobyteswap.cpp"
+			"$SRCDIR$/utils/common/scriplib.cpp"
+			"$SRCDIR$/public/zip_utils.cpp"
+			"$SRCDIR$/public/sentence.cpp"
+			"$SRCDIR$/utils/common/cmdlib.cpp"
+			"$SRCDIR$/public/filesystem_helpers.cpp"
+			"$SRCDIR$/public/filesystem_init.cpp"
+			"$SRCDIR$/utils/common/filesystem_tools.cpp"
+			"$SRCDIR$/public/interpolatortypes.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"MakeGameData.h"
+		"XZipTool.h"
+		"imaadpcm.h"
+		"resample.h"
+		"$SRCDIR$/public/captioncompiler.h"
+		"$SRCDIR$/common/studiobyteswap.h"
+		"$SRCDIR$/utils/common/scriplib.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/public/ibsppack.h"
+		"$SRCDIR$/public/sentence.h"
+		"$SRCDIR$/public/studio.h"
+		"$SRCDIR$/public/tier1/utlbuffer.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/vphysics_interface.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+		"$SRCDIR$/public/xwvfile.h"
+		"$SRCDIR$/public/zip_utils.h"
+		"$SRCDIR$/game/shared/choreoscene.h"
+		"$SRCDIR$/game/shared/choreoactor.h"
+		"$SRCDIR$/public/filesystem_helpers.h"
+		"$SRCDIR$/public/filesystem_init.h"
+		"$SRCDIR$/utils/common/filesystem_tools.h"
+		"$SRCDIR$/public/interpolatortypes.h"
+		"$SRCDIR$/utils/common/cmdlib.h"
+		"$SRCDIR$/game/shared/choreochannel.h"
+		"$SRCDIR$/game/shared/choreoevent.h"
+		"$SRCDIR$/public/tier1/checksum_crc.h"
+		"$SRCDIR$/public/tier2/tier2.h"
+		"$SRCDIR$/common/lzma/lzma.h"
+	}
+}

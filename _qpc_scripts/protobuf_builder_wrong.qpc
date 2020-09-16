@@ -1,0 +1,18 @@
+// ---------------------------------------------------------------
+// protobuf_builder.qpc
+// ---------------------------------------------------------------
+macro GENERATED_PROTO_DIR [!$GENERATED_PROTO_DIR$]
+macro ADDITIONAL_PROTOC_ARGS [!$ADDITIONAL_PROTOC_ARGS$]
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$GENERATED_PROTO_DIR$"
+			"$SRCDIR$/thirdparty/protobuf-2.6.1/src"
+		}
+	}
+}
+

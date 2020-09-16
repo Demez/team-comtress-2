@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------
+// printbones.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Printbones"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"printbones.cpp"
+	}
+}

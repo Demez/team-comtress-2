@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------
+// runme.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Runme"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"runme.cpp"
+	}
+}

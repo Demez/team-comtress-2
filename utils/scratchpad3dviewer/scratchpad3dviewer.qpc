@@ -1,0 +1,64 @@
+// ---------------------------------------------------------------
+// scratchpad3dviewer.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "ScratchPad3DViewer"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"NO_MATHLIB_FTOL"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/dx9sdk/include"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$SRCDIR$/dx9sdk/lib/dxerr8.lib"
+			"$SRCDIR$/dx9sdk/lib/d3d8.lib"
+			"$SRCDIR$/dx9sdk/lib/d3dx.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"mathlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"d3dapp.cpp"
+		"$SRCDIR$/public/ScratchPad3D.cpp"
+		"ScratchPad3DViewer.cpp"
+		"StdAfx.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"d3dapp.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/IScratchPad3D.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"resource.h"
+		"$SRCDIR$/public/ScratchPad3D.h"
+		"StdAfx.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vmatrix.h"
+	}
+}

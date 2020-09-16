@@ -1,0 +1,73 @@
+// ---------------------------------------------------------------
+// foundry.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "foundry"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/tools"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"FOUNDRY_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"Psapi.lib"
+			"datamodel"
+			"dmxloader"
+			"dme_controls"
+			"dmserializers"
+			"mathlib"
+			"matsys_controls"
+			"movieobjects"
+			"sfmobjects"
+			"tier2"
+			"tier3"
+			"toolutils"
+			"vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"DmeVMFEntity.cpp"
+		"DmeVMFEntity.h"
+		"entityreportpanel.cpp"
+		"entityreportpanel.h"
+		"foundrydoc.cpp"
+		"foundrytool.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/registry.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"foundrydoc.h"
+		"foundrytool.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/mathlib/mathlib.h"
+	}
+}

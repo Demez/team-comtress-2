@@ -1,0 +1,93 @@
+// ---------------------------------------------------------------
+// vmpi_job_search.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vmpi_job_search"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vmpi_job_search"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+			"WINVER=0x501"
+			"NO_WARN_MBCS_MFC_DEPRECATION"
+		}
+		
+		inc_dirs
+		{
+			"../"
+			"../mysql/include"
+		}
+		
+		pch "use"
+		pch_out "Debug/vmpi_browser_job_search.pch"
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"nafxcwd.lib" [$DEBUG$]
+			"nafxcw.lib" "libcmt.lib" [$RELEASE$]
+		}
+		
+		ignore_libs
+		{
+			"nafxcw.lib" "libcmt.lib" [$DEBUG$]
+			"nafxcwd.lib" "libcmtd.lib" [$RELEASE$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"../net_view_thread.cpp"
+		"vmpi_browser_job_search.cpp"
+		"vmpi_browser_job_search.rc"
+		"../window_anchor_mgr.cpp"
+
+		"JobSearchDlg.cpp"	\
+		"../vmpi_browser_helpers.cpp"
+		{
+			pch "none"
+		}
+
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"JobSearchDlg.h"
+		"../mysql_wrapper.h"
+		"../net_view_thread.h"
+		"Resource.h"
+		"StdAfx.h"
+		"../vmpi_browser_helpers.h"
+		"vmpi_browser_job_search.h"
+		"../window_anchor_mgr.h"
+	}
+
+	folder "Resource Files"
+	{
+		"res/vmpi_browser_job_search.ico"
+		"res/vmpi_browser_job_search.rc2"
+	}
+}

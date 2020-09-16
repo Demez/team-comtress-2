@@ -1,0 +1,30 @@
+// ---------------------------------------------------------------
+// tgadiff.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Tgadiff"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"tgadiff.cpp"
+	}
+}

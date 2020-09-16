@@ -1,0 +1,9 @@
+// ---------------------------------------------------------------
+// dx_proxy_dx9_v00_x360.qpc
+// ---------------------------------------------------------------
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/x360xdk/bin/win32"
+macro DX_SDK_VER "DX9_V00_X360"
+
+include "dx_proxy_base.qpc"
+

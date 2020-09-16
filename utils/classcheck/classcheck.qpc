@@ -1,0 +1,41 @@
+// ---------------------------------------------------------------
+// classcheck.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Classcheck"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"class.cpp"
+		"classcheck.cpp"
+		"classcheck_util.cpp"
+		"processmodule.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"class.h"
+		"classcheck_util.h"
+		"codeprocessor.h"
+		"icodeprocessor.h"
+		"$SRCDIR$/public/tier1/utldict.h"
+	}
+}

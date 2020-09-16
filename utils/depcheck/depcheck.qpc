@@ -1,0 +1,26 @@
+// ---------------------------------------------------------------
+// depcheck.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Depcheck"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"depcheck.cpp"
+		"depcheck_util.cpp"
+		"processmodule.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"codeprocessor.h"
+		"depcheck_util.h"
+		"icodeprocessor.h"
+	}
+}

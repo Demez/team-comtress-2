@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------
+// vvis_launcher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vvis_launcher"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vvis"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+		
+		pch "use"
+		pch_out "Debug/vvis_launcher.pch"
+	}
+	
+	link
+	{
+		options
+		{
+			"/LARGEADDRESSAWARE" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vvis_launcher.cpp"
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/interface.h"
+		"StdAfx.h"
+	}
+}

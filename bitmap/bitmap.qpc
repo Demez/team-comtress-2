@@ -1,0 +1,60 @@
+// ---------------------------------------------------------------
+// bitmap.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "bitmap"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/dx9sdk/include" "$SRCDIR$/x360xdk/include/win32/vs2005" [$WINDOWS$]
+			"$SRCDIR$/thirdparty/stb"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"nvtc" "ATI_Compress_MT_VC10" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"ImageByteSwap.cpp"
+		"colorconversion.cpp"
+		"float_bm.cpp"
+		"float_bm2.cpp"
+		"float_bm3.cpp"
+		"float_bm4.cpp" [$WINDOWS$]
+		"float_bm_bilateral_filter.cpp"
+		"float_cube.cpp"
+		"imageformat.cpp"
+		"psd.cpp"
+		"resample.cpp"
+		"tgaloader.cpp"
+		"tgawriter.cpp"
+		"bitmap.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/bitmap/bitmap.h"
+		"$SRCDIR$/public/bitmap/float_bm.h"
+		"$SRCDIR$/public/bitmap/imageformat.h"
+		"$SRCDIR$/public/bitmap/psd.h"
+		"$SRCDIR$/public/bitmap/tgaloader.h"
+		"$SRCDIR$/public/bitmap/tgawriter.h"
+		"$SRCDIR$/thirdparty/stb/stb_dxt.h"
+	}
+}

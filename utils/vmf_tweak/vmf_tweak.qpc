@@ -1,0 +1,53 @@
+// ---------------------------------------------------------------
+// vmf_tweak.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vmf_tweak"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/game/shared"
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/ChunkFile.cpp"
+		"../common/cmdlib.cpp"
+		"../common/cmdlib.h"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_helpers.h"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+		"../common/filesystem_tools.h"
+		"StdAfx.cpp"
+		"vmf_tweak.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/ChunkFile.h"
+		"StdAfx.h"
+		"$SRCDIR$/public/tier1/tokenreader.h"
+	}
+}

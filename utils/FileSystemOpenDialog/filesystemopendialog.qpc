@@ -1,0 +1,81 @@
+// ---------------------------------------------------------------
+// filesystemopendialog.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "FileSystemOpenDialog"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"NO_WARN_MBCS_MFC_DEPRECATION"
+			"WINVER=0x502"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+		
+		pch "use"
+		pch_out "Debug/FileSystemOpenDialog.pch"
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$LIBCOMMON$/libjpeg"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/tier0/afxmem_override.cpp"
+		"FileDialogApp.cpp"
+		"FileDialogApp.h"
+		"FileSystemOpenDlg.cpp"
+		"FileSystemOpenDlg.h"
+		"$SRCDIR$/common/IFileSystemOpenDialog.h"
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"$SRCDIR$/public/tier0/memoverride.cpp"
+		{
+			defines
+			{
+				"NO_MEMOVERRIDE_NEW_DELETE"
+			}
+			
+			pch "none"
+		}
+
+		"StdAfx.cpp"
+		{
+			pch "create"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"Resource.h"
+		"StdAfx.h"
+	}
+
+	folder "Resource Files"
+	{
+		"FileSystemOpenDialog.rc"
+	}
+}

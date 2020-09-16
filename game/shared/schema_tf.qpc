@@ -1,0 +1,26 @@
+// ---------------------------------------------------------------
+// schema_tf.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "schema (TF)"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$SRCDIR$/lib/game/tf"
+macro $_STATICLIB_EXT$ ".lib"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	pre_build
+	{
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\game\shared\tf\schema_tf.h $SRCDIR$"
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\game\shared\tf\schema_tf.cpp $SRCDIR$"
+	}
+}
+
+files
+{
+	"gc/base_gcschema.sch"
+	"econ/econ_gcschema.sch"
+	"tf/schema_tf.sch"
+}

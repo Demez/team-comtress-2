@@ -1,0 +1,32 @@
+// ---------------------------------------------------------------
+// dmxconvert.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dmxconvert"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"appframework"
+			"datamodel"
+			"dmserializers"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"dmxconvert.cpp"
+	}
+}

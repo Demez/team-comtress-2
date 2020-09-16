@@ -1,0 +1,202 @@
+// ---------------------------------------------------------------
+// replay.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "replay"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+macro REPLAY_COMMON_HEADERS_TITLE "replay_common.lib headers"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DEDICATED" "SWDS" [$DEDICATED$]
+			"CURL_STATICLIB" [$WINDOWS$]
+			"REPLAY_DLL"
+			"REPLAY_ENABLED"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" "z" [$MACOS$]
+			"rt" "curl-gnutls" [$LINUX$]
+			"ws2_32.lib" [$WINDOWS$]
+			"jpeglib" [!$DEDICATED$]
+			"$LIBCOMMON$/libcrypto" "$LIBCOMMON$/curl" [$MACOS$]
+			// "$LIBCOMMON$/$(CRYPTOPPDIR)/libcrypto" "libz" [$LINUX$]
+			"libpng"
+			"$LIBCOMMON$/libcurl" [$WINDOWS$ && !$VS2015$]
+			"libz" [$WINDOWS$]
+			"tier2"
+			"mathlib"
+			"bitmap"
+			"replay_common"
+			"lzma"
+			"vtf"
+			"bzip2"
+		}
+	}
+}
+
+requires
+{
+	"libz" [$WINDOWS$ || $LINUX$]
+	"tier2"
+	"mathlib"
+	"bitmap"
+	"replay_common"
+	"lzma"
+	"vtf"
+	"bzip2"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"baserecordingsession.cpp"
+		"baserecordingsessionblock.cpp"
+		"baserecordingsessionblockmanager.cpp"
+		"baserecordingsessionmanager.cpp"
+		"basethinker.cpp"
+		"compression.cpp"
+		"cl_commands.cpp" [!$DEDICATED$]
+		"cl_cvars.cpp" [!$DEDICATED$]
+		"cl_downloader.cpp" [!$DEDICATED$]
+		"cl_recordingsession.cpp" [!$DEDICATED$]
+		"cl_recordingsessionblock.cpp" [!$DEDICATED$]
+		"cl_recordingsessionblockmanager.cpp" [!$DEDICATED$]
+		"cl_recordingsessionmanager.cpp" [!$DEDICATED$]
+		"cl_renderqueue.cpp" [!$DEDICATED$]
+		"cl_replaycontext.cpp" [!$DEDICATED$]
+		"cl_replaymanager.cpp" [!$DEDICATED$]
+		"cl_replaymovie.cpp" [!$DEDICATED$]
+		"cl_replaymoviemanager.cpp" [!$DEDICATED$]
+		"cl_performancecontroller.cpp" [!$DEDICATED$]
+		"cl_performancemanager.cpp" [!$DEDICATED$]
+		"cl_screenshotmanager.cpp" [!$DEDICATED$]
+		"cl_sessionblockdownloader.cpp" [!$DEDICATED$]
+		"cl_sessioninfodownloader.cpp" [!$DEDICATED$]
+		"errorsystem.cpp"
+		"$SRCDIR$/common/imageutils.cpp" [!$DEDICATED$]
+		"managertest.cpp" [!$DEDICATED$]
+		"$SRCDIR$/common/netmessages.cpp"
+		"replay_dbg.cpp"
+		"replay_reconstructor.cpp" [!$DEDICATED$]
+		"replaysystem.cpp"
+		"sessioninfoheader.cpp"
+		"shared_cvars.cpp"
+		"shared_replaycontext.cpp"
+		"spew.cpp"
+		"sv_basejob.cpp"
+		"sv_commands.cpp"
+		"sv_filepublish.cpp"
+		"sv_fileservercleanup.cpp"
+		"sv_cvars.cpp"
+		"sv_publishtest.cpp"
+		"sv_recordingsession.cpp"
+		"sv_recordingsessionblock.cpp"
+		"sv_recordingsessionmanager.cpp"
+		"sv_recordingsessionblockmanager.cpp"
+		"sv_replaycontext.cpp"
+		"sv_sessionblockpublisher.cpp"
+		"sv_sessioninfopublisher.cpp"
+		"sv_sessionpublishmanager.cpp"
+		"sv_sessionrecorder.cpp"
+		"thinkmanager.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"baserecordingsession.h"
+		"baserecordingsessionblock.h"
+		"baserecordingsessionblockmanager.h"
+		"baserecordingsessionmanager.h"
+		"basethinker.h"
+		"cl_downloader.h" [!$DEDICATED$]
+		"cl_recordingsession.h" [!$DEDICATED$]
+		"cl_recordingsessionblock.h" [!$DEDICATED$]
+		"cl_recordingsessionblockmanager.h" [!$DEDICATED$]
+		"cl_recordingsessionmanager.h" [!$DEDICATED$]
+		"cl_renderqueue.h" [!$DEDICATED$]
+		"cl_replaycontext.h" [!$DEDICATED$]
+		"cl_replaymanager.h" [!$DEDICATED$]
+		"cl_replaymovie.h" [!$DEDICATED$]
+		"cl_replaymoviemanager.h" [!$DEDICATED$]
+		"cl_performance_common.h" [!$DEDICATED$]
+		"cl_performancecontroller.h" [!$DEDICATED$]
+		"cl_performancemanager.h" [!$DEDICATED$]
+		"cl_screenshotmanager.h" [!$DEDICATED$]
+		"cl_sessionblockdownloader.h" [!$DEDICATED$]
+		"cl_sessioninfodownloader.h" [!$DEDICATED$]
+		"compression.h"
+		"errorsystem.h"
+		"genericpersistentmanager.h"
+		"$SRCDIR$/common/engine/idownloadsystem.h"
+		"$SRCDIR$/common/replay/ienginereplay.h"
+		"$SRCDIR$/common/imageutils.h" [!$DEDICATED$]
+		"ithinker.h"
+		"ithinkmanager.h"
+		"managertest.h" [!$DEDICATED$]
+		"$SRCDIR$/common/netmessages.h"
+		"$SRCDIR$/common/replay/rendermovieparams.h" [!$DEDICATED$]
+		"replay_dbg.h"
+		"replay_reconstructor.h" [!$DEDICATED$]
+		"replaysystem.h"
+		"sessioninfoheader.h"
+		"shared_replaycontext.h"
+		"spew.h"
+		"sv_basejob.h"
+		"sv_filepublish.h"
+		"sv_fileservercleanup.h"
+		"sv_publishtest.h"
+		"sv_recordingsession.h"
+		"sv_recordingsessionblock.h"
+		"sv_recordingsessionblockmanager.h"
+		"sv_recordingsessionmanager.h"
+		"sv_replaycontext.h"
+		"sv_sessionblockpublisher.h"
+		"sv_sessioninfopublisher.h"
+		"sv_sessionpublishmanager.h"
+		"sv_sessionrecorder.h"
+		"thinkmanager.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/common/replay/iclientreplay.h"
+		"$SRCDIR$/common/replay/iclientreplaycontext.h"
+		"$SRCDIR$/common/replay/iqueryablereplayitem.h"
+		"$SRCDIR$/common/replay/irecordingsession.h"
+		"$SRCDIR$/common/replay/irecordingsessionblockmanager.h"
+		"$SRCDIR$/common/replay/ireplayrenderqueue.h"
+		"$SRCDIR$/common/replay/ireplaycamera.h"
+		"$SRCDIR$/common/replay/ireplayerrorsystem.h"
+		"$SRCDIR$/common/replay/ireplaysystem.h"
+		"$SRCDIR$/common/replay/ireplayfactory.h"
+		"$SRCDIR$/common/replay/ireplaycontext.h"
+		"$SRCDIR$/common/replay/ireplaymanager.h"
+		"$SRCDIR$/common/replay/ireplaymovie.h"
+		"$SRCDIR$/common/replay/ireplaymoviemanager.h"
+		"$SRCDIR$/common/replay/ireplaymovierenderer.h"
+		"$SRCDIR$/common/replay/irecordingsessionmanager.h"
+		"$SRCDIR$/common/replay/ireplayperformancecontroller.h"
+		"$SRCDIR$/common/replay/ireplayperformancemanager.h"
+		"$SRCDIR$/common/replay/ireplayperformanceplaybackhandler.h"
+		"$SRCDIR$/common/replay/ireplayscreenshotmanager.h"
+		"$SRCDIR$/common/replay/ireplayscreenshotsystem.h"
+		"$SRCDIR$/common/replay/ireplayserializeable.h"
+		"$SRCDIR$/common/replay/ireplaysessionrecorder.h"
+		"$SRCDIR$/common/replay/iserverengine.h"
+		"$SRCDIR$/common/replay/iserverreplaycontext.h"
+	}
+}

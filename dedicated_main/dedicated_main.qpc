@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------
+// dedicated_main.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dedicated_main"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game"
+macro OUTBINNAME "srcds" [$WINDOWS$ || $X360$]
+macro OUTBINNAME "srcds_osx" [$MACOS$]
+macro OUTBINNAME "srcds_linux" [$LINUX$]
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+include "$SRCDIR$/tier0/tier0_exclude.qpc"
+include "$SRCDIR$/tier1/tier1_exclude.qpc" [$WINDOWS$]
+include "$SRCDIR$/vstdlib/vstdlib_exclude.qpc" [$WINDOWS$]
+
+config
+{
+	link
+	{
+		libs
+		{
+			"Advapi32.lib" [$WINDOWS$]
+		}
+		
+		options
+		{
+			"/LARGEADDRESSAWARE" "/FIXED:NO" [$WINDOWS$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"main.cpp"
+		"$SRCDIR$/common/SteamAppStartup.cpp"
+		"$SRCDIR$/common/SteamAppStartup.h"
+	}
+
+	folder "Resources"
+	{
+		"$SRCDIR$/launcher/res/launcher.ico"
+		"dedicated_main.rc"
+	}
+}

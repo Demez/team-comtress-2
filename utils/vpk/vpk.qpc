@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// vpk.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vpk"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "bin/vpk_$PLATFORM$" [$POSIX$]
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" "Carbon" [$MACOS$]
+			"bitmap" "mathlib" "tier2" [$WIN32$ || $POSIX$]
+			"tier0" "tier1" "vstdlib" [$POSIX$ && $WIN32$]
+		}
+		
+		lib_dirs
+		{
+			"$LIBCOMMON$"
+			"$LIBPUBLIC$"
+		}
+		
+		options
+		{
+			"/ASSEMBLYDEBUG" [$DEBUG$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"packtest.cpp"
+	}
+}

@@ -1,0 +1,80 @@
+// ---------------------------------------------------------------
+// protobuf_builder.qpc
+// ---------------------------------------------------------------
+macro GENERATED_PROTO_DIR [!$GENERATED_PROTO_DIR$]
+macro PROTOBUF_BUILDER_INCLUDED "1"
+
+macro _PROTOC_EXE "$SRCDIR$\devtools\bin\$PLAT_DIR$\protoc.exe"    [$WINDOWS$]
+macro _PROTOC_EXE "$SRCDIR$/devtools/bin/$PLAT_DIR$/protoc"  [$POSIX$]
+
+macro PROTOBUF_DIR "$PROJECT_DIR$"  [!$PROTOBUF_DIR$]
+
+// i could have PROTOBUF_DIR here, but then i can't use {} syntax, maybe i should change that because it's kind of dumb
+build_event "run_protoc" "PROTOBUF_FILE" // "PROTOBUF_DIR"
+{
+	"echo Running Protocol Buffer Compiler on $PROTOBUF_FILE$.proto..."
+	
+	"if not exist \"$GENERATED_PROTO_DIR$\" mkdir \"$GENERATED_PROTO_DIR$\""      [$WINDOWS$]
+	"mkdir -p $GENERATED_PROTO_DIR$ 2> /dev/null"                                [$LINUX$ || $MACOS$]
+	
+	"if [-f \"$GENERATED_PROTO_DIR$/$PROTOBUF_FILE$.pb.cc\"]; then"      [$LINUX$ || $MACOS$]
+	"if not exist \"$GENERATED_PROTO_DIR$/$PROTOBUF_FILE$.pb.cc\" do ("  [$WINDOWS$]
+	
+		"echo Compiling Protobuf File: \"$PROTOBUF_FILE$.proto\""
+		"\"$_PROTOC_EXE$\" --proto_path=$SRCDIR$/thirdparty/protobuf-2.5.0/src --proto_path=$PROTOBUF_DIR$ --proto_path=$SRCDIR$/gcsdk --proto_path=$SRCDIR$/game/shared --proto_path=$SRCDIR$\common --cpp_out=$GENERATED_PROTO_DIR$ $PROTOBUF_DIR$/$PROTOBUF_FILE$.proto"
+	
+	")" [$WINDOWS$]
+	"fi" [$LINUX$]
+}
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$GENERATED_PROTO_DIR$"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src"
+		}
+		
+		defines
+		{
+			// "PROTOBUF"
+		}
+	}
+}
+
+/*files
+{
+	folder "Protobuf Files"
+	{
+		folder "Google Protobuf Headers"
+		{
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/descriptor.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/descriptor.pb.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/extension_set.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/generated_message_reflection.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/generated_message_util.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/io/coded_stream.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/message.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/message_lite.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/reflection_ops.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/repeated_field.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/stubs/common.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/stubs/once.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/unknown_field_set.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/wire_format.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/wire_format_lite.h"
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/src/google/protobuf/wire_format_lite_inl.h"
+		}
+
+		folder "Helpers"
+		{
+			"$SRCDIR$/common/protobuf_helpers.h"
+			"$SRCDIR$/common/protobuf_helpers.cpp"
+			{
+				precompiled_header "none" [$WINDOWS]
+			}
+		}
+	}
+}*/

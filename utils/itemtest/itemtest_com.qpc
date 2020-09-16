@@ -1,0 +1,84 @@
+// ---------------------------------------------------------------
+// itemtest_com.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "itemtest_com"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "itemtest_com"
+macro FINAL_OUTBINNAME "itemtest.com"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+include "$SRCDIR$/utils/itemtest_lib/itemtest_lib_support.qpc"
+
+config
+{
+	general
+	{
+		out_dir "./Debug_itemtest_com" [$DEBUG$]
+		out_dir "./Release_itemtest_com" [$RELEASE$]
+		build_dir "./Debug_itemtest_com" [$DEBUG$]
+		build_dir "./Release_itemtest_com" [$RELEASE$]
+	}
+	
+	link
+	{
+		libs
+		{
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"Rpcrt4.lib"
+			"appframework"
+			"bitmap"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"steam_api"
+			"vtf"
+		}
+	}
+	
+	post_build
+	{
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $OUTBINDIR$\$FINAL_OUTBINNAME$ $SRCDIR$"
+		"copy \"$$(TargetDir)\"$$(TargetFileName) $OUTBINDIR$\$FINAL_OUTBINNAME$"
+		"if ERRORLEVEL 1 goto BuildEventFailed"
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $OUTBINDIR$\$(TargetName).pdb $SRCDIR$"
+		"copy \"$$(TargetDir)\"$$(TargetName).pdb $OUTBINDIR$\$(TargetName).pdb"
+		"if ERRORLEVEL 1 goto BuildEventFailed"
+		"goto BuildEventOK"
+		":BuildEventFailed"
+		"echo *** ERROR! PostBuildStep FAILED for $(ProjectName)! COM is probably running. ***"
+		"del /q \"$$(TargetDir)\"$$(TargetFileName)"
+		"exit 1"
+		":BuildEventOK"
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"itemtestapp.cpp"
+		"itemtest_con.cpp"
+		"runexe.cpp"
+
+		folder "External"
+		{
+			"$SRCDIR$/public/interpolatortypes.cpp"
+			"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"itemtestapp.h"
+		"runexe.h"
+
+		folder "External"
+		{
+			"$SRCDIR$/public/interpolatortypes.h"
+		}
+	}
+}

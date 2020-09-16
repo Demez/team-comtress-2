@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// dbmon.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "dbmon"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "../bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MACRO_MATHLIB"
+			"PROTECTED_THINGS_DISABLE"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"winmm.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"dbmon.c"
+	}
+
+	folder "Header Files"
+	{
+	}
+}

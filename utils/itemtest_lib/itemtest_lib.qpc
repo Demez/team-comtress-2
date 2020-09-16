@@ -1,0 +1,37 @@
+// ---------------------------------------------------------------
+// itemtest_lib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "itemtest_lib"
+
+macro SRCDIR "../.."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+include "$SRCDIR$/_qpc_scripts/fbx_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+			"ITEMUPLIB_LIB"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"itemtest.cpp"
+		"systemutils.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/itemtest/itemtest.h"
+		"$SRCDIR$/public/zip_utils.h"
+	}
+}

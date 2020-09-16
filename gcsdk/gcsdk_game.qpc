@@ -1,0 +1,147 @@
+// ---------------------------------------------------------------
+// gcsdk_game.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "gcsdk"
+
+macro OUTLIBNAME "gcsdk"
+macro SRCDIR ".."
+macro GENERATED_PROTO_DIR "$SRCDIR$/gcsdk/generated_proto"
+macro PROTOBUF_DIR "$SRCDIR$/gcsdk"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+include "$SRCDIR$/_qpc_scripts/protobuf_builder.qpc"
+include "$SRCDIR$/gcsdk/steammessages_include.qpc"
+include "$SRCDIR$/gcsdk/gcsdk_gcmessages_include.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"TF"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/gcsdk/steamextra"
+			".."
+			"../public"
+			"../public/gcsdk"
+			"$SRCDIR$/thirdparty/JSON_parser"
+			"."
+		}
+		
+		pch "use"
+	}
+	
+	pre_build
+	{
+		run_protoc
+		{
+			"gcsystemmsgs"
+			"steammessages"
+			"gcsdk_gcmessages"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"stdafx.cpp"
+		{
+			pch "create"
+		}
+
+		"webapi_response.cpp"                            \
+		"steamextra/steamid.cpp"                         \
+		"$SRCDIR$/thirdparty/JSON_parser/JSON_parser.c"  \
+		"$SRCDIR$/common/debug_lib_check.cpp"
+		{
+			pch "none"
+		}
+
+		
+		"gcclient.cpp"
+		"gcconstants.cpp"
+		"gclogger.cpp"
+		"gcmsg.cpp"
+		"job.cpp"
+		"jobmgr.cpp"
+		"jobtime.cpp"
+		"messagelist.cpp"
+		"msgprotobuf.cpp"
+		"netpacket.cpp"
+		"netpacketpool.cpp"
+		"protobufsharedobject.cpp"
+		"sharedobject.cpp"
+		"sharedobjectcache.cpp"
+		"gcclient_sharedobjectcache.cpp"
+		"steamextra/misc.cpp"
+		"steamextra/rtime.cpp"
+		
+		"steamextra/tier1/hashglobals.cpp"
+		"steamextra/tier1/tsmempool.cpp"
+		"steamextra/tier1/tsmultimempool.cpp"
+		"workthreadpool.cpp"
+		"webapi_response.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"stdafx.h"
+		"$SRCDIR$/public/gcsdk/enumutils.h"
+		"$SRCDIR$/public/gcsdk/gcclient.h"
+		"$SRCDIR$/public/gcsdk/gcclientsdk.h"
+		"$SRCDIR$/public/gcsdk/gcconstants.h"
+		"$SRCDIR$/public/gcsdk/gclogger.h"
+		"$SRCDIR$/public/gcsdk/gcclientjob.h"
+		"$SRCDIR$/public/gcsdk/gcmsg.h"
+		"$SRCDIR$/public/gcsdk/gcsdk.h"
+		"$SRCDIR$/public/gcsdk/gcschema.h"
+		"$SRCDIR$/public/gcsdk/gcsession.h"
+		"$SRCDIR$/public/gcsdk/gcsystemmsgs.h"
+		"$SRCDIR$/public/gcsdk/job.h"
+		"$SRCDIR$/public/gcsdk/jobmgr.h"
+		"$SRCDIR$/public/gcsdk/jobtime.h"
+		"$SRCDIR$/public/gcsdk/messagelist.h"
+		"$SRCDIR$/public/gcsdk/msgbase.h"
+		"$SRCDIR$/public/gcsdk/netpacket.h"
+		"$SRCDIR$/public/gcsdk/msgprotobuf.h"
+		"$SRCDIR$/public/gcsdk/netpacketpool.h"
+		"$SRCDIR$/public/gcsdk/protobufsharedobject.h"
+		"$SRCDIR$/public/gcsdk/refcount.h"
+		"$SRCDIR$/public/gcsdk/sharedobject.h"
+		"$SRCDIR$/public/gcsdk/sharedobjectcache.h"
+		"$SRCDIR$/public/gcsdk/gcclient_sharedobjectcache.h"
+		"$SRCDIR$/public/gcsdk/workthreadpool.h"
+		"steamextra/clientenums.h"
+		"steamextra/misc.h"
+		"steamextra/rtime.h"
+		"steamextra/gamecoordinator/igamecoordinator.h"
+		"steamextra/gamecoordinator/igamecoordinatorhost.h"
+		"steamextra/gamecoordinator/igcsqlquery.h"
+		"steamextra/gamecoordinator/igcsqlresultsetlist.h"
+		"steamextra/steam/isteamgamecoordinator.h"
+		"steamextra/tier0/t0constants.h"
+		"steamextra/tier1/pearsonshash.h"
+		"steamextra/tier1/tsmempool.h"
+		"steamextra/tier1/tsmultimempool.h"
+	}
+
+	folder "Protobuf Files"
+	{
+		"gcsystemmsgs.proto"
+
+		folder "Generated Files"
+		{
+			"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.h"
+			"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.cc"
+			{
+				pch "none"
+			}
+		}
+	}
+}

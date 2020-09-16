@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// unitlib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Unitlib"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"fopen=dont_use_fopen"
+			"UNITLIB_DLL_EXPORT"
+		}
+	}
+	
+	link
+	{
+		import_lib "$SRCDIR$/lib/public/$(TargetName).lib"
+		
+		libs
+		{
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+	
+	pre_link
+	{
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\lib\public\$(TargetName).lib $SRCDIR$"
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\lib\public\$(TargetName).exp $SRCDIR$"
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"unitlib.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/unitlib/UnitLib.h"
+	}
+}

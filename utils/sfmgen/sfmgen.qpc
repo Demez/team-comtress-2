@@ -1,0 +1,48 @@
+// ---------------------------------------------------------------
+// sfmgen.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "sfmgen"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"appframework"
+			"datamodel"
+			"dmserializers"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"movieobjects"
+			"sfmobjects"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"sfmgen.cpp"
+	}
+
+	folder "External"
+	{
+		"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/sentence.cpp"
+	}
+
+	folder "External Header Files"
+	{
+		"$SRCDIR$/public/sentence.h"
+		"$SRCDIR$/public/interpolatortypes.h"
+	}
+}

@@ -1,0 +1,66 @@
+// ---------------------------------------------------------------
+// bugreporter.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Bugreporter"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"BUGREPORTER_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$LIBCOMMON$/expdlln"
+			"$LIBCOMMON$/trktooln"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"bugreporter.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/common/bugreporter/bugreporter.h"
+		"$SRCDIR$/public/Color.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/vstdlib/IKeyValuesSystem.h"
+		"$SRCDIR$/public/tier0/mem.h"
+		"$SRCDIR$/public/tier0/memdbgoff.h"
+		"$SRCDIR$/public/tier0/memdbgon.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"trktool.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlrbtree.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+}

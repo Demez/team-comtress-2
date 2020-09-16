@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------
+// entcount.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Entcount"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"entcount.cpp"
+	}
+}

@@ -1,0 +1,46 @@
+// ---------------------------------------------------------------
+// splitskybox.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Splitskybox"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+		"../common/cmdlib.cpp"
+		"splitskybox.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/strtools.h"
+	}
+}

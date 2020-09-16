@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// LicenseViewed.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "LicenseViewed"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"LicenseViewed_EXPORTS"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"msi.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"LicenseViewed.cpp"
+	}
+}

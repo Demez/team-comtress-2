@@ -1,0 +1,102 @@
+// ---------------------------------------------------------------
+// togl.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "togl"
+
+macro SRCDIR ".." [$WIN32$]
+macro SRCDIR ".." [!$WIN32$]
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "togl"
+macro TOGL_SRCDIR "$SRCDIR$/togl/linuxwin"
+macro TOGL_INCDIR "$SRCDIR$/public/togl/linuxwin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"TOGL_DLL_EXPORT" [!$OSX$ && $MACOS$]
+			"PROTECTED_THINGS_ENABLE" "strncpy=use_Q_strncpy_instead" "_snprintf=use_Q_snprintf_instead" [!$OSX$]
+		}
+		
+		inc_dirs
+		{
+			"../"
+		}
+	}
+	
+	link
+	{
+		output_file "$(OBJ_DIR)/$_IMPLIB_PREFIX$$OUTBINNAME$$EXT_DLL$" [$POSIX$]
+		import_lib "$LIBPUBLIC$/$_IMPLIB_PREFIX$$OUTBINNAME$$_IMPLIB_EXT$" [!$X360$ && !$OSX$]
+		import_lib "$SRCDIR$/lib/$PLATFORM$/$_IMPLIB_PREFIX$$OUTBINNAME$$_IMPLIB_EXT$" [$MACOS$]
+		
+		libs
+		{
+			"Carbon" "OpenGL" "Quartz" "Cocoa" "IOKit" [$MACOS$]
+			"tier2"
+			"mathlib"
+		}
+	}
+	
+	pre_link
+	{
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $LIBPUBLIC$\$(TargetName).lib $SRCDIR$"
+	}
+}
+
+files
+{
+	folder "Source Files" [$GL$]
+	{
+		"$TOGL_SRCDIR$/dx9asmtogl2.cpp"
+		"$TOGL_SRCDIR$/dxabstract.cpp"
+		"$TOGL_SRCDIR$/glentrypoints.cpp"
+		"$TOGL_SRCDIR$/glmgr.cpp"
+		"$TOGL_SRCDIR$/glmgrbasics.cpp"
+		"$TOGL_SRCDIR$/glmgrcocoa.mm" [$MACOS$]
+		"$TOGL_SRCDIR$/intelglmallocworkaround.cpp" [$MACOS$]
+		"$TOGL_SRCDIR$/mach_override.c" [$MACOS$]
+		"$TOGL_SRCDIR$/cglmtex.cpp"
+		"$TOGL_SRCDIR$/cglmfbo.cpp"
+		"$TOGL_SRCDIR$/cglmprogram.cpp"
+		"$TOGL_SRCDIR$/cglmbuffer.cpp"
+		"$TOGL_SRCDIR$/cglmquery.cpp"
+	}
+
+	folder "DirectX Header Files" [$WIN32$ && !$GL$]
+	{
+	}
+
+	folder "Header Files" [$GL$]
+	{
+		"$TOGL_SRCDIR$/dx9asmtogl2.h"
+		"$TOGL_SRCDIR$/glmgr_flush.inl"
+		"$TOGL_SRCDIR$/intelglmallocworkaround.h" [$MACOS$]
+		"$TOGL_SRCDIR$/mach_override.h" [$MACOS$]
+	}
+
+	folder "Public Header Files" [$GL$]
+	{
+		"$SRCDIR$/public/togl/rendermechanism.h"
+		"$TOGL_INCDIR$/dxabstract.h"
+		"$TOGL_INCDIR$/dxabstract_types.h"
+		"$TOGL_INCDIR$/glbase.h"
+		"$TOGL_INCDIR$/glentrypoints.h"
+		"$TOGL_INCDIR$/glmgr.h"
+		"$TOGL_INCDIR$/glmdebug.h"
+		"$TOGL_INCDIR$/glmgrbasics.h"
+		"$TOGL_INCDIR$/glmgrext.h"
+		"$TOGL_INCDIR$/glmdisplay.h"
+		"$TOGL_INCDIR$/glmdisplaydb.h"
+		"$TOGL_INCDIR$/glfuncs.h"
+		"$TOGL_INCDIR$/cglmtex.h"
+		"$TOGL_INCDIR$/cglmfbo.h"
+		"$TOGL_INCDIR$/cglmprogram.h"
+		"$TOGL_INCDIR$/cglmbuffer.h"
+		"$TOGL_INCDIR$/cglmquery.h"
+	}
+}

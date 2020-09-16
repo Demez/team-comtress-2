@@ -1,0 +1,12 @@
+// ---------------------------------------------------------------
+// _default.qpc
+// ---------------------------------------------------------------
+include "_qpc_scripts/_projects.qpc_base"
+include "_qpc_scripts/_groups.qpc_base"
+include "_qpc_scripts/_games.qpc_base"
+
+configs
+{
+	"Debug"
+	"Release"
+}

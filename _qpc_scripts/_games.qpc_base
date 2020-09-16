@@ -1,0 +1,77 @@
+// ---------------------------------------------------------------
+// _games.qpc_base
+// ---------------------------------------------------------------
+
+group "gamedlls"
+{
+	folder "Game DLLs"
+	{
+		contains "hl2"           [$HL2$]
+		contains "episodic"      [$EPISODIC$]
+		contains "tf2"           [$TF$]
+		contains "hl1"           [$HL1$]
+	}
+	
+	folder "Game DLLs Unsorted"
+	{
+		contains "client"
+		contains "server"
+	}
+}
+
+group "hl2"
+{
+	folder "HL2"
+	{
+		"game/client/client_hl2.qpc"
+		"game/server/server_hl2.qpc"
+	}
+}
+
+group "episodic"
+{
+	folder "Episodic"
+	{
+		"game/client/client_episodic.qpc"
+		"game/server/server_episodic.qpc"
+	}
+}
+
+group "tf2"
+{
+	folder "TF2"
+	{
+		"game/client/client_tf.qpc"
+		"game/server/server_tf.qpc"
+	}
+}
+
+group "hl1"
+{
+	folder "HL1"
+	{
+		"game/client/client_hl1.qpc"
+		"game/server/server_hl1.qpc"
+	}
+}
+
+group "client"
+{
+	"game/client/client_dod.qpc" [$DOD$]
+	"game/client/client_lostcoast.qpc" [$LOSTCOAST$]
+	"game/client/client_cstrike.qpc" [$CSTRIKE$]
+	"game/client/client_portal.qpc" [$PORTAL$]
+	"game/client/client_hl2mp.qpc" [$HL2MP$]
+	"game/client/client_hl1mp.qpc" [$HL1MP$]
+}
+
+group "server"
+{
+	"game/server/server_dod.qpc" [$DOD$]
+	"game/server/server_lostcoast.qpc" [$LOSTCOAST$]
+	"game/server/server_cstrike.qpc" [$CSTRIKE$]
+	"game/server/server_portal.qpc" [$PORTAL$]
+	"game/server/server_hl2mp.qpc" [$HL2MP$]
+	"game/server/server_hl1mp.qpc" [$HL1MP$]
+}
+

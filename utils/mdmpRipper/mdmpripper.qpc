@@ -1,0 +1,82 @@
+// ---------------------------------------------------------------
+// mdmpripper.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "MdmpRipper"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/vgui2/include"
+			"$SRCDIR$/vgui2/controls"
+			"$SRCDIR$/utils/common"
+		}
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"dbgeng.lib"
+			"shlwapi.lib"
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"Rpcrt4.lib"
+			"dbghelp.lib"
+			"sqlwrapper.lib"
+			"$LIBPUBLIC$/appframework"
+			"$LIBPUBLIC$/matsys_controls"
+			"$LIBPUBLIC$/tier2"
+			"$LIBPUBLIC$/tier3"
+			"$LIBPUBLIC$/vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"CDbgOutput.cpp"
+		"CMDDetailPanel.cpp"
+		"CMDErrorPanel.cpp"
+		"CMDModulePanel.cpp"
+		"CMDRipperMain.cpp"
+		"CMiniDumpObject.cpp"
+		"main.cpp"
+		"steamwebConnection.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"CDbgOutput.h"
+		"CMDDetailPanel.h"
+		"CMDErrorPanel.h"
+		"CMDModulePanel.h"
+		"CMDRipperMain.h"
+		"CMiniDumpObject.h"
+		"../common/filesystem_tools.h"
+		"mdmpRipper.h"
+	}
+
+	folder "Resource Files"
+	{
+		"icon2.ico"
+		"icon_mdmpRipper.ico"
+		"mdmpRipper.rc"
+	}
+}

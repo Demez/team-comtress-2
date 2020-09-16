@@ -1,0 +1,52 @@
+// ---------------------------------------------------------------
+// kvc.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "kvc"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"kvc.cpp"
+		"kvc_paintkit.cpp"
+	}
+
+	folder "Common Source Files"
+	{
+		"$SRCDIR$/public/kevvaluescompiler.cpp"
+		"../common/filesystem_tools.cpp"
+		"../common/pacifier.cpp"
+	}
+
+	folder "Common Header Files"
+	{
+		"$SRCDIR$/public/keyvaluescompiler.h"
+		"../common/filesystem_tools.h"
+		"../common/pacifier.h"
+	}
+}

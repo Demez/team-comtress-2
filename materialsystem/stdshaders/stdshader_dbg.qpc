@@ -1,0 +1,85 @@
+// ---------------------------------------------------------------
+// stdshader_dbg.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "stdshader_dbg"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro DISABLE_FTOL3_OVERRIDE "1"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/dbg"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"STDSHADER_DBG_DLL_EXPORT"
+			"FAST_MATERIALVAR_ACCESS"
+		}
+		
+		inc_dirs
+		{
+			"fxctmp9" "vshtmp9" "../../dx9sdk/include" [$WIN32$]
+			"fxctmp9_360" "vshtmp9_360" [$X360$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"version.lib" "winmm.lib" "$DX9_LIB$/d3dx9" [$WIN32$]
+			"mathlib"
+			"shaderlib"
+		}
+	}
+}
+
+requires
+{
+	"mathlib"
+	"shaderlib"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"BaseVSShader.cpp"
+		"debugdepth.cpp"
+		"DebugDrawEnvmapMask.cpp"
+		"debugluxel.cpp"
+		"debugnormalmap.cpp"
+		"debugtangentspace.cpp"
+		"fillrate.cpp"
+
+		folder "Remove me when VAC2 is out" [$WIN32$]
+		{
+			"../shader_dll_verify.cpp"
+			"../shader_dll_verify.h"
+		}
+	}
+
+	folder "Xbox" [$X360$]
+	{
+		- "xbox/xbox.def"
+		"xbox/xbox_dbg.def"
+	}
+
+	folder "Header Files"
+	{
+		"BaseVSShader.h"
+	}
+
+	"$SRCDIR$/devtools/bin/vsh_prep.pl"
+	"$SRCDIR$/devtools/bin/psh_prep.pl"
+	"$SRCDIR$/devtools/bin/fxc_prep.pl"
+	"$SRCDIR$/devtools/bin/updateshaders.pl"
+}

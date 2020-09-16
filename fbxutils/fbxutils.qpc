@@ -1,0 +1,36 @@
+// ---------------------------------------------------------------
+// fbxutils.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "fbxutils"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+include "$SRCDIR$/_qpc_scripts/fbx_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"FBXUTILS_LIB"
+		}
+	}
+}
+
+files
+{
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/fbxutils/dmfbxserializer.h"
+		"$SRCDIR$/public/fbxsystem/ifbxsystem.h"
+		"$SRCDIR$/public/fbxsystem/fbxsystem.h"
+	}
+
+	folder "Source Files"
+	{
+		"dmfbxserializer.cpp"
+		"$SRCDIR$/public/fbxsystem/fbxsystem.cpp"
+	}
+}

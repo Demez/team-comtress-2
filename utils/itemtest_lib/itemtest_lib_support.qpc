@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------
+// itemtest_lib_support.qpc
+// ---------------------------------------------------------------
+include "$SRCDIR$/_qpc_scripts/fbx.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"datamodel"
+			"dmserializers"
+			"fbxutils"
+			"movieobjects"
+			"itemtest_lib"
+		}
+	}
+}
+
+files
+{
+	folder "ZIP Support"
+	{
+		"$SRCDIR$/public/XZip.cpp"
+		{
+			pch "none"
+		}
+
+		"$SRCDIR$/public/XUnzip.cpp"
+		{
+			pch "none"
+			
+			options
+			{
+				"/EHa" [!$X360$]
+			}
+		}
+	}
+}

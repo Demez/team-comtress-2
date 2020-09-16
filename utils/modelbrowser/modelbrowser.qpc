@@ -1,0 +1,62 @@
+// ---------------------------------------------------------------
+// modelbrowser.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Modelbrowser"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/vgui2/include"
+			"$SRCDIR$/vgui2/controls"
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"Rpcrt4.lib"
+			"appframework"
+			"dmxloader"
+			"mathlib"
+			"matsys_controls"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/interpolatortypes.h"
+		"modelbrowser.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+		"$SRCDIR$/public/bone_setup.cpp"
+		"$SRCDIR$/public/studio.cpp"
+		"$SRCDIR$/public/collisionutils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"../common/cmdlib.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/utils/common/FileSystem_Tools.h"
+		"$SRCDIR$/public/tier1/interface.h"
+	}
+}

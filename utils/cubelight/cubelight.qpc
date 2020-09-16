@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// cubelight.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Cubelight"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"cubelight.cpp"
+	}
+}

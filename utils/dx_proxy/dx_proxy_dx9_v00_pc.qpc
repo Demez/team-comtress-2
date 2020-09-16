@@ -1,0 +1,9 @@
+// ---------------------------------------------------------------
+// dx_proxy_dx9_v00_pc.qpc
+// ---------------------------------------------------------------
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/dx9sdk/utilities"
+macro DX_SDK_VER "DX9_V00_PC"
+
+include "dx_proxy_base.qpc"
+

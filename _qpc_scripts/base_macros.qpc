@@ -1,0 +1,43 @@
+// ---------------------------------------------------------------
+// base_macros.qpc
+// ---------------------------------------------------------------
+macro 64BITS "1" [$AMD64$]
+macro 32BITS "1" [$I386$]
+
+macro WIN32 "1" [$WINDOWS$ && $32BITS$]
+macro WIN64 "1" [$WINDOWS$ && $64BITS$]
+
+macro LINUX32 "1" [$LINUX$ && $32BITS$]
+macro LINUX64 "1" [$LINUX$ && $64BITS$]
+
+macro OSX "1" [$MACOS$]
+
+macro PLAT_DIR "win32"      [$WIN32$]
+macro PLAT_DIR "win64"      [$WIN64$]
+macro PLAT_DIR "linux32"    [$LINUX32$]
+macro PLAT_DIR "linux64"    [$LINUX64$]
+macro PLAT_DIR "macos"      [$MACOS$]
+
+macro PLATSUBDIR ""
+macro PLATSUBDIR "/x64" [$WIN64$]
+macro PLATSUBDIR "/linux32" [$LINUX32$]
+macro PLATSUBDIR "/osx32" [$OSX32$]
+
+// macro SRCDIR "$ROOT_DIR$" [!$SRCDIR$]
+
+macro LIBPUBLIC "$SRCDIR$/lib/public/$PLAT_DIR$"
+macro LIBPUBLIC_CFG "$LIBPUBLIC$/$CONFIG$"
+
+macro LIBCOMMON "$SRCDIR$/lib/common/$PLAT_DIR$"
+macro LIBCOMMON_CFG "$LIBCOMMON$/$CONFIG$"
+
+macro OUTLIBDIR "$LIBPUBLIC_CFG$" [!$OUTLIBDIR$]
+
+macro BUILD_DIR     "./$CONFIG$/$PLATSUBDIR$"
+macro OUT_DIR       "./$CONFIG$/$PLATSUBDIR$"  [!$OUT_DIR$]
+
+macro SDL_DIR "$SRCDIR$/thirdparty/SDL2"
+macro SDL_INC "$SDL_DIR$/include"
+
+macro DX9_LIB "$SRCDIR$/dx9sdk/lib"
+

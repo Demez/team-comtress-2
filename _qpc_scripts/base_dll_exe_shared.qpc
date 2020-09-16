@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------
+// source_dll_base.qpc
+// ---------------------------------------------------------------
+macro OUTDLLEXT "$EXT_DLL$" [!$OUTDLLEXT$]
+
+macro OUTBINNAME "$PROJECT_SCRIPT_NAME$"              [!$OUTBINNAME$]
+macro OUT_NAME   "$OUTBINNAME$"                       [!$OUT_NAME$]
+macro OUTBINDIR  "$SRCDIR$../game/bin/$PLATSUBDIR$"   [!$OUTBINDIR$]
+
+macro OUT_DIR "$OUTBINDIR$"   [!$OUT_DIR$]
+
+include "$SCRIPT_DIR$/source_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/common"
+			"$SRCDIR$/public"
+			"$SRCDIR$/public/tier0"
+			"$SRCDIR$/public/tier1"
+		}
+		
+		pch "none"
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier0"
+			"tier1"
+			"vstdlib"
+		}
+	}
+}
+
+requires
+{
+	"tier0"
+	"tier1"
+	"vstdlib"
+}
+
+/*files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/tier0/memoverride.cpp"
+		{
+			pch "none"
+		}
+	}
+}*/
+
+

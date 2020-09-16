@@ -1,0 +1,79 @@
+// ---------------------------------------------------------------
+// datamodel.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Datamodel"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DATAMODEL_LIB"
+		}
+		
+		pch_out "$(IntDir)/datamodel.pch"
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"clipboardmanager.cpp"
+		"datamodel.cpp"
+		"dependencygraph.cpp"
+		"dmattribute.cpp"
+		"dmelement.cpp"
+		"dmelementdictionary.cpp"
+		"dmelementfactoryhelper.cpp"
+		"DmElementFramework.cpp"
+		"dmserializerbinary.cpp"
+		"dmserializerkeyvalues.cpp"
+		"dmserializerkeyvalues2.cpp"
+		"undomanager.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"clipboardmanager.h"
+		"datamodel.h"
+		"dependencygraph.h"
+		"dmattributeinternal.h"
+		"dmelementdictionary.h"
+		"$SRCDIR$/public/datamodel/dmelementfactoryhelper.h"
+		"DmElementFramework.h"
+		"$SRCDIR$/public/datamodel/dmelementhandle.h"
+		"dmserializerbinary.h"
+		"dmserializerkeyvalues.h"
+		"dmserializerkeyvalues2.h"
+		"undomanager.h"
+	}
+
+	folder "external"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"$SRCDIR$/public/string_t.h"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/public/datamodel/attributeflags.h"
+		"$SRCDIR$/public/datamodel/dmattributetypes.h"
+		"$SRCDIR$/public/datamodel/dmattributevar.h"
+		"$SRCDIR$/public/datamodel/dmelement.h"
+		"$SRCDIR$/public/datamodel/dmehandle.h"
+		"$SRCDIR$/public/datamodel/idatamodel.h"
+	}
+}

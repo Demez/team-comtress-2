@@ -1,0 +1,59 @@
+// ---------------------------------------------------------------
+// vaudio_speex.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vaudio_speex"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SPEEX_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"../frame_encoder"
+			"../../../public"
+			"../../../public/tier1"
+			"../.."
+			"../../../common"
+			"./source/libspeex"
+			"../../audio/public"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"source/win32/libspeex/Release/libspeex" [$WIN32$ && !$VS2015$]
+			"$LIBCOMMON$/libspeex" [$POSIX$]
+			"$SRCDIR$/engine/voice_codecs/speex/source/win32/libspeex/2015/release/libspeex" "$SRCDIR$/engine/voice_codecs/speex/source/win32/libspeex/2015/debug/libspeex" [$WIN32$ && $VS2015$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/tier1/interface.cpp"
+		"../frame_encoder/voice_codec_frame.cpp"
+		"VoiceEncoder_Speex.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/vaudio/ivaudio.h"
+		"VoiceEncoder_Speex.h"
+	}
+}

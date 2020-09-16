@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------
+// test_binaries.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Test_binaries"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"test_binaries.cpp"
+	}
+}

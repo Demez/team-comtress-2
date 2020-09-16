@@ -1,0 +1,37 @@
+// ---------------------------------------------------------------
+// mdlinfo.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "mdlinfo"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"appframework"
+			"mathlib"
+			"tier1"
+			"tier2"
+			"tier3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"main.cpp"
+	}
+
+	folder "External Files"
+	{
+		"$SRCDIR$/public/studio.cpp"
+	}
+}

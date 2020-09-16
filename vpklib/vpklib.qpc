@@ -1,0 +1,45 @@
+// ---------------------------------------------------------------
+// vpklib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vpklib"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/external"
+			"$SRCDIR$/external/crypto++-5.6.3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"packedstore.cpp"
+
+		folder "Crypto"
+		{
+			"$SRCDIR$/common/simplebitstring.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/vpklib/packedstore.h"
+		"packedstore_internal.h"
+
+		folder "Crypto"
+		{
+			"$SRCDIR$/common/simplebitstring.h"
+			"$SRCDIR$/common/crypto.h"
+		}
+	}
+}

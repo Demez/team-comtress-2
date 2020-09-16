@@ -1,0 +1,91 @@
+// ---------------------------------------------------------------
+// filesystem_stdio.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "FileSystem_Stdio"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/Stdio"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"_USE_32BIT_TIME_T" "SUPPORT_PACKED_STORE" [!$WIN64$]
+			"FILESYSTEM_STDIO_EXPORTS"
+			"DONT_PROTECT_FILEIO_FUNCTIONS"
+			"PROTECTED_THINGS_ENABLE"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"tier2"
+		}
+	}
+}
+
+requires
+{
+	"tier2"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"basefilesystem.cpp"
+		"packfile.cpp"
+		"filetracker.cpp"
+		"filesystem_async.cpp"
+		"filesystem_stdio.cpp"
+		"$SRCDIR$/public/kevvaluescompiler.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+		"QueuedLoader.cpp"
+		"linux_support.cpp" [$POSIX$]
+	}
+
+	folder "Header Files"
+	{
+		"basefilesystem.h"
+		"packfile.h"
+		"filetracker.h"
+		"threadsaferefcountedobject.h"
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/bspfile.h"
+		"$SRCDIR$/public/bspflags.h"
+		"$SRCDIR$/public/mathlib/bumpvects.h"
+		"$SRCDIR$/public/tier1/characterset.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/public/ifilelist.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlrbtree.h"
+		"$SRCDIR$/public/tier1/utlsymbol.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/mathlib/vector4d.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+		"$SRCDIR$/public/keyvaluescompiler.h"
+		"$SRCDIR$/public/filesystem/IQueuedLoader.h"
+	}
+}

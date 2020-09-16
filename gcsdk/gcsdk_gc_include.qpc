@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------
+// gcsdk_gc_include.qpc
+// ---------------------------------------------------------------
+macro PLATFORM [!$PLATFORM$]
+macro GENERATED_PROTO_DIR [!$GENERATED_PROTO_DIR$]
+
+include "$SRCDIR$/_qpc_scripts/protobuf_builder.qpc"
+include "$SRCDIR$/gcsdk/steammessages_include.qpc"
+include "$SRCDIR$/game/protobuf_include.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"gcsdk_gc"
+		}
+	}
+}
+
+requires
+{
+	"gcsdk_gc"
+}
+
+files
+{
+	"$SRCDIR$/gcsdk/gcsystemmsgs.proto"
+
+	folder "Generated Files"
+	{
+		"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.h"
+		"$GENERATED_PROTO_DIR$/gcsystemmsgs.pb.cc"
+		{
+			pch "none"
+		}
+	}
+}

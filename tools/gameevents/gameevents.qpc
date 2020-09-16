@@ -1,0 +1,66 @@
+// ---------------------------------------------------------------
+// gameevents.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "GameEvents"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/tools"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"GAMEEVENTS_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"../common"
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"Psapi.lib"
+			"datamodel"
+			"dme_controls"
+			"dmserializers"
+			"mathlib"
+			"matsys_controls"
+			"movieobjects"
+			"sfmobjects"
+			"tier2"
+			"tier3"
+			"toolutils"
+			"vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"gameevents.cpp"
+		"gameeventeditdoc.cpp"
+		"gameeventeditpanel.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/registry.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"gameeventeditdoc.h"
+		"gameeventeditpanel.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+	}
+}

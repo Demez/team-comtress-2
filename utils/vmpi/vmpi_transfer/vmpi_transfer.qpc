@@ -1,0 +1,162 @@
+// ---------------------------------------------------------------
+// vmpi_transfer.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vmpi_transfer"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vmpi_transfer"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MPI"
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../../common"
+			".."
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"tier2"
+			"vmpi"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../../common/vmpi_tools_shared.cpp"
+		"../../common/vmpi_tools_shared.h"
+		"vmpi_transfer.cpp"
+
+		folder "Common Files"
+		{
+			"../../common/threads.cpp"
+			"../../common/pacifier.cpp"
+			"../../common/cmdlib.cpp"
+			"../../common/tools_minidump.cpp"
+			"../../common/tools_minidump.h"
+		}
+
+		folder "Public Files"
+		{
+			"$SRCDIR$/public/filesystem_helpers.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"vmpi_transfer.h"
+
+		folder "Common Header Files"
+		{
+			"../../common/cmdlib.h"
+			"../iphelpers.h"
+			"../messbuf.h"
+			"../mysql_wrapper.h"
+			"../threadhelpers.h"
+			"../vmpi_defs.h"
+			"../vmpi_dispatch.h"
+			"../vmpi_distribute_work.h"
+			"../vmpi_filesystem.h"
+		}
+
+		folder "Public Header Files"
+		{
+			"$SRCDIR$/public/mathlib/amd3dx.h"
+			"$SRCDIR$/public/mathlib/ANORMS.H"
+			"$SRCDIR$/public/basehandle.h"
+			"$SRCDIR$/public/tier0/basetypes.h"
+			"$SRCDIR$/public/tier1/bitbuf.h"
+			"$SRCDIR$/public/bitvec.h"
+			"$SRCDIR$/public/BSPFILE.H"
+			"$SRCDIR$/public/bspflags.h"
+			"$SRCDIR$/public/BSPTreeData.h"
+			"$SRCDIR$/public/builddisp.h"
+			"$SRCDIR$/public/mathlib/bumpvects.h"
+			"$SRCDIR$/public/tier1/byteswap.h"
+			"$SRCDIR$/public/tier1/characterset.h"
+			"$SRCDIR$/public/tier1/checksum_crc.h"
+			"$SRCDIR$/public/tier1/checksum_md5.h"
+			"$SRCDIR$/public/ChunkFile.h"
+			"$SRCDIR$/public/cmodel.h"
+			"$SRCDIR$/public/CollisionUtils.h"
+			"$SRCDIR$/public/tier0/commonmacros.h"
+			"$SRCDIR$/public/mathlib/compressed_vector.h"
+			"$SRCDIR$/public/const.h"
+			"$SRCDIR$/public/coordsize.h"
+			"$SRCDIR$/public/tier0/dbg.h"
+			"$SRCDIR$/public/disp_common.h"
+			"$SRCDIR$/public/disp_powerinfo.h"
+			"$SRCDIR$/public/disp_vertindex.h"
+			"$SRCDIR$/public/DispColl_Common.h"
+			"$SRCDIR$/public/tier0/fasttimer.h"
+			"$SRCDIR$/public/filesystem.h"
+			"$SRCDIR$/public/filesystem_helpers.h"
+			"$SRCDIR$/public/GameBSPFile.h"
+			"$SRCDIR$/public/gametrace.h"
+			"$SRCDIR$/public/mathlib/halton.h"
+			"$SRCDIR$/public/materialsystem/hardwareverts.h"
+			"$SRCDIR$/public/appframework/IAppSystem.h"
+			"$SRCDIR$/public/tier0/icommandline.h"
+			"$SRCDIR$/public/ihandleentity.h"
+			"$SRCDIR$/public/materialsystem/imaterial.h"
+			"$SRCDIR$/public/materialsystem/imaterialsystem.h"
+			"$SRCDIR$/public/materialsystem/imaterialvar.h"
+			"$SRCDIR$/public/tier1/interface.h"
+			"$SRCDIR$/public/iscratchpad3d.h"
+			"$SRCDIR$/public/ivraddll.h"
+			"$SRCDIR$/public/materialsystem/materialsystem_config.h"
+			"$SRCDIR$/public/mathlib/mathlib.h"
+			"$SRCDIR$/public/tier0/memdbgon.h"
+			"$SRCDIR$/public/optimize.h"
+			"$SRCDIR$/public/tier0/platform.h"
+			"$SRCDIR$/public/tier0/protected_things.h"
+			"$SRCDIR$/public/vstdlib/random.h"
+			"$SRCDIR$/public/ScratchPad3D.h"
+			"$SRCDIR$/public/ScratchPadUtils.h"
+			"$SRCDIR$/public/string_t.h"
+			"$SRCDIR$/public/tier1/strtools.h"
+			"$SRCDIR$/public/studio.h"
+			"$SRCDIR$/public/tier1/tokenreader.h"
+			"$SRCDIR$/public/trace.h"
+			"$SRCDIR$/public/tier1/utlbuffer.h"
+			"$SRCDIR$/public/tier1/utldict.h"
+			"$SRCDIR$/public/tier1/utlhash.h"
+			"$SRCDIR$/public/tier1/utllinkedlist.h"
+			"$SRCDIR$/public/tier1/utlmemory.h"
+			"$SRCDIR$/public/tier1/utlrbtree.h"
+			"$SRCDIR$/public/tier1/utlsymbol.h"
+			"$SRCDIR$/public/tier1/utlvector.h"
+			"$SRCDIR$/public/vcollide.h"
+			"$SRCDIR$/public/mathlib/vector.h"
+			"$SRCDIR$/public/mathlib/vector2d.h"
+			"$SRCDIR$/public/mathlib/vector4d.h"
+			"$SRCDIR$/public/mathlib/vmatrix.h"
+			"../vmpi.h"
+			"$SRCDIR$/public/vphysics_interface.h"
+			"$SRCDIR$/public/mathlib/vplane.h"
+			"$SRCDIR$/public/tier0/vprof.h"
+			"$SRCDIR$/public/vstdlib/vstdlib.h"
+			"$SRCDIR$/public/vtf/vtf.h"
+			"$SRCDIR$/public/wadtypes.h"
+			"$SRCDIR$/public/worldsize.h"
+		}
+	}
+}

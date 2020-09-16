@@ -1,0 +1,48 @@
+// ---------------------------------------------------------------
+// responserules_runtime.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "responserules_runtime"
+
+macro SRCDIR "../.."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/public"
+		}
+	}
+}
+
+files
+{
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/responserules/response_types.h"
+		"$SRCDIR$/public/responserules/response_host_interface.h"
+		"$SRCDIR$/public/responserules/rr_speechconcept.h"
+		"$SRCDIR$/common/responserules/response_types_internal.h"
+		"$SRCDIR$/responserules/responserules_cli/response_system.h"
+		"rrbase.h"
+	}
+
+	folder "Source Files"
+	{
+		"rrrlib.cpp"
+		"response_types.cpp"
+		"response_types_internal.cpp"
+		"response_system.cpp"
+		"rr_speechconcept.cpp"
+		"rr_response.cpp"
+		"criteriaset.cpp"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/tier2/interval.h"
+	}
+}

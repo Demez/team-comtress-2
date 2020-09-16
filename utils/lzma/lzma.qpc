@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------
+// lzma.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "lzma"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$LIBCOMMON$"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"_NO_EXCEPTIONS"
+			"_LZMA_PROB32"
+			"_7ZIP_ST"
+		}
+		
+		inc_dirs
+		{
+			"C"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"lzma.cpp"
+
+		folder "7Zip Common"
+		{
+			"C/7zTypes.h"
+			"C/LzmaEnc.h"
+			"C/LzmaEnc.c"
+			"C/LzmaDec.c"
+			"C/LzmaDec.h"
+			"C/LzFind.h"
+			"C/LzFind.c"
+			"C/LzHash.h"
+		}
+	}
+}

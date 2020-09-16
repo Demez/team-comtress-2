@@ -1,0 +1,701 @@
+// ---------------------------------------------------------------
+// _projects.qpc_base
+// ---------------------------------------------------------------
+
+project "libprotobuf"   "thirdparty/protobuf-2.5.0/libprotobuf.qpc"
+project "libprotoc"     "thirdparty/protobuf-2.5.0/libprotoc.qpc"
+project "protoc"        "thirdparty/protobuf-2.5.0/protoc.qpc"
+
+project "cryptlib"      "external/crypto++-5.6.3/cryptlib.qpc"
+
+
+project "actbusy" "tools/actbusy/actbusy.qpc" [$WINDOWS$]
+
+project "AdminServer" "Tracker/AdminServer/AdminServer.qpc" [$WINDOWS$]
+
+project "AppInstaller" "utils/xbox/AppInstaller/AppInstaller.qpc" [$X360$]
+
+project "appframework" "appframework/appframework.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "autorun" "shell/autorun/autorun.qpc" [$WINDOWS$]
+
+project "avitest" "unittests/avitest/avitest.qpc" [$WINDOWS$]
+
+project "bitmap" "bitmap/bitmap.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "Browser" "Tracker/Browser/Browser.qpc" [$WINDOWS$]
+
+project "bsppack" "utils/bsppack/bsppack.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "bspzip" "utils/bspzip/bspzip.qpc" [$WINDOWS$]
+
+project "bugreporter" "utils/bugreporter/bugreporter.qpc" [$WINDOWS$]
+
+project "bugreporter_public" "utils/bugreporter_public/bugreporter_public.qpc" [$WINDOWS$ || $POSIX$]
+
+project "bugreporter_text" "utils/bugreporter_text/bugreporter_text.qpc" [$WINDOWS$]
+
+project "bugreporter_filequeue" "utils/bugreporter_filequeue/bugreporter_filequeue.qpc" [$WINDOWS$ || $POSIX$]
+
+project "bzip2" "utils/bzip2/bzip2.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "captioncompiler" "utils/captioncompiler/captioncompiler.qpc" [$WINDOWS$]
+
+project "cardstats" "utils/videocardstats/cardstats.qpc" [$WINDOWS$]
+
+project "choreoobjects" "choreoobjects/choreoobjects.qpc"
+
+project "classcheck" "utils/classcheck/classcheck.qpc" [$WINDOWS$]
+
+project "commedit" "tools/commedit/commedit.qpc" [$WINDOWS$]
+
+project "cubelight" "utils/cubelight/cubelight.qpc" [$WINDOWS$]
+
+project "datacache" "datacache/datacache.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "datamodel" "datamodel/datamodel.qpc" [$WINDOWS$]
+
+project "dbmon" "devtools/dbmon/dbmon.qpc" [$WINDOWS$]
+
+project "dedicated" "dedicated/dedicated.qpc" [$WINDOWS$ || $POSIX$]
+
+project "dedicated_main" "dedicated_main/dedicated_main.qpc" [$WINDOWS$ || $POSIX$]
+
+project "demoinfo" "utils/demoinfo/demoinfo.qpc" [$WINDOWS$]
+
+project "depcheck" "utils/depcheck/depcheck.qpc" [$WINDOWS$]
+
+project "dist2alpha" "utils/dist2alpha/dist2alpha.qpc" [$WINDOWS$]
+
+project "dme_controls" "vgui2/dme_controls/dme_controls.qpc" [$WINDOWS$]
+
+project "dmserializers" "dmserializers/dmserializers.qpc" [$WINDOWS$]
+
+project "dmxconvert" "utils/dmxconvert/dmxconvert.qpc" [$WINDOWS$]
+
+project "dmxedit" "utils/dmxedit/dmxedit.qpc" [$WINDOWS$]
+
+project "dmxloader" "dmxloader/dmxloader.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "dmxtest" "unittests/dmxtest/dmxtest.qpc" [$WINDOWS$]
+
+project "dumpmatsyshelp" "utils/dumpmatsyshelp/dumpmatsyshelp.qpc" [$WINDOWS$]
+
+project "dumpobj" "utils/xbox/dumpobj/dumpobj.qpc" [$WINDOWS$]
+
+include "utils/dx_proxy/dx_proxy_all.qpc_base"
+
+project "dxsupportclean" "utils/dxsupportclean/dxsupportclean.qpc" [$WINDOWS$]
+
+project "elementviewer" "utils/elementviewer/elementviewer.qpc" [$WINDOWS$]
+
+project "engine" "engine/engine.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "entcount" "utils/entcount/entcount.qpc" [$WINDOWS$]
+
+project "ep2_deathmap" "devtools/ep2_deathmap/ep2_deathmap.qpc" [$WINDOWS$]
+
+project "fbx2dmx" "utils/fbx2dmx/fbx2dmx.qpc" [$WINDOWS$]
+
+project "fbxutils" "fbxutils/fbxutils.qpc" [$WINDOWS$]
+
+project "fgdlib" "fgdlib/fgdlib.qpc" [$WINDOWS$]
+
+project "FileSystemOpenDialog" "utils/FileSystemOpenDialog/FileSystemOpenDialog.qpc" [$WINDOWS$]
+
+project "filesystem_stdio" "filesystem/filesystem_stdio.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "filesystem_steam" "filesystem/filesystem_steam.qpc" [$WINDOWS$ || $POSIX$]
+
+project "finddbgdll" "utils/finddbgdll/finddbgdll.qpc" [$WINDOWS$]
+
+project "floatbm" "floatbm/floatbm.qpc" [$WINDOWS$]
+
+project "fontmaker" "utils/xbox/FontMaker/fontmaker.qpc" [$WINDOWS$]
+
+project "foundry" "tools/foundry/foundry.qpc" [$WINDOWS$]
+
+project "gameevents" "tools/gameevents/gameevents.qpc" [$WINDOWS$]
+
+project "gamestats_reader" "utils/gamestats_reader/gamestats_reader.qpc" [$WINDOWS$]
+
+project "gameui" "gameui/GameUI.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "game_shader_generic_advanced" "sdkshaders/advanced/game_shader_generic_advanced.qpc" [$WINDOWS$]
+
+project "game_shader_generic_sample" "sdkshaders/game_shader_generic_sample.qpc" [$WINDOWS$]
+
+project "gc" "game/gc/gc_tf.qpc" [$WINDOWS$ && $TF$]
+
+project "gctestdll" "gctests/gctestdll/gctestdll.qpc" [$WINDOWS$]
+
+project "gctestsuite" "gctests/gctestsuite/gctestsuite.qpc" [$WINDOWS$]
+
+project "gcsdk" "gcsdk/gcsdk_game.qpc"
+
+project "gcsdk_gc" "gcsdk/gcsdk_gc.qpc"
+
+project "genrandomvectors" "utils/genrandomvectors/genrandomvectors.qpc" [$WINDOWS$]
+
+project "getbugs" "utils/getbugs/getbugs.qpc" [$WINDOWS$]
+
+project "getmirror" "devtools/getmirror/getmirror.qpc" [$WINDOWS$]
+
+project "glview" "utils/glview/glview.qpc" [$WINDOWS$]
+
+project "hammer_dll" "hammer/hammer_dll.qpc" [$WINDOWS$]
+
+project "hammer_launcher" "hammer_launcher/hammer_launcher.qpc" [$WINDOWS$]
+
+project "haptics" "haptics/haptics.qpc" [$WINDOWS$]
+
+project "havana_constraints" "ivp/havana/havana_constraints.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "height2normal" "utils/height2normal/height2normal.qpc" [$WINDOWS$]
+
+project "height2ssbump" "utils/height2ssbump/height2ssbump.qpc" [$WINDOWS$]
+
+project "hk_base" "ivp/havana/havok/hk_base/hk_base.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "hk_math" "ivp/havana/havok/hk_math/hk_math.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "panoramamessages" "panorama/panoramamessages.qpc" [$SOURCE_PANORAMA_FIXME$]
+
+project "panorama" "panorama/panorama.qpc" [$SOURCE_PANORAMA_FIXME$]
+
+project "panorama_client" "panorama/panorama_client.qpc" [$SOURCE_PANORAMA_FIXME$]
+
+project "particles" "particles/particles.qpc"
+
+project "sdktoolslib" "sdktools/sdktoolslib/sdktoolslib.qpc"
+
+project "simdtest" "utils/simdtest/simdtest.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "hlfaceposer" "utils/hlfaceposer/hlfaceposer.qpc" [$WINDOWS$]
+
+project "hlmv" "utils/hlmv/hlmv.qpc" [$WINDOWS$]
+
+project "hl_res_us" "shell/hl_res/hl_res_us/hl_res_us.qpc" [$WINDOWS$]
+
+project "hl_sdk" "game/server/hl_sdk.qpc" [$WINDOWS$]
+
+project "hl_sdk_hl2" "game/server/hl_sdk_hl2.qpc" [$WINDOWS$]
+
+project "hl_sdk_hl2mp" "game/server/hl_sdk_hl2mp.qpc" [$WINDOWS$]
+
+project "ifm" "tools/ifm/ifm.qpc" [$WINDOWS$]
+
+project "ihvtest1" "unittests/ihvtest1/ihvtest1.qpc" [$WINDOWS$]
+
+project "inputsystem" "inputsystem/inputsystem.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "inputtest" "unittests/inputtest/inputtest.qpc" [$WINDOWS$]
+
+project "ivp_compactbuilder" "ivp/ivp_compact_builder/ivp_compactbuilder.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "itemtest_com" "utils/itemtest/itemtest_com.qpc"
+
+project "itemtest_controls" "utils/itemtest_controls/itemtest_controls.qpc"
+
+project "itemtest_lib" "utils/itemtest_lib/itemtest_lib.qpc"
+
+project "ivp_physics" "ivp/ivp_physics/ivp_physics.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "jpeglib" "utils/jpeglib/jpeglib.qpc" [$WINDOWS$ || $POSIX$]
+
+project "kvc" "utils/kvc/kvc.qpc" [$WINDOWS$]
+
+project "launcher" "launcher/launcher.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "launcher_main" "launcher_main/launcher_main.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "LicenseViewed" "devtools/WiseInstallerHelpers/LicenseViewed.qpc" [$WINDOWS$]
+
+project "localization_check" "utils/localization_check/localization_check.qpc" [$WINDOWS$]
+
+project "localresource" "shell/localresource/localresource.qpc" [$WINDOWS$]
+
+project "lxVsDmxIO_Modo302" "sdktools/modo/lxVsDmxIO/lxVsDmxIO_modo302.qpc" [$WINDOWS$]
+
+project "lua" "lua/lua.qpc" [$WINDOWS$]
+
+project "lzma" "utils/lzma/lzma.qpc"
+
+project "MakeGameData" "utils/xbox/MakeGameData/MakeGameData.qpc" [$WINDOWS$]
+
+project "MakeScenesImage" "utils/xbox/MakeGameData/MakeScenesImage.qpc" [$WINDOWS$]
+
+project "makephx" "utils/xbox/makephx/makephx.qpc" [$WINDOWS$]
+
+project "makexcs" "utils/xbox/makexcs/makexcs.qpc" [$WINDOWS$]
+
+project "makextf" "utils/xbox/makextf/makextf.qpc" [$WINDOWS$]
+
+project "makexvcd" "utils/xbox/makexvcd/makexvcd.qpc" [$WINDOWS$]
+
+project "makexzip" "utils/xbox/makexzip/makexzip.qpc" [$WINDOWS$]
+
+project "materialsystem" "materialsystem/materialsystem.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "materialsystemtest" "unittests/materialsystemtest/materialsystemtest.qpc" [$WINDOWS$]
+
+project "mathlib" "mathlib/mathlib.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "matsys_controls" "vgui2/matsys_controls/matsys_controls.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "matsys_regressiontest" "utils/matsys_regressiontest/matsys_regressiontest.qpc" [$WINDOWS$]
+
+project "mdlcheck" "utils/mdlcheck/mdlcheck.qpc" [$WINDOWS$]
+
+project "mdlinfo" "utils/mdlinfo/mdlinfo.qpc" [$WINDOWS$]
+
+project "mdmpRipper" "utils/mdmpRipper/mdmpRipper.qpc" [$WINDOWS$]
+
+project "mkentitypatch" "utils/mkentitypatch/mkentitypatch.qpc" [$WINDOWS$]
+
+project "mksheet" "utils/mksheet/mksheet.qpc" [$WINDOWS$]
+
+project "modelbrowser" "utils/modelbrowser/modelbrowser.qpc" [$WINDOWS$]
+
+project "modelcheckin" "utils/modelcheckin/modelcheckin.qpc" [$WINDOWS$]
+
+project "motionmapper" "utils/motionmapper/motionmapper.qpc" [$WINDOWS$]
+
+project "mdlobjects" "mdlobjects/mdlobjects.qpc" [$WINDOWS$]
+
+project "movieobjects" "movieobjects/movieobjects.qpc" [$WINDOWS$]
+
+project "mxtoolkitwin32" "utils/mxtk/mxtoolkitwin32.qpc" [$WINDOWS$]
+
+project "mysql_wrapper" "utils/vmpi_private/mysql_wrapper/mysql_wrapper.qpc" [$WINDOWS$]
+
+project "networksystem" "networksystem/networksystem.qpc" [$WINDOWS$]
+
+project "networktest" "unittests/networktest/networktest.qpc" [$WINDOWS$]
+
+project "newdat" "utils/newdat/newdat.qpc" [$WINDOWS$]
+
+project "normal2ssbump" "utils/normal2ssbump/normal2ssbump.qpc" [$WINDOWS$]
+
+project "nvtristriplib" "utils/nvtristriplib/nvtristriplib.qpc" [$WINDOWS$]
+
+project "p4lib" "p4lib/p4lib.qpc" [$WINDOWS$]
+
+project "mdllib" "mdllib/mdllib.qpc" [$WINDOWS$]
+
+project "paginate" "utils/paginate/paginate.qpc" [$WINDOWS$]
+
+project "panel_zoo" "utils/vgui_panel_zoo/panel_zoo.qpc" [$WINDOWS$ || $POSIX$]
+
+project "pcffix" "utils/pcffix/pcffix.qpc" [$WINDOWS$]
+
+project "perftest" "vphysics/perftest/perftest.qpc" [$WINDOWS$]
+
+project "pet" "tools/pet/pet.qpc" [$WINDOWS$]
+
+project "pfmcomp" "utils/pfmcomp/pfmcomp.qpc" [$WINDOWS$]
+
+project "pfm2tgas" "utils/pfm2tgas/pfm2tgas.qpc" [$WINDOWS$]
+
+project "phonemeextractor" "utils/phonemeextractor/phonemeextractor.qpc" [$WINDOWS$]
+
+project "phonemeextractor_ims" "utils/phonemeextractor/phonemeextractor_ims.qpc" [$WINDOWS$]
+
+project "printbones" "utils/printbones/printbones.qpc" [$WINDOWS$]
+
+project "processgamestats" "devtools/processgamestats/processgamestats.qpc" [$WINDOWS$]
+
+project "psdinfo" "utils/psdinfo/psdinfo.qpc" [$WINDOWS$]
+
+project "QCGenerator_Launcher" "utils/QCGenerator/QCGenerator_Launcher.qpc" [$WINDOWS$]
+
+project "qc_eyes" "utils/qc_eyes/qc_eyes.qpc" [$WINDOWS$]
+
+project "quantize" "quantize/quantize.qpc" [$WINDOWS$]
+
+project "raytrace" "raytrace/raytrace.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "replay" "replay/replay.qpc" [$WINDOWS$ || $POSIX$]
+
+project "replay_common" "replay/common/replay_common.qpc" [$WINDOWS$ || $POSIX$]
+
+project "res2c" "utils/tfstats/res2c/res2c.qpc" [$WINDOWS$]
+
+project "rpt" "utils/rpt/rpt.qpc" [$WINDOWS$]
+
+project "rt_test" "unittests/rt_test/rt_test.qpc" [$WINDOWS$]
+
+project "runme" "utils/runme/runme.qpc" [$WINDOWS$]
+
+project "sampletool" "tools/sampletool/sampletool.qpc" [$WINDOWS$]
+
+project "scenefilecache" "scenefilecache/scenefilecache.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "scenemanager" "utils/scenemanager/scenemanager.qpc" [$WINDOWS$]
+
+project "sceneviewer" "utils/sceneviewer/sceneviewer.qpc" [$WINDOWS$]
+
+project "scratchpad3dviewer" "utils/scratchpad3dviewer/scratchpad3dviewer.qpc" [$WINDOWS$]
+
+project "SDKLauncher" "sdklauncher/SDKLauncher.qpc" [$WINDOWS$]
+
+project "ServerBrowser" "serverbrowser/ServerBrowser.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "ServerMonitor" "Tracker/ServerMonitor/ServerMonitor.qpc" [$WINDOWS$]
+
+project "serverplugin_empty" "utils/serverplugin_sample/serverplugin_empty.qpc" [$WINDOWS$ || $POSIX$]
+
+project "sfmgen" "utils/sfmgen/sfmgen.qpc" [$WINDOWS$]
+
+project "sfmobjects" "sfmobjects/sfmobjects.qpc" [$WINDOWS$]
+
+project "shadercompile_dll" "utils/shadercompile/shadercompile_dll.qpc" [$WINDOWS$]
+
+project "shadercompile_launcher" "utils/shadercompile_launcher/shadercompile_launcher.qpc" [$WINDOWS$]
+
+project "remoteshadercompile" "utils/remoteshadercompile/remoteshadercompile.qpc" [$WINDOWS$]
+
+project "shaderapidx9" "materialsystem/shaderapidx9/shaderapidx9.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "togl" "togl/togl.qpc" [$GL$]
+
+project "shaderapidx10" "materialsystem/shaderapidx9/shaderapidx10.qpc" [$WINDOWS$]
+
+project "shaderapiempty" "materialsystem/shaderapiempty/shaderapiempty.qpc" [$WINDOWS$ || $POSIX$]
+
+project "shaderapigl" "materialsystem/shaderapigl/shaderapigl.qpc" [$WINDOWS$ || $POSIX$]
+
+project "shaderapitest" "unittests/shaderapitest/shaderapitest.qpc" [$WINDOWS$]
+
+project "shaderinfo" "utils/shaderinfo/shaderinfo.qpc" [$WINDOWS$]
+
+project "shaderlib" "materialsystem/shaderlib/shaderlib.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "shader_nvfx" "materialsystem/stdshaders/shader_nvfx.qpc" [$WINDOWS$]
+
+project "shader_test" "materialsystem/stdshaders/shader_test.qpc" [$WINDOWS$]
+
+project "SMDExportMP" "utils/xsi/SMDExportMP/SMDExportMP.qpc" [$WINDOWS$]
+
+project "smdlexp" "utils/smdlexp/smdlexp.qpc" [$WINDOWS$]
+
+project "smp" "utils/smp/smp.qpc" [$WINDOWS$]
+
+project "smtpmail" "devtools/smtpmail/smtpmail.qpc" [$WINDOWS$]
+
+project "socket_tests" "utils/socket_tests/socket_tests.qpc" [$WINDOWS$]
+
+project "soundemittersystem" "soundemittersystem/soundemittersystem.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "soundsystem" "soundsystem/soundsystem.qpc" [$WINDOWS$]
+
+project "soundtest" "unittests/soundtest/soundtest.qpc" [$WINDOWS$]
+
+project "sourcevr" "sourcevr/sourcevr.qpc"
+
+project "vaudio_speex" "engine/voice_codecs/speex/vaudio_speex.qpc" [$WINDOWS$ || $POSIX$]
+
+project "vaudio_celt" "engine/voice_codecs/celt/vaudio_celt.qpc" [$WINDOWS$ || $POSIX$]
+
+project "splitskybox" "utils/splitskybox/splitskybox.qpc" [$WINDOWS$]
+
+project "sqldb_mysql" "Tracker/sqldb_mysql/sqldb_mysql.qpc" [$WINDOWS$]
+
+project "sqlwrapper" "utils/sqlwrapper/sqlwrapper.qpc" [$WINDOWS$]
+
+project "standalonedatatabletest" "utils/standalonedatatabletest/standalonedatatabletest.qpc" [$WINDOWS$]
+
+project "Status" "status/Status.qpc" [$WINDOWS$]
+
+project "stdshader_dbg" "materialsystem/stdshaders/stdshader_dbg.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "stdshader_dx6" "materialsystem/stdshaders/stdshader_dx6.qpc" [$WINDOWS$]
+
+project "stdshader_dx7" "materialsystem/stdshaders/stdshader_dx7.qpc" [$WINDOWS$]
+
+project "stdshader_dx8" "materialsystem/stdshaders/stdshader_dx8.qpc" [$WINDOWS$]
+
+project "stdshader_dx9" "materialsystem/stdshaders/stdshader_dx9.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "SteamBackup" "SteamBackup/SteamBackup.qpc" [$WINDOWS$]
+
+project "SteamDebugHelper" "utils/SteamDebugHelper/SteamDebugHelper.qpc" [$WINDOWS$]
+
+project "SteamUI" "SteamUI/SteamUI.qpc" [$WINDOWS$]
+
+project "studiomdl" "utils/studiomdl/studiomdl.qpc" [$WINDOWS$]
+
+project "studiorender" "studiorender/studiorender.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "SymbolStoreUpdate" "utils/SymbolStoreUpdate/SymbolStoreUpdate.qpc" [$WINDOWS$]
+
+project "syncfrommirror" "devtools/syncfrommirror/syncfrommirror.qpc" [$WINDOWS$]
+
+project "tagbuild" "devtools/tagbuild/tagbuild.qpc" [$WINDOWS$]
+
+project "tagxzppreload" "utils/xbox/tagxzppreload/tagxzppreload.qpc" [$WINDOWS$]
+
+project "test_binaries" "devtools/test_binaries/test_binaries.qpc" [$WINDOWS$]
+
+project "testprocess" "unittests/testprocess/testprocess.qpc" [$WINDOWS$]
+
+project "texturecompile_dll" "utils/texturecompile/texturecompile_dll.qpc" [$WINDOWS$]
+
+project "texturecompile_launcher" "utils/texturecompile_launcher/texturecompile_launcher.qpc" [$WINDOWS$]
+
+project "texturesynth" "utils/Texturesynth/texturesynth.qpc" [$WINDOWS$]
+
+project "tfstats" "utils/tfstats/tfstats.qpc" [$WINDOWS$]
+
+project "tgadiff" "utils/tgadiff/tgadiff.qpc" [$WINDOWS$]
+
+project "tgamse" "utils/tgamse/tgamse.qpc" [$WINDOWS$]
+
+project "tier0" "tier0/tier0.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "tier1" "tier1/tier1.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "tier2" "tier2/tier2.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "tier3" "tier3/tier3.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "tier1test" "unittests/tier1test/tier1test.qpc" [$WINDOWS$]
+
+project "tier2test" "unittests/tier2test/tier2test.qpc" [$WINDOWS$]
+
+project "tier3test" "unittests/tier3test/tier3test.qpc" [$WINDOWS$]
+
+project "toolutils" "tools/toolutils/toolutils.qpc" [$WINDOWS$]
+
+project "traceperf" "vphysics/traceperf/traceperf.qpc"
+
+project "ui" "utils/tfstats/ui/ui.qpc" [$WINDOWS$]
+
+project "unicode" "unicode/unicode.qpc" [$WINDOWS$]
+
+project "uninstall" "shell/uninstall/uninstall.qpc" [$WINDOWS$]
+
+project "unitlib" "unitlib/unitlib.qpc" [$WINDOWS$]
+
+project "unittest" "utils/unittest/unittest.qpc" [$WINDOWS$]
+
+project "unusedcontent" "utils/unusedcontent/unusedcontent.qpc" [$WINDOWS$]
+
+project "UpdateProgress" "devtools/WiseInstallerHelpers/UpdateProgress/UpdateProgress.qpc" [$WINDOWS$]
+
+project "valvelib" "utils/valvelib/valvelib.qpc" [$WINDOWS$]
+
+project "video_services" "video/video_services.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "valvemaya_maya2009" "sdktools/maya/valveMaya/valveMaya_Maya2009.qpc" [$WINDOWS$]
+
+project "valvemaya_maya2010" "sdktools/maya/valvemaya/valvemaya_maya2010.qpc" [$WINDOWS$]
+
+project "valvemaya_maya2011" "sdktools/maya/valvemaya/valvemaya_maya2011.qpc" [$WINDOWS$]
+
+project "valvemaya_maya2012" "sdktools/maya/valvemaya/valvemaya_maya2012.qpc" [$WINDOWS$]
+
+project "valvemaya_maya2013" "sdktools/maya/valvemaya/valvemaya_maya2013.qpc" [$WINDOWS$]
+
+project "valvepython_python2.5" "sdktools/python/valvePython/valvePython_python2.5.qpc" [$WINDOWS$]
+
+project "vaudio_miles" "engine/voice_codecs/miles/vaudio_miles.qpc" [$WINDOWS$ || $POSIX$]
+
+project "vbsp" "utils/vbsp/vbsp.qpc" [$WINDOWS$]
+
+project "vbspinfo" "utils/vbspinfo/vbspinfo.qpc" [$WINDOWS$]
+
+project "vcd_sound_check" "utils/vcd_sound_check/vcd_sound_check.qpc" [$WINDOWS$]
+
+project "vcdblock" "tools/vcdblock/vcdblock.qpc" [$WINDOWS$]
+
+project "vcdimport" "utils/vcdimport/vcdimport.qpc" [$WINDOWS$]
+
+project "vcdupdate" "utils/vcdupdate/vcdupdate.qpc" [$WINDOWS$]
+
+project "vconfig" "utils/vconfig/vconfig.qpc" [$WINDOWS$]
+
+project "vcrtrace" "utils/vcrtrace/vcrtrace.qpc" [$WINDOWS$]
+
+project "video_bink" "video/video_bink.qpc" [($WINDOWS$ || $LINUX$)]
+
+project "video_quicktime" "video/video_quicktime.qpc" [$WINDOWS$ || $OSX$]
+
+project "video_webm" "video/video_webm.qpc" [$LINUX$]
+
+project "vguimatsurface" "vguimatsurface/vguimatsurface.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vgui_controls" "vgui2/vgui_controls/vgui_controls.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vgui_dll" "vgui2/src/vgui_dll.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vgui_surfacelib" "vgui2/vgui_surfacelib/vgui_surfacelib.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vice" "utils/vice/vice.qpc" [$WINDOWS$]
+
+project "vkeyedit" "utils/vkeyedit/vkeyedit.qpc" [$WINDOWS$]
+
+project "vlocalize" "vgui2/vlocalize/vlocalize.qpc" [$WINDOWS$]
+
+project "vmf_tweak" "utils/vmf_tweak/vmf_tweak.qpc" [$WINDOWS$]
+
+project "vmpi" "utils/vmpi/vmpi.qpc" [$WINDOWS$]
+
+project "vmpi_job_search" "utils/vmpi/vmpi_job_search/vmpi_job_search.qpc" [$WINDOWS$]
+
+project "vmpi_job_watch" "utils/vmpi/vmpi_job_watch/vmpi_job_watch.qpc" [$WINDOWS$]
+
+project "vmpi_services_watch" "utils/vmpi/vmpi_services_watch/vmpi_services_watch.qpc" [$WINDOWS$]
+
+project "vmpi_service" "utils/vmpi/vmpi_service/vmpi_service.qpc" [$WINDOWS$]
+
+project "vmpi_transfer" "utils/vmpi/vmpi_transfer/vmpi_transfer.qpc" [$WINDOWS$]
+
+project "vmpi_service_install" "utils/vmpi/vmpi_service_install/vmpi_service_install.qpc" [$WINDOWS$]
+
+project "vmpi_service_ui" "utils/vmpi/vmpi_service_ui/vmpi_service_ui.qpc" [$WINDOWS$]
+
+project "vmt" "tools/vmt/vmt.qpc" [$WINDOWS$]
+
+project "vmtcheck" "utils/vmtcheck/vmtcheck.qpc" [$WINDOWS$]
+
+project "vmtedit" "utils/vmtedit/vmtedit.qpc" [$WINDOWS$]
+
+project "voice_tweak" "utils/voice_tweak/voice_tweak.qpc" [$WINDOWS$]
+
+project "vp_python2.5" "sdktools/python/vp/vp_python2.5.qpc" [$WINDOWS$]
+
+project "vp4" "utils/vp4/vp4.qpc" [$WINDOWS$]
+
+project "vp4mutex" "utils/vp4mutex/vp4mutex.qpc" [$WINDOWS$]
+
+project "vpccrccheck" "utils/vpccrccheck/vpccrccheck.qpc" [$WINDOWS$]
+
+project "vphysics" "vphysics/vphysics.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vpk" "utils/vpk/vpk.qpc" [$WINDOWS$ || $LINUX$ || $OSX$]
+
+project "vpklib" "vpklib/vpklib.qpc"
+
+project "vrad_dll" "utils/vrad/vrad_dll.qpc" [$WINDOWS$]
+
+project "vrad_launcher" "utils/vrad_launcher/vrad_launcher.qpc" [$WINDOWS$]
+
+project "vs_python2.5" "sdktools/python/vs/vs_python2.5.qpc" [$WINDOWS$]
+
+project "vsblendeditor_maya2009" "sdktools/maya/vsblendeditor/vsblendeditor_maya2009.qpc" [$WINDOWS$]
+
+project "vsdmxio_maya2009" "sdktools/maya/vsdmxio/vsdmxio_Maya2009.qpc" [$WINDOWS$]
+
+project "vsdmxio_maya2010" "sdktools/maya/vsdmxio/vsdmxio_maya2010.qpc" [$WINDOWS$]
+
+project "vsdmxio_maya2011" "sdktools/maya/vsdmxio/vsdmxio_maya2011.qpc" [$WINDOWS$]
+
+project "vsdmxio_maya2012" "sdktools/maya/vsdmxio/vsdmxio_maya2012.qpc" [$WINDOWS$]
+
+project "vsdmxio_maya2013" "sdktools/maya/vsdmxio/vsdmxio_maya2013.qpc" [$WINDOWS$]
+
+project "vslib_python2.5" "sdktools/python/vs/vslib_python2.5.qpc" [$WINDOWS$]
+
+project "vsmaster_maya2009" "sdktools/maya/vsmaster/vsmaster_maya2009.qpc" [$WINDOWS$]
+
+project "vsmaster_maya2010" "sdktools/maya/vsmaster/vsmaster_maya2010.qpc" [$WINDOWS$]
+
+project "vsmaster_maya2011" "sdktools/maya/vsmaster/vsmaster_maya2011.qpc" [$WINDOWS$]
+
+project "vsmaster_maya2012" "sdktools/maya/vsmaster/vsmaster_maya2012.qpc" [$WINDOWS$]
+
+project "vsmaster_maya2013" "sdktools/maya/vsmaster/vsmaster_maya2013.qpc" [$WINDOWS$]
+
+project "vsmdlio_maya2009" "sdktools/maya/vsmdlio/vsmdlio_maya2009.qpc" [$WINDOWS$]
+
+project "vsmdlio_maya2010" "sdktools/maya/vsmdlio/vsmdlio_maya2010.qpc" [$WINDOWS$]
+
+project "vsmdlio_maya2011" "sdktools/maya/vsmdlio/vsmdlio_maya2011.qpc" [$WINDOWS$]
+
+project "vsmdlio_maya2012" "sdktools/maya/vsmdlio/vsmdlio_maya2012.qpc" [$WINDOWS$]
+
+project "vsmdlio_maya2013" "sdktools/maya/vsmdlio/vsmdlio_maya2013.qpc" [$WINDOWS$]
+
+project "coroutine_osx" "vstdlib/coroutine_osx.qpc" [$OSX$]
+
+project "vstdlib" "vstdlib/vstdlib.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vstutils_maya2009" "sdktools/maya/vstutils/vstutils_maya2009.qpc" [$WINDOWS$]
+
+project "vstutils_maya2010" "sdktools/maya/vstutils/vstutils_maya2010.qpc" [$WINDOWS$]
+
+project "vstutils_maya2011" "sdktools/maya/vstutils/vstutils_maya2011.qpc" [$WINDOWS$]
+
+project "vstutils_maya2012" "sdktools/maya/vstutils/vstutils_maya2012.qpc" [$WINDOWS$]
+
+project "vstutils_maya2013" "sdktools/maya/vstutils/vstutils_maya2013.qpc" [$WINDOWS$]
+
+project "vstSmdIO_maya2009" "sdktools/maya/vstSmdIO/vstSmdIO_maya2009.qpc" [$WINDOWS$]
+
+project "vstsmdio_maya2010" "sdktools/maya/vstsmdio/vstsmdio_maya2010.qpc" [$WINDOWS$]
+
+project "vstsmdio_maya2011" "sdktools/maya/vstsmdio/vstsmdio_maya2011.qpc" [$WINDOWS$]
+
+project "vstsmdio_maya2012" "sdktools/maya/vstsmdio/vstsmdio_maya2012.qpc" [$WINDOWS$]
+
+project "vstsmdio_maya2013" "sdktools/maya/vstsmdio/vstsmdio_maya2013.qpc" [$WINDOWS$]
+
+project "vsvmfio_maya2009" "sdktools/maya/vsvmfio/vsvmfio_maya2009.qpc" [$WINDOWS$]
+
+project "vsvmfio_maya2010" "sdktools/maya/vsvmfio/vsvmfio_maya2010.qpc" [$WINDOWS$]
+
+project "vsvmfio_maya2011" "sdktools/maya/vsvmfio/vsvmfio_maya2011.qpc" [$WINDOWS$]
+
+project "vsvmfio_maya2012" "sdktools/maya/vsvmfio/vsvmfio_maya2012.qpc" [$WINDOWS$]
+
+project "vsvmfio_maya2013" "sdktools/maya/vsvmfio/vsvmfio_maya2013.qpc" [$WINDOWS$]
+
+project "vstOverlap_maya2009" "sdktools/maya/vstOverlap/vstOverlap_Maya2009.qpc" [$WINDOWS$]
+
+project "vstoverlap_maya2010" "sdktools/maya/vstoverlap/vstoverlap_maya2010.qpc" [$WINDOWS$]
+
+project "vstoverlap_maya2011" "sdktools/maya/vstoverlap/vstoverlap_maya2011.qpc" [$WINDOWS$]
+
+project "vstoverlap_maya2012" "sdktools/maya/vstoverlap/vstoverlap_maya2012.qpc" [$WINDOWS$]
+
+project "vtaexp" "utils/vtaexp/vtaexp.qpc" [$WINDOWS$]
+
+project "vtex_dll" "utils/vtex/vtex_dll.qpc" [$WINDOWS$ || $POSIX$]
+
+project "vtex_launcher" "utils/vtex/vtex_launcher.qpc" [$WINDOWS$]
+
+project "vtf" "vtf/vtf.qpc" [$WINDOWS$ || $X360$ || $POSIX$]
+
+project "vtf2tga" "utils/vtf2tga/vtf2tga.qpc" [$WINDOWS$ || $POSIX$]
+
+project "vtfdiff" "utils/vtfdiff/vtfdiff.qpc" [$WINDOWS$]
+
+project "vtfscrew" "utils/vtfscrew/vtfscrew.qpc" [$WINDOWS$]
+
+project "vvis_dll" "utils/vvis/vvis_dll.qpc" [$WINDOWS$]
+
+project "vvis_launcher" "utils/vvis_launcher/vvis_launcher.qpc" [$WINDOWS$]
+
+project "vweightexp" "utils/vweightexp/vweightexp.qpc" [$WINDOWS$]
+
+project "vxbdm" "utils/xbox/vxbdm/vxbdm.qpc" [$X360$]
+
+project "vxconsole" "utils/xbox/vxconsole/vxconsole.qpc" [$WINDOWS$]
+
+project "WaitAndRestart" "utils/vmpi/WaitAndRestart/WaitAndRestart.qpc" [$WINDOWS$]
+
+project "xbox_loader" "utils/xbox/xbox_loader/xbox_loader.qpc" [$WINDOWS$]
+
+project "xbspinfo" "utils/xbox/xbspinfo/xbspinfo.qpc" [$WINDOWS$]
+
+project "xcompress" "utils/xbox/xcompress/xcompress.qpc" [$WINDOWS$]
+
+project "xwad" "utils/xwad/xwad.qpc" [$WINDOWS$]
+
+project "ZipAlign" "utils/zipalign/ZipAlign.qpc" [$WINDOWS$]
+
+project "socketlib" "socketlib/socketlib.qpc" [$WINDOWS$]
+
+project "zlib" "thirdparty/zlib-1.2.5/zlib.qpc" [$WINDOWS$]
+

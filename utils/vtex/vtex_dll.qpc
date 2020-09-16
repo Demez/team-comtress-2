@@ -1,0 +1,64 @@
+// ---------------------------------------------------------------
+// vtex_dll.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vtex_dll"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		out_dir "./Debug_dll" [$WINDOWS$ && $DEBUG$]
+		out_dir "./Release_dll" [$WINDOWS$ && $RELEASE$]
+		build_dir "./Debug_dll" [$WINDOWS$ && $DEBUG$]
+		build_dir "./Release_dll" [$WINDOWS$ && $RELEASE$]
+	}
+	
+	compile
+	{
+		defines
+		{
+			"VTEX_DLL"
+			"VTEX_DLL_EXPORTS"
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"bitmap"
+			"mathlib"
+			"tier2"
+			"vtf"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../common/cmdlib.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+		"vtex.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/ivtex.h"
+	}
+}

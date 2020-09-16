@@ -1,0 +1,49 @@
+// ---------------------------------------------------------------
+// shaderapiempty.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "shaderapiempty"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SHADER_DLL_EXPORT"
+			"PROTECTED_THINGS_ENABLE"
+		}
+		
+		inc_dirs
+		{
+			"../"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"shaderapiempty.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/platform.h"
+	}
+}

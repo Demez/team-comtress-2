@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------
+// pfmcomp.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Pfmcomp"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/chunkfile.cpp"
+		"../common/scriplib.cpp"
+		"$SRCDIR$/public/collisionutils.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"$SRCDIR$/public/ScratchPadUtils.cpp"
+		"../common/cmdlib.cpp"
+		"../common/filesystem_tools.cpp"
+		"pfmcomp.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/utlsymbol.h"
+	}
+}

@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------
+// source_lib_base.qpc
+// ---------------------------------------------------------------
+macro IS_LIB_PROJECT "1"
+
+macro OUTLIBNAME "$PROJECT_SCRIPT_NAME$"              [!$OUTLIBNAME$]
+macro OUT_NAME   "$OUTLIBNAME$"                       [!$OUT_NAME$]
+
+macro OUT_DIR "$LIBPUBLIC_CFG$" [!$OUT_DIR$]
+
+include "$SCRIPT_DIR$/source_base.qpc"
+include "$SCRIPT_DIR$/msvc/msvc_base.qpc" [$WINDOWS$]
+
+config
+{
+	general
+	{
+		config_type  "static_lib"
+	}
+}
+

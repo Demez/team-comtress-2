@@ -1,0 +1,32 @@
+// ---------------------------------------------------------------
+// avitest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Avitest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"$LIBPUBLIC$/appframework"
+			"$LIBPUBLIC$/tier2"
+			"$LIBPUBLIC$/tier3"
+			"$LIBPUBLIC$/vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"avitest.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+}

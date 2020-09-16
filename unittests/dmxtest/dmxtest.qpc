@@ -1,0 +1,67 @@
+// ---------------------------------------------------------------
+// dmxtest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dmxtest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin/unittests"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DMXTEST_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/game/shared"
+			"$SRCDIR$/utils/common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"datamodel"
+			"choreoobjects"
+			"dmserializers"
+			"mathlib"
+			"dmxloader"
+			"movieobjects"
+			"tier2"
+			"tier3"
+			"unitlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/movieobjects/dmx_to_vcd.cpp"
+		"dmxtest.cpp"
+		"dmxtest_dmeloglayers.cpp"
+		"dmxtest_vcdtodme.cpp"
+		"dmxtestarray.cpp"
+		"dmxtestdmelog.cpp"
+		"dmxtestloader.cpp"
+		"dmxtestnotify.cpp"
+		"dmxtestserialization.cpp"
+		"dmxtestundoredo.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/movieobjects/dmx_to_vcd.h"
+		"$SRCDIR$/public/interpolatortypes.h"
+	}
+}

@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------
+// bspzip.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Bspzip"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"ZIP_SUPPORT_LZMA_ENCODE"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"mathlib"
+			"tier2"
+			"$LIBCOMMON$/lzma"
+		}
+		
+		options
+		{
+			"/LARGEADDRESSAWARE" [$WIN32$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../common/bsplib.cpp"
+		"bspzip.cpp"
+		"../common/cmdlib.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+		"$SRCDIR$/public/lumpfiles.cpp"
+		"../common/scriplib.cpp"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/bspfile.h"
+		"$SRCDIR$/public/tier1/characterset.h"
+		"$SRCDIR$/public/filesystem_helpers.h"
+		"../common/filesystem_tools.h"
+		"$SRCDIR$/public/zip_utils.h"
+	}
+}

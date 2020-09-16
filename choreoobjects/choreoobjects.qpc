@@ -1,0 +1,49 @@
+// ---------------------------------------------------------------
+// choreoobjects.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "choreoobjects"
+
+macro SRCDIR ".."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../game/shared"
+			"../utils/common"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/game/shared/choreoactor.cpp"
+		"$SRCDIR$/game/shared/choreochannel.cpp"
+		"$SRCDIR$/game/shared/choreoevent.cpp"
+		"$SRCDIR$/game/shared/choreoscene.cpp"
+		"$SRCDIR$/game/shared/sceneimage.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/game/shared/choreoactor.h"
+		"$SRCDIR$/game/shared/choreochannel.h"
+		"$SRCDIR$/game/shared/choreoevent.h"
+		"$SRCDIR$/game/shared/choreoscene.h"
+		"$SRCDIR$/game/shared/ichoreoeventcallback.h"
+		"$SRCDIR$/game/shared/sceneimage.h"
+	}
+
+	folder "Public Header Files"
+	{
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+	}
+}

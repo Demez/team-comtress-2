@@ -1,0 +1,57 @@
+// ---------------------------------------------------------------
+// texturecompile_dll.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Texturecompile_dll"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"_USRDLL"
+			"TEXTURECOMPILE_EXPORTS"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/utils/common"
+			"$SRCDIR$/utils/vmpi"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"tier2"
+			"vmpi"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../common/cmdlib.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"../common/pacifier.cpp"
+		"texturecompile.cpp"
+		"../common/threads.cpp"
+		"../common/vmpi_tools_shared.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/UtlStringMap.h"
+	}
+}

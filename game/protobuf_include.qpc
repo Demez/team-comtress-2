@@ -1,0 +1,23 @@
+// ---------------------------------------------------------------
+// protobuf_include.qpc
+// ---------------------------------------------------------------
+macro PLATFORM [!$PLATFORM$]
+
+config
+{
+	link
+	{
+		libs
+		{
+			/*"$SRCDIR$/thirdparty/protobuf-2.6.1/bin/osx32/libc++/libprotobuf" [$OSX32$ && !$VS2015$]
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Release/libprotobuf" [$WIN32$ && !$VS2015$]
+			"$SRCDIR$/thirdparty/protobuf-2.6.1/bin/linux32/libprotobuf" [$LINUX32$ && !$VS2015$]
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Release/libprotobuf" "$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Debug/libprotobuf" [$WIN64$ && !$VS2015$]
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Release/libprotobuf" "$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Debug/libprotobuf" [$WIN32$ && $VS2015$]
+			"$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Release/libprotobuf" "$SRCDIR$/thirdparty/protobuf-2.5.0/vsprojects/Debug/libprotobuf" [$WIN64$ && $VS2015$]*/
+			
+			"$LIBCOMMON_CFG$/libprotobuf"
+		}
+	}
+}
+

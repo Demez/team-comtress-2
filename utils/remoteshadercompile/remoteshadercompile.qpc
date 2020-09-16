@@ -1,0 +1,46 @@
+// ---------------------------------------------------------------
+// remoteshadercompile.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "remoteshadercompile"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$SRCDIR$/dx9sdk/lib/d3dx9" [!$VS2015$]
+			"$LIBCOMMON$/d3dx9" [$VS2015$]
+			"ws2_32.lib"
+			"mathlib"
+			"tier2"
+		}
+		
+		options
+		{
+			"/ASSEMBLYDEBUG" [$DEBUG$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"remoteshadercompile.cpp"
+	}
+}

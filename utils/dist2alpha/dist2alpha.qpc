@@ -1,0 +1,59 @@
+// ---------------------------------------------------------------
+// dist2alpha.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dist2alpha"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "dist2alpha"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../common/cmdlib.cpp"
+		"dist2alpha.cpp"
+		"../common/filesystem_tools.cpp"
+	}
+
+	folder "Common Files"
+	{
+		"$SRCDIR$/public/chunkfile.cpp"
+	}
+
+	folder "Public Files"
+	{
+		"$SRCDIR$/public/collisionutils.cpp"
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"$SRCDIR$/public/ScratchPadUtils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/utlsymbol.h"
+	}
+}

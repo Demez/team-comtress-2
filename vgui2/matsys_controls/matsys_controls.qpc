@@ -1,0 +1,76 @@
+// ---------------------------------------------------------------
+// matsys_controls.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "matsys_controls"
+
+macro SRCDIR "../.."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"bitmap"
+		}
+	}
+}
+
+requires
+{
+	"bitmap"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"assetpicker.cpp"
+		"baseassetpicker.cpp"
+		"colorpickerpanel.cpp"
+		"curveeditorpanel.cpp"
+		"gamefiletreeview.cpp"
+		"manipulator.cpp"
+		"matsyscontrols.cpp"
+		"mdlpanel.cpp"
+		"mdlpicker.cpp"
+		"mdlsequencepicker.cpp"
+		"picker.cpp"
+		"potterywheelpanel.cpp"
+		"proceduraltexturepanel.cpp"
+		"QCGenerator.cpp"
+		"sequencepicker.cpp"
+		"tgapreviewpanel.cpp"
+		"vmtpicker.cpp"
+		"vmtpreviewpanel.cpp"
+		"vtfpicker.cpp"
+		"vtfpreviewpanel.cpp"
+		"vmtpanel.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/matsys_controls/assetpicker.h"
+		"$SRCDIR$/public/matsys_controls/baseassetpicker.h"
+		"$SRCDIR$/public/matsys_controls/colorpickerpanel.h"
+		"$SRCDIR$/public/matsys_controls/gamefiletreeview.h"
+		"$SRCDIR$/public/matsys_controls/manipulator.h"
+		"$SRCDIR$/public/matsys_controls/matsyscontrols.h"
+		"$SRCDIR$/public/matsys_controls/mdlpanel.h"
+		"$SRCDIR$/public/matsys_controls/mdlpicker.h"
+		"$SRCDIR$/public/matsys_controls/mdlsequencepicker.h"
+		"$SRCDIR$/public/matsys_controls/picker.h"
+		"$SRCDIR$/public/matsys_controls/potterywheelpanel.h"
+		"$SRCDIR$/public/matsys_controls/proceduraltexturepanel.h"
+		"$SRCDIR$/public/matsys_controls/QCGenerator.h"
+		"$SRCDIR$/public/matsys_controls/sequencepicker.h"
+		"$SRCDIR$/public/matsys_controls/tgapreviewpanel.h"
+		"$SRCDIR$/public/matsys_controls/vmtpicker.h"
+		"$SRCDIR$/public/matsys_controls/vmtpreviewpanel.h"
+		"$SRCDIR$/public/matsys_controls/vtfpicker.h"
+		"$SRCDIR$/public/matsys_controls/vtfpreviewpanel.h"
+		"$SRCDIR$/public/matsys_controls/vmtpanel.h"
+	}
+}

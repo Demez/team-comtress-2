@@ -1,0 +1,36 @@
+// ---------------------------------------------------------------
+// itemtest_controls.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "itemtest_controls"
+
+macro SRCDIR "../.."
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+			"ITEMUPLIB_LIB"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"itemtest_controls.cpp"
+		"dualpanellist.cpp"
+		"globalsubpanel.cpp"
+		"finalsubpanel.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/itemtest/itemtest_controls.h"
+	}
+}

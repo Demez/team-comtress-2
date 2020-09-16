@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------
+// rt_test.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "rt_test"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/unittests/rt_test"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE" [$DEBUG$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"winmm.lib" [$DEBUG$]
+			"bitmap"
+			"mathlib"
+			"raytrace"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"rt_test.cpp"
+	}
+}

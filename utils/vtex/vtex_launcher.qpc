@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------
+// vtex_launcher.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vtex_launcher"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "vtex"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"odbc32.lib"
+			"odbccp32.lib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vtex_launcher.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/ilaunchabledll.h"
+		"$SRCDIR$/public/tier1/interface.h"
+	}
+}

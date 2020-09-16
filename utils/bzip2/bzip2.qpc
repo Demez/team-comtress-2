@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// bzip2.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Bzip2"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$LIBCOMMON$"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	general
+	{
+		// language "c" [!$POSIX$]
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"blocksort.c"
+		"bzip2.c"
+		"bzlib.c"
+		"compress.c"
+		"crctable.c"
+		"decompress.c"
+		"huffman.c"
+		"randtable.c"
+	}
+
+	folder "Header Files"
+	{
+		"bzlib.h"
+		"bzlib_private.h"
+	}
+}

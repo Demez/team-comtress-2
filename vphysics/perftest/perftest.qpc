@@ -1,0 +1,62 @@
+// ---------------------------------------------------------------
+// perftest.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "perftest"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VECTOR"
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../../utils/common"
+			"../../utils/matsysapp"
+			"."
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$LIBPUBLIC$/mathlib"
+			"$LIBPUBLIC$/tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../../utils/matsysapp/matsysapp.cpp"
+		"perftest.cpp"
+
+		folder "common files"
+		{
+			"../../utils/common/cmdlib.cpp"
+			"$SRCDIR$/public/filesystem_helpers.cpp"
+			"$SRCDIR$/public/filesystem_init.cpp"
+			"../../utils/common/filesystem_tools.cpp"
+			"../../utils/common/physdll.cpp"
+			"../../utils/common/scriplib.cpp"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/vphysics_interface.h"
+		"stdafx.h"
+	}
+}

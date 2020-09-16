@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------
+// steammessages_include.qpc
+// ---------------------------------------------------------------
+macro GENERATED_PROTO_DIR [!$GENERATED_PROTO_DIR$]
+
+files
+{
+	folder "Protobuf Files"
+	{
+		"$SRCDIR$/gcsdk/steammessages.proto"
+
+		folder "Generated Files"
+		{
+			"$GENERATED_PROTO_DIR$/steammessages.pb.h"
+			"$GENERATED_PROTO_DIR$/steammessages.pb.cc" [!$OSX$]
+			{
+				pch "none"
+			}
+		}
+	}
+}

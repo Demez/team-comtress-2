@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------
+// vcdimport.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "vcdimport"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/game/shared"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"choreoobjects"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"datamodel"
+			"dmserializers"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vcdimport.cpp"
+		"$SRCDIR$/movieobjects/importintovcd.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+	}
+}

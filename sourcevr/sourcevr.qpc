@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------
+// sourcevr.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "SourceVR"
+
+macro SRCDIR ".."
+macro OUTBINDIR "../../game/bin"
+macro BINNAME "sourcevr"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"SOURCEVR_DLL"
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+		}
+		
+		pch "use"
+		pch_file "cbase.h"
+		pch_out "$(IntDir)/sourcevr.pch"
+	}
+	
+	link
+	{
+		ignore_import_lib "true"
+		
+		libs
+		{
+			"openvr_api"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"appframework"
+			"steam_api"
+		}
+	}
+}
+
+requires
+{
+	"filesystem_stdio"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		folder "Precompiled Header"
+		{
+			"$SRCDIR$/sourcevr/stdafx.cpp"
+			{
+				pch "create"
+			}
+
+			"$SRCDIR$/sourcevr/cbase.h"
+		}
+
+		folder "Public Headers"
+		{
+			"$SRCDIR$/public/sourcevr/isourcevirtualreality.h"
+			"$SRCDIR$/public/openvr/openvr.h"
+		}
+
+		"$SRCDIR$/sourcevr/sourcevirtualreality.h"
+		"$SRCDIR$/sourcevr/sourcevirtualreality.cpp"
+	}
+}

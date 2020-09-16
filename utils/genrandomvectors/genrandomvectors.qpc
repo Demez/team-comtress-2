@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------
+// genrandomvectors.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Genrandomvectors"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"genrandomvectors.cpp"
+	}
+}

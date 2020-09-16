@@ -1,0 +1,25 @@
+// ---------------------------------------------------------------
+// nvtristriplib.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "NVTriStripLib"
+
+macro SRCDIR "../.."
+macro OUTLIBNAME "nvtristrip"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+files
+{
+	folder "Source Files"
+	{
+		"NvTriStrip.cpp"
+		"NvTriStripObjects.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"NvTriStrip.h"
+		"NvTriStripObjects.h"
+		"VertexCache.h"
+	}
+}

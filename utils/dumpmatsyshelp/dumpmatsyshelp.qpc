@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// dumpmatsyshelp.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dumpmatsyshelp"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"dumpmatsyshelp.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"../common/filesystem_tools.cpp"
+	}
+}

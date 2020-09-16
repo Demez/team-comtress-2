@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------
+// waitandrestart.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "WaitAndRestart"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro OUTBINNAME "WaitAndRestart"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"WaitAndRestart.cpp"
+	}
+
+	folder "Header Files"
+	{
+	}
+}

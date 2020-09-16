@@ -1,0 +1,24 @@
+// ---------------------------------------------------------------
+// gcschema_portal.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "schema (PORTAL)"
+
+macro SRCDIR "../.."
+macro OUTLIBDIR "$SRCDIR$/lib/game/portal"
+macro $_STATICLIB_EXT$ ".lib"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	pre_build
+	{
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\game\shared\portal\portal_gcschema.h $SRCDIR$"
+		"call $SRCDIR$\vpc_scripts\valve_p4_edit.cmd $SRCDIR$\game\shared\portal\portal_gcschema.cpp $SRCDIR$"
+	}
+}
+
+files
+{
+	"portal/portal_gcschema.sch"
+}

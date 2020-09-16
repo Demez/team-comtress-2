@@ -1,0 +1,56 @@
+// ---------------------------------------------------------------
+// networksystem.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Networksystem"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"NETWORKSYSTEM_EXPORTS"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"winmm.lib"
+			"ws2_32.lib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"netchannel.cpp"
+		"netchannel.h"
+		"networkclient.cpp"
+		"networkclient.h"
+		"networkserver.cpp"
+		"networkserver.h"
+		"networksystem.cpp"
+		"networksystem.h"
+		"sm_protocol.h"
+		"udp_process.cpp"
+		"udp_process.h"
+		"udp_socket.cpp"
+		"udp_socket.h"
+	}
+
+	folder "Interface"
+	{
+		"$SRCDIR$/common/networksystem/inetworkmessage.h"
+		"$SRCDIR$/common/networksystem/inetworksystem.h"
+	}
+}

@@ -1,0 +1,46 @@
+// ---------------------------------------------------------------
+// vmpi_launch.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vmpi_launch"
+
+macro SRCDIR "../../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"./"
+			"../.."
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"../../iphelpers.cpp"
+		"StdAfx.cpp"
+		"vmpi_launch.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"StdAfx.h"
+	}
+}

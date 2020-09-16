@@ -1,0 +1,35 @@
+// ---------------------------------------------------------------
+// replay_common.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "replay_common"
+
+macro SRCDIR "../.."
+macro REPLAY_COMMON_HEADERS_TITLE "Headers"
+macro OUTLIBDIR "$LIBCOMMON$"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/dx9sdk/include" "$SRCDIR$/x360xdk/include/win32/vs2005" [$WINDOWS$]
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"replay.cpp"
+		"replaylib.cpp"
+		"basereplayserializeable.cpp"
+		"performance.cpp"
+		"replaytime.cpp"
+		"replayutils.cpp"
+		"screenshot.cpp"
+	}
+}

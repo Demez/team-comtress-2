@@ -1,0 +1,98 @@
+// ---------------------------------------------------------------
+// processgamestats.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Processgamestats"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"GAME_DLL"
+			"TF_DLL"
+			"NO_STEAM"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/utils/vmpi"
+			"$SRCDIR$/game/shared"
+			"$SRCDIR$/game/server"
+			"$SRCDIR$/game/shared/tf"
+			"$SRCDIR$/game/shared/econ"
+			"$SRCDIR$/gcsdk/steamextra"
+		}
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/public/filesystem_helpers.cpp"
+		"$SRCDIR$/public/filesystem_helpers.h"
+		"$SRCDIR$/game/server/GameStats_BasicStatsFunctions.cpp"
+		"processgamestats.cpp"
+
+		folder "Custom Stats"
+		{
+			"base_gamestats_parse.h"
+			"cs_gamestats.h"
+			"cstrike_gamestats_parse.cpp"
+			"$SRCDIR$/game/server/episodic/ep2_gamestats.h"
+			"ep2_gamestats_parse.cpp"
+			"$SRCDIR$/game/server/tf/tf_gamestats.h"
+			"tf_gamestats_parse.cpp"
+			"$SRCDIR$/game/shared/tf/tf_gamestats_shared.cpp"
+			"$SRCDIR$/game/shared/tf/tf_gamestats_shared.h"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/game/shared/gamestats.h"
+		"$SRCDIR$/public/tier0/icommandline.h"
+		"$SRCDIR$/utils/vmpi/imysqlwrapper.h"
+		"$SRCDIR$/public/tier0/memdbgoff.h"
+		"$SRCDIR$/public/tier0/memdbgon.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+	}
+
+	folder "Database Setup"
+	{
+		"cstrike_gamestats.db"
+		"portal_gamestats.db"
+		"ep1_gamestats.db"
+		"ep2_gamestats.db"
+		"tf_gamestats.db"
+	}
+}

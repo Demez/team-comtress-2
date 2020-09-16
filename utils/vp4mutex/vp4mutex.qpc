@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------
+// vp4mutex.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vp4mutex"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+macro OUTBINNAME "p4mutex"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/common/p4api"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"ws2_32.lib"
+			"$LIBCOMMON$/p4api/libclient"
+			"$LIBCOMMON$/p4api/librpc"
+			"$LIBCOMMON$/p4api/libsupp"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vp4mutex.cpp"
+	}
+}

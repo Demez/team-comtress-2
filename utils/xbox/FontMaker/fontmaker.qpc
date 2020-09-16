@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------
+// fontmaker.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "FontMaker"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/devtools/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"htmlhelp.lib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"FontMaker.cpp"
+		"FontMakerWnd.cpp"
+		"Glyphs.cpp"
+		"../toollib/piclib.cpp"
+		"../toollib/scriplib.cpp"
+		"Stdafx.cpp"
+		{
+			pch "create"
+		}
+
+		"../toollib/toollib.cpp"
+	}
+
+	folder "Resource Files"
+	{
+		"FontMaker.ico"
+		"FontMaker.rc"
+		"resource.h"
+	}
+
+	folder "Header Files"
+	{
+		"../../../public/BitmapFontFile.h"
+		"FontMaker.h"
+		"Glyphs.h"
+		"../toollib/piclib.h"
+		"../toollib/scriplib.h"
+		"Stdafx.h"
+		"../toollib/toollib.h"
+	}
+}

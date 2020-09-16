@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------
+// traceperf.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "traceperf"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"MACRO_MATHLIB"
+			"PROTECTED_THINGS_DISABLE"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+			"../vmpi"
+		}
+		
+		options
+		{
+			"/fp:precise"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"mathlib"
+			"tier2"
+			"tier3"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"stdafx.cpp"
+		"traceperf.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"stdafx.h"
+		"$SRCDIR$/public/vphysics_interface.h"
+	}
+}

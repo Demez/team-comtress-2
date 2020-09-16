@@ -1,0 +1,93 @@
+// ---------------------------------------------------------------
+// vxconsole.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "VXConsole"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_win_win32_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/x360xdk/include/win32/vs2005"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"wsock32.lib"
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"xbdm.lib"
+			"$LIBCOMMON$/jpeglib"
+		}
+		
+		lib_dirs
+		{
+			"$SRCDIR$/x360xdk/lib/win32/vs2005"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"bindings.cpp"
+		"bug.cpp"
+		"common.cpp"
+		"config.cpp"
+		"cpu_profile.cpp"
+		"exclude_paths.cpp"
+		"fileio.cpp"
+		"local_cmds.cpp"
+		"progress.cpp"
+		"remote_cmds.cpp"
+		"show_materials.cpp"
+		"show_memdump.cpp"
+		"show_sounds.cpp"
+		"show_textures.cpp"
+		"sync_files.cpp"
+		"sys_scriptlib.cpp"
+		"sys_utils.cpp"
+		"tex_profile.cpp"
+		"timestamp_log.cpp"
+		"vxconsole.cpp"
+		"assert_dialog.cpp"
+		"mem_profile.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/common/bugreporter/bugreporter.h"
+		"$SRCDIR$/common/xbox/xbox_vxconsole.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/jpeglib/jpeglib.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"resource.h"
+		"assert_resource.h"
+		"sys_scriptlib.h"
+		"sys_utils.h"
+		"vxconsole.h"
+	}
+
+	folder "Resource Files"
+	{
+		"icon_connect1.ico"
+		"icon_connect2.ico"
+		"icon_connect2a.ico"
+		"icon_disconnect.ico"
+		"vxconsole.ico"
+		"vxconsole.rc"
+		"assert_dialog.rc"
+	}
+}

@@ -1,0 +1,115 @@
+// ---------------------------------------------------------------
+// tier0.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "libprotoc"
+
+macro SRCDIR "$ROOT_DIR$"
+macro OUT_DIR "$LIBCOMMON_CFG$"
+
+include "$SRCDIR$/_qpc_scripts/source_lib_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/libprotoc"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS"
+		}
+		
+		inc_dirs
+		{
+			"src"
+			"vsprojects" [$WINDOWS$]
+		}
+		
+		options
+		{
+			"/wd4244 /wd4267 /wd4018 /wd4355 /wd4800 /wd4251 /wd4996 /wd4146 /wd4305" [$WINDOWS$]
+		}
+	}
+}
+
+files
+{
+	- "$SRCDIR$/public/tier0/memoverride.cpp"
+	
+	folder "Source Files"
+	{
+		"src/google/protobuf/compiler/code_generator.cc"
+		"src/google/protobuf/compiler/command_line_interface.cc"
+		"src/google/protobuf/compiler/cpp/cpp_enum.cc"
+		"src/google/protobuf/compiler/cpp/cpp_enum_field.cc"
+		"src/google/protobuf/compiler/cpp/cpp_extension.cc"
+		"src/google/protobuf/compiler/cpp/cpp_field.cc"
+		"src/google/protobuf/compiler/cpp/cpp_file.cc"
+		"src/google/protobuf/compiler/cpp/cpp_generator.cc"
+		"src/google/protobuf/compiler/cpp/cpp_helpers.cc"
+		"src/google/protobuf/compiler/cpp/cpp_message.cc"
+		"src/google/protobuf/compiler/cpp/cpp_message_field.cc"
+		"src/google/protobuf/compiler/cpp/cpp_primitive_field.cc"
+		"src/google/protobuf/compiler/cpp/cpp_service.cc"
+		"src/google/protobuf/compiler/cpp/cpp_string_field.cc"
+		"src/google/protobuf/compiler/java/java_doc_comment.cc"
+		"src/google/protobuf/compiler/java/java_enum.cc"
+		"src/google/protobuf/compiler/java/java_enum_field.cc"
+		"src/google/protobuf/compiler/java/java_extension.cc"
+		"src/google/protobuf/compiler/java/java_field.cc"
+		"src/google/protobuf/compiler/java/java_file.cc"
+		"src/google/protobuf/compiler/java/java_generator.cc"
+		"src/google/protobuf/compiler/java/java_helpers.cc"
+		"src/google/protobuf/compiler/java/java_message.cc"
+		"src/google/protobuf/compiler/java/java_message_field.cc"
+		"src/google/protobuf/compiler/java/java_primitive_field.cc"
+		"src/google/protobuf/compiler/java/java_service.cc"
+		"src/google/protobuf/compiler/java/java_string_field.cc"
+		"src/google/protobuf/compiler/plugin.cc"
+		"src/google/protobuf/compiler/plugin.pb.cc"
+		"src/google/protobuf/compiler/python/python_generator.cc"
+		"src/google/protobuf/compiler/subprocess.cc"
+		"src/google/protobuf/compiler/zip_writer.cc"
+	}
+	
+	folder "Header Files"
+	{
+		"src/google/protobuf/compiler/code_generator.h"
+		"src/google/protobuf/compiler/command_line_interface.h"
+		"src/google/protobuf/compiler/cpp/cpp_enum.h"
+		"src/google/protobuf/compiler/cpp/cpp_enum_field.h"
+		"src/google/protobuf/compiler/cpp/cpp_extension.h"
+		"src/google/protobuf/compiler/cpp/cpp_field.h"
+		"src/google/protobuf/compiler/cpp/cpp_file.h"
+		"src/google/protobuf/compiler/cpp/cpp_generator.h"
+		"src/google/protobuf/compiler/cpp/cpp_helpers.h"
+		"src/google/protobuf/compiler/cpp/cpp_message.h"
+		"src/google/protobuf/compiler/cpp/cpp_message_field.h"
+		"src/google/protobuf/compiler/cpp/cpp_options.h"
+		"src/google/protobuf/compiler/cpp/cpp_primitive_field.h"
+		"src/google/protobuf/compiler/cpp/cpp_service.h"
+		"src/google/protobuf/compiler/cpp/cpp_string_field.h"
+		"src/google/protobuf/compiler/java/java_doc_comment.h"
+		"src/google/protobuf/compiler/java/java_enum.h"
+		"src/google/protobuf/compiler/java/java_enum_field.h"
+		"src/google/protobuf/compiler/java/java_extension.h"
+		"src/google/protobuf/compiler/java/java_field.h"
+		"src/google/protobuf/compiler/java/java_file.h"
+		"src/google/protobuf/compiler/java/java_generator.h"
+		"src/google/protobuf/compiler/java/java_helpers.h"
+		"src/google/protobuf/compiler/java/java_message.h"
+		"src/google/protobuf/compiler/java/java_message_field.h"
+		"src/google/protobuf/compiler/java/java_primitive_field.h"
+		"src/google/protobuf/compiler/java/java_service.h"
+		"src/google/protobuf/compiler/java/java_string_field.h"
+		"src/google/protobuf/compiler/plugin.h"
+		"src/google/protobuf/compiler/plugin.pb.h"
+		"src/google/protobuf/compiler/python/python_generator.h"
+		"src/google/protobuf/compiler/subprocess.h"
+		"src/google/protobuf/compiler/zip_writer.h"
+	}
+}
+

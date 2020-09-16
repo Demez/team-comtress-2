@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------
+// mathlib_test.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "mathlib_test"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/unittests/mathlib_test"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"PROTECTED_THINGS_DISABLE" [$DEBUG$]
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"winmm.lib" [$DEBUG$]
+			"bitmap"
+			"mathlib"
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"mathlib_test.cpp"
+	}
+}

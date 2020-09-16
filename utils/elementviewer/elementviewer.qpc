@@ -1,0 +1,67 @@
+// ---------------------------------------------------------------
+// elementviewer.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Elementviewer"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"$SRCDIR$/vgui2/include"
+			"$SRCDIR$/vgui2/controls"
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"comctl32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"Rpcrt4.lib"
+			"appframework"
+			"datamodel"
+			"dmxloader"
+			"dme_controls"
+			"dmserializers"
+			"mathlib"
+			"matsys_controls"
+			"movieobjects"
+			"sfmobjects"
+			"tier3"
+			"tier2"
+			"vgui_controls"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"elementviewer.cpp"
+		"elementviewerPanel.cpp"
+		"$SRCDIR$/public/interpolatortypes.cpp"
+		"$SRCDIR$/public/interpolatortypes.h"
+		"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"../common/cmdlib.h"
+		"elementviewer.h"
+		"$SRCDIR$/public/filesystem.h"
+		"../common/FileSystem_Tools.h"
+		"$SRCDIR$/public/tier1/interface.h"
+	}
+}

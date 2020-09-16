@@ -1,0 +1,760 @@
+// ---------------------------------------------------------------
+// _groups.qpc_base
+// ---------------------------------------------------------------
+
+group "gamedlls"
+{
+}
+
+group "modo302"
+{
+	"lxVsDmxIO_Modo302"
+}
+
+group "python"
+{
+	"valvePython_python2.5"
+	"vp_python2.5"
+	"vslib_python2.5"
+	"vs_python2.5"
+}
+
+group "shaders"
+{
+	"shadercompile_dll"
+	"shadercompile_launcher"
+	"remoteshadercompile"
+	"shaderapiempty"
+	"shaderlib"
+	"stdshader_dbg"
+	"stdshader_dx6"
+	"stdshader_dx7"
+	"stdshader_dx8"
+	"stdshader_dx9"
+}
+
+group "ShaderCompile"
+{
+	"filesystem_stdio"
+	"shadercompile_dll"
+	"shadercompile_launcher"
+	"remoteshadercompile"
+	"tier0"
+	"tier1"
+	"tier2"
+	"vmpi"
+	"vstdlib"
+	"coroutine_osx"
+}
+
+group "physics"
+{
+	folder "Libraries"
+	{
+		"hk_base"
+		"hk_math"
+		"havana_constraints"
+		"ivp_compactbuilder"
+		"ivp_physics"
+	}
+	
+	"vphysics"
+}
+
+group "xbox_utils"
+{
+	"MakeGameData"
+	"VXConsole"
+	"xbspinfo"
+}
+
+
+// TODO: put all utils here
+group "utils"
+{
+	contains "core_libs"
+	
+	folder "Libraries"
+	{
+		"vpklib"
+	}
+	
+	folder "Utils"
+	{
+		folder "ShaderCompile"
+		{
+			"shadercompile_dll"
+			"shadercompile_launcher"
+			"remoteshadercompile"
+		}
+		
+		folder "Map Compiling"
+		{
+			"vbsp"
+			"vvis_dll"
+			"vvis_launcher"
+			"vrad_dll"
+			"vrad_launcher"
+		}
+		
+		folder "Assorted"
+		{
+			"protoc"
+			"bsppack"
+			"pfm2tgas"
+			"pfmcomp"
+			"hlfaceposer"
+			"hlmv"
+			"phonemeextractor"
+			"phonemeextractor_ims"
+			"psdinfo"
+			"texturecompile_dll"
+			"texturecompile_launcher"
+			"vbspinfo"
+			"vcd_sound_check"
+			"vcdblock"
+			"vcdimport"
+			"vcdupdate"
+			"vconfig"
+			"vpk"
+		}
+	}
+}
+
+
+group "game_base"
+{
+	contains "core_libs"
+	
+	folder "Libraries"
+	{
+		folder "Protobuf"
+		{
+			"libprotobuf"
+			"libprotoc"
+		}
+		
+		"bitmap"
+		"matsys_controls"
+		"bzip2"
+		"choreoobjects"
+		"datamodel"
+		"dmserializers"
+		"dmxloader"
+		"libz"
+		"lzma"
+		"mathlib"
+		"movieobjects"
+		"particles"
+		"raytrace"
+		"shaderlib"
+		"vpklib"
+		"vgui_controls"
+		"vgui_surfacelib"
+		"vtf"
+		"jpeglib"
+	}
+	
+	folder "Utils"
+	{
+		folder "Assorted"
+		{
+			"protoc"
+			"bsppack"
+		}
+	}
+	
+	folder "Game"
+	{
+		folder "VGUI"
+		{
+			"vgui_dll"
+			"vguimatsurface"
+			"gameui"
+		}
+		
+		folder "Shaders"
+		{
+			"materialsystem"
+		}
+		
+		folder "Audio"
+		{
+			"valve_avi"
+			"vaudio_miles"
+			"vaudio_speex"
+			"vaudio_celt"
+		}
+			
+		folder "Video"
+		{
+			"video_bink"
+			"video_quicktime"
+			"video_webm"
+			"video_services"
+		}
+			
+		folder "Assorted"
+		{
+			"datacache"
+			"engine"
+			"filesystem_stdio"
+			"gcsdk"
+			"inputsystem"
+			"replay"
+			"replay_common"
+			"scenefilecache"
+			"simdtest"
+			"soundemittersystem"
+			"sourcevr"
+			"studiorender"
+			"coroutine_osx"
+			"unicode"
+			
+			// "fbxutils"
+			// "vphysics"
+		}
+	}
+}
+
+
+group "game"
+{
+	contains "game_base"
+	
+	folder "Game"
+	{
+		contains "gamedlls"
+		
+		folder "Shaders"
+		{
+			"shaderapidx9"
+			"stdshader_dbg"
+			"stdshader_dx6"
+			"stdshader_dx7"
+			"stdshader_dx8"
+			"stdshader_dx9"
+			"togl"
+		}
+		
+		folder "Launchers"
+		{
+			"launcher"
+			"launcher_main"
+		}
+		
+		"ServerBrowser"
+	}
+}
+
+
+group "dedicated"
+{
+	contains "game_base"
+	
+	folder "Game"
+	{
+		contains "server"
+
+		folder "Shaders"
+		{
+			"shaderapiempty"
+		}
+		
+		folder "Launchers"
+		{
+			"dedicated"
+			"dedicated_main"
+		}
+	}
+}
+
+group "dedicated_old"
+{
+	contains "server"
+	
+	"socketlib"
+	"appframework"
+	"bitmap"
+	"bzip2"
+	"choreoobjects"
+	"coroutine_osx"
+	"datacache"
+	"dedicated"
+	"dedicated_main"
+	"dmxloader"
+	"engine"
+	"gcsdk"
+	"havana_constraints"
+	"hk_base"
+	"hk_math"
+	"ivp_compactbuilder"
+	"ivp_physics"
+	"jpeglib"
+	"lzma"
+	"materialsystem"
+	"mathlib"
+	"particles"
+	"replay"
+	"replay_common"
+	"scenefilecache"
+	"shaderapiempty"
+	"shaderlib"
+	"soundemittersystem"
+	"studiorender"
+	"tier0"
+	"tier1"
+	"tier2"
+	"tier3"
+	"unitlib"
+	"vphysics"
+	"vpklib"
+	"vstdlib"
+	"vtf"
+}
+
+group "dedicated_dll"
+{
+	"dedicated"
+}
+
+// not even close to all the libraries yet
+group "core_libs"
+{
+	folder "Libraries"
+	{
+		folder "Tiers"
+		{
+			"tier0"
+			"tier1"
+			"tier2"
+			"tier3"
+		}
+		
+		"appframework"
+		"vstdlib"
+	}
+}
+
+group "libs"
+{
+	contains "core_libs"
+	
+	folder "Libraries"
+	{
+		folder "Protobuf"
+		{
+			"libprotobuf"
+			"libprotoc"
+		}
+		
+		"bitmap"
+		"matsys_controls"
+		"bzip2"
+		"choreoobjects"
+		"datamodel"
+		"dmserializers"
+		"dmxloader"
+		"libz"
+		"lzma"
+		"mathlib"
+		"movieobjects"
+		"particles"
+		"raytrace"
+		"shaderlib"
+		"vpklib"
+		"vgui_controls"
+		"vgui_surfacelib"
+		"vtf"
+		"jpeglib"
+	}
+}
+
+group "everything"
+{
+	contains "libs"
+	contains "game"
+	contains "utils"
+	
+	"socketlib"
+	"actbusy"
+	"adminserver"
+	"appframework"
+	"bitmap"
+	"bsppack"
+	"bspzip"
+	"bugreporter"
+	"bugreporter_filequeue"
+	"bugreporter_public"
+	"bugreporter_text"
+	"bzip2"
+	"captioncompiler"
+	"cardstats"
+	"choreoobjects"
+	"classcheck"
+	"commedit"
+	"cubelight"
+	"datacache"
+	"datamodel"
+	"dbmon"
+	"dedicated"
+	"dedicated_main"
+	"dist2alpha"
+	"dme_controls"
+	"dmserializers"
+	"dmxconvert"
+	"dmxedit"
+	"dmxloader"
+	"dmxtest"
+	"dumpmatsyshelp"
+	"dxsupportclean"
+	"elementviewer"
+	"engine"
+	"ep2_deathmap"
+	"fbx2dmx"
+	"fbxutils"
+	"fgdlib"
+	"filesystem_stdio"
+	"filesystemopendialog"
+	"finddbgdll"
+	"foundry"
+	"gameevents"
+	"gameui"
+	"gcsdk"
+	"getbugs"
+	"glview"
+	"hammer_dll"
+	"hammer_launcher"
+	"haptics"
+	"havana_constraints"
+	"height2normal"
+	"height2ssbump"
+	"hk_base"
+	"hk_math"
+	"hlfaceposer"
+	"hlmv"
+	"ifm"
+	"ihvtest1"
+	"inputsystem"
+	"inputtest"
+	"itemtest_com"
+	"itemtest_lib"
+	"ivp_compactbuilder"
+	"ivp_physics"
+	"jpeglib"
+	"kvc"
+	"launcher"
+	"launcher_main"
+	"localization_check"
+	"lua"
+	"lxVsDmxIO_Modo302"
+	"lzma"
+	"makegamedata"
+	"makescenesimage"
+	"materialsystem"
+	"materialsystemtest"
+	"mathlib"
+	"matsys_controls"
+	"matsys_regressiontest"
+	"mdlcheck"
+	"mdlinfo"
+	"mdllib"
+	"mdlobjects"
+	"mkentitypatch"
+	"mksheet"
+	"modelbrowser"
+	"motionmapper"
+	"movieobjects"
+	"mxtoolkitwin32"
+	"mysql_wrapper"
+	"newdat"
+	"normal2ssbump"
+	"nvtristriplib"
+	"p4lib"
+	"paginate"
+	"panel_zoo"
+	"particles"
+	"pet"
+	"pfm2tgas"
+	"pfmcomp"
+	"phonemeextractor"
+	"phonemeextractor_ims"
+	"psdinfo"
+	"qc_eyes"
+	"raytrace"
+	"remoteshadercompile"
+	"replay"
+	"replay_common"
+	"rt_test"
+	"sampletool"
+	"scenefilecache"
+	"scenemanager"
+	"sceneviewer"
+	"scratchpad3dviewer"
+	"sdklauncher"
+	"sdktoolslib"
+	"ServerBrowser"
+	"serverplugin_empty"
+	"sfmgen"
+	"sfmobjects"
+	"shaderapidx9"
+	"shaderapiempty"
+	"shaderapitest"
+	"shadercompile_dll"
+	"shadercompile_launcher"
+	"shaderlib"
+	"simdtest"
+	"smtpmail"
+	"soundemittersystem"
+	"soundsystem"
+	"sourcevr"
+	"splitskybox"
+	"stdshader_dbg"
+	"stdshader_dx6"
+	"stdshader_dx7"
+	"stdshader_dx8"
+	"stdshader_dx9"
+	"studiomdl"
+	"studiorender"
+	"symbolstoreupdate"
+	"tagbuild"
+	"testprocess"
+	"texturecompile_dll"
+	"texturecompile_launcher"
+	"texturesynth"
+	"tgadiff"
+	"tgamse"
+	"tier0"
+	"tier1"
+	"tier1test"
+	"tier2"
+	"tier2test"
+	"tier3"
+	"tier3test"
+	"togl"
+	"toolutils"
+	"unicode"
+	"unitlib"
+	"unittest"
+	"unusedcontent"
+	"valvemaya_maya2009"
+	"valvemaya_maya2010"
+	"valvemaya_maya2011"
+	"valvemaya_maya2012"
+	"valvemaya_maya2013"
+	"valvePython_python2.5"
+	"vaudio_miles"
+	"vaudio_speex"
+	"vaudio_celt"
+	"vbsp"
+	"vbspinfo"
+	"vcd_sound_check"
+	"vcdblock"
+	"vcdimport"
+	"vcdupdate"
+	"vconfig"
+	"vgui_controls"
+	"vgui_dll"
+	"vgui_surfacelib"
+	"vguimatsurface"
+	"vice"
+	"video_bink"
+	"video_quicktime"
+	"video_webm"
+	"video_services"
+	"vlocalize"
+	"vmf_tweak"
+	"vmpi"
+	"vmpi_job_search"
+	"vmpi_job_watch"
+	"vmpi_service"
+	"vmpi_service_ui"
+	"vmpi_services_watch"
+	"vmpi_transfer"
+	"vmt"
+	"vmtcheck"
+	"vp_python2.5"
+	"vp4"
+	"vphysics"
+	"vpk"
+	"vpklib"
+	"vrad_dll"
+	"vrad_launcher"
+	"vsblendeditor_maya2009"
+	"vsdmxio_maya2009"
+	"vsdmxio_maya2010"
+	"vsdmxio_maya2011"
+	"vsdmxio_maya2012"
+	"vsdmxio_maya2013"
+	"vsmaster_maya2009"
+	"vsmaster_maya2010"
+	"vsmaster_maya2011"
+	"vsmaster_maya2012"
+	"vsmaster_maya2013"
+	"vsmdlio_maya2009"
+	"vsmdlio_maya2010"
+	"vsmdlio_maya2011"
+	"vsmdlio_maya2012"
+	"vsmdlio_maya2013"
+	"vstdlib"
+	"vstOverlap_maya2009"
+	"vstoverlap_maya2010"
+	"vstoverlap_maya2011"
+	"vstoverlap_maya2012"
+	"vstsmdio_maya2009"
+	"vstsmdio_maya2010"
+	"vstsmdio_maya2011"
+	"vstsmdio_maya2012"
+	"vstsmdio_maya2013"
+	"vstutils_maya2009"
+	"vstutils_maya2010"
+	"vstutils_maya2011"
+	"vstutils_maya2012"
+	"vstutils_maya2013"
+	"vsvmfio_maya2009"
+	"vsvmfio_maya2010"
+	"vsvmfio_maya2011"
+	"vsvmfio_maya2012"
+	"vsvmfio_maya2013"
+	"vtex_dll"
+	"vtex_launcher"
+	"vtf"
+	"vtf2tga"
+	"vtfdiff"
+	"vtfscrew"
+	"vvis_dll"
+	"vvis_launcher"
+	"libz"
+	"coroutine_osx"
+}
+
+group "port"
+{
+	"tier0"
+	"tier1"
+	"tier2"
+	"vstdlib"
+	"tier3"
+	"mathlib"
+	"appframework"
+	"dmxloader"
+	"particles"
+	"unitlib"
+	"soundemittersystem"
+	"vtf"
+	"choreoobjects"
+	"bitmap"
+	"studiorender"
+	"scenefilecache"
+	"datacache"
+	"hk_base"
+	"hk_math"
+	"havana_constraints"
+	"ivp_physics"
+	"ivp_compactbuilder"
+	"vphysics"
+	"shaderlib"
+	"shaderapiempty"
+	"materialsystem"
+	"matsys_controls"
+	"vgui_controls"
+	"vaudio_miles"
+	"vaudio_speex"
+	"vaudio_celt"
+	"engine"
+	"choreoobjects"
+	"launcher_main"
+	"launcher"
+	"filesystem_stdio"
+	"bsppack"
+	"bzip2"
+	"raytrace"
+	"jpeglib"
+	"inputsystem"
+	"vgui_surfacelib"
+	"vgui_dll"
+	"vguimatsurface"
+	contains "server"
+	"gcsdk"
+	contains "client"
+	"togl"
+	"shaderapidx9"
+	"stdshader_dx9"
+	"bugreporter_filequeue"
+	"bugreporter_public"
+	"lzma"
+	"networksystem"
+	"simdtest"
+	"lua"
+	"coroutine_osx"
+	"socketlib"
+	"gameui"
+	"replay"
+	"replay_common"
+	"ServerBrowser"
+	"sourcevr"
+	"vtex_dll"
+	"vtf"
+	"vpk"
+	"vpklib"
+	"vtf2tga"
+	"video_bink"
+	"video_quicktime"
+	"video_webm"
+	"video_services"
+}
+
+
+group "dmxtools"
+{
+	"actbusy"
+	"commedit"
+	"ifm"
+	"pet"
+	"sampletool"
+	"toolutils"
+	"vcdblock"
+	"vmt"
+	"datamodel"
+	"dme_controls"
+	"dmserializers"
+	"dmxconvert"
+	"dmxedit"
+	"dmxtest"
+	"elementviewer"
+	"hammer_dll"
+	"hlfaceposer"
+	"lxVsDmxIO_modo302"
+	"mdlobjects"
+	"modelbrowser"
+	"movieobjects"
+	"sceneviewer"
+	"sfmgen"
+	"sfmobjects"
+	"studiomdl"
+	"vsdmxio_maya2009"
+	"vsmaster_maya2009"
+}
+
+group "gctests"
+{
+	"tier0"
+	"tier1"
+	"vstdlib"
+	"gcsdk"
+	"gcsdk_gc"
+	"gctestdll"
+	"gctestsuite"
+}
+
+group "gcsdk_all"
+{
+	"gcsdk"
+	"gcsdk_gc"
+}
+
+group "all_64"
+{
+	"gc"
+	"filesystem_stdio"
+}

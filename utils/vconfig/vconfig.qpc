@@ -1,0 +1,72 @@
+// ---------------------------------------------------------------
+// vconfig.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "VConfig"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"VERSION_SAFE_STEAM_API_INTERFACES"
+		}
+		
+		inc_dirs
+		{
+			"../common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"steam_api"
+			"tier2"
+			"tier3"
+			"vgui_controls"
+			"mathlib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"$SRCDIR$/common/ConfigManager.cpp"
+		"$SRCDIR$/common/SourceAppInfo.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"$SRCDIR$/public/registry.cpp"
+		"main.cpp"
+		"ManageGamesDialog.cpp"
+		"VConfigDialog.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/common/ConfigManager.h"
+		"../common/filesystem_tools.h"
+		"$SRCDIR$/public/tier1/KeyValues.h"
+		"ManageGamesDialog.h"
+		"resource.h"
+		"$SRCDIR$/public/tier1/utlbuffer.h"
+		"vconfig_main.h"
+		"VConfigDialog.h"
+	}
+
+	folder "Resources"
+	{
+		"icon1.ico"
+		"icon2.ico"
+		"VConfig.rc"
+	}
+}

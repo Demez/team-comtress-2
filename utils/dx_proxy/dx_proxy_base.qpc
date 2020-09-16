@@ -1,0 +1,67 @@
+// ---------------------------------------------------------------
+// dx_proxy_base.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "DX_Proxy ($DX_SDK_VER$)"
+
+macro SRCDIR [!$SRCDIR$]
+macro OUTBINDIR [!$OUTBINDIR$]
+macro DX_SDK_VER [!$DX_SDK_VER$]
+macro OUTBINNAME "dx_proxy"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		out_dir "./Debug_$DX_SDK_VER$" [$DEBUG$]
+		out_dir "./Release_$DX_SDK_VER$" [$RELEASE$]
+		build_dir "./Debug_$DX_SDK_VER$" [$DEBUG$]
+		build_dir "./Release_$DX_SDK_VER$" [$RELEASE$]
+	}
+	
+	compile
+	{
+		defines
+		{
+			"DX_PROXY_EXPORTS"
+			"$DX_SDK_VER$"
+		}
+		
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		ignore_libs
+		{
+			"libcp.lib" "libcmt.lib" [$DEBUG$]
+			"libcpd.lib" "libcmtd.lib" [$RELEASE$]
+		}
+	}
+}
+
+requires
+{
+	"vstdlib;tier1;tier0"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		- "$SRCDIR$/public/tier0/memoverride.cpp"
+		"dx_proxy.cpp"
+		"filememcache.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/common/dx_proxy/dx_proxy.h"
+		"dxincludeimpl.h"
+		"filememcache.h"
+	}
+}

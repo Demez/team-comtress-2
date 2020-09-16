@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------
+// dmxedit.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dmxedit"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		options
+		{
+			"/EHsc"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"appframework"
+			"movieobjects"
+			"datamodel"
+			"dmserializers"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"$LIBCOMMON$/lua"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"dmxedit.cpp"
+		"luamain.cpp"
+		"doit.h"
+		"winstuff.cpp"
+
+		folder "External"
+		{
+			"$SRCDIR$/public/movieobjects/movieobjects.cpp"
+			"$SRCDIR$/public/interpolatortypes.cpp"
+			"$SRCDIR$/public/interpolatortypes.h"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"dmxedit.h"
+	}
+}

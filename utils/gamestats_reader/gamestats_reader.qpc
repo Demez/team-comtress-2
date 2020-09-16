@@ -1,0 +1,45 @@
+// ---------------------------------------------------------------
+// gamestats_reader.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Gamestats_reader"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	compile
+	{
+		inc_dirs
+		{
+			"../common"
+			"../vmpi"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"$LIBPUBLIC$/bitmap"
+			"$LIBPUBLIC$/mathlib"
+			"$LIBPUBLIC$/tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"gamestats_reader.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/tier1/UtlBuffer.h"
+	}
+}

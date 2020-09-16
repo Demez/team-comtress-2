@@ -1,0 +1,149 @@
+// ---------------------------------------------------------------
+// dedicated.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Dedicated"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+include "$SRCDIR$/_qpc_scripts/source_cryptlib_include.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"DEDICATED"
+			"LAUNCHERONLY"
+			"SUPPORT_PACKED_STORE"
+		}
+		
+		inc_dirs
+		{
+			"./"
+			"$SRCDIR$/engine"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" "edit" "curses" "AppKit" [$MACOS$]
+			"vgui_controls" [$WIN32$]
+			"$SRCDIR$/thirdparty/libedit-3.1/src/.libs/libedit" [$LINUX$]
+			"SDL2" [$SDL$]
+			"wsock32.lib"
+			"odbc32.lib"
+			"odbccp32.lib"
+			"winmm.lib"
+			"appframework"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"steam_api"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"dedicated.rc"
+		"sys_linux.cpp"
+		"filesystem.cpp"
+		"$SRCDIR$/public/filesystem_init.cpp"
+		"$SRCDIR$/common/netapi.cpp"
+		"$SRCDIR$/common/SteamAppStartup.cpp"
+		"sys_common.cpp"
+		"sys_ded.cpp"
+		"sys_windows.cpp" [$WINDOWS$]
+		"sys_linux.cpp" [$POSIX$]
+		{
+			options
+			{
+				"/EHsc"
+			}
+		}
+
+		folder "Console"
+		{
+			"console/conproc.cpp"
+			"console/textconsole.cpp"
+			"console/TextConsoleUnix.cpp" [$POSIX$]
+			"console/TextConsoleWin32.cpp" [$WINDOWS$]
+		}
+
+		folder "VGUI" [$WINDOWS$]
+		{
+			"vgui/CreateMultiplayerGameServerPage.cpp"
+			"vgui/MainPanel.cpp"
+			"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+			"vgui/vguihelpers.cpp"
+		}
+
+		folder "FileSystem"
+		{
+			"$SRCDIR$/filesystem/filetracker.cpp"
+			"$SRCDIR$/filesystem/basefilesystem.cpp"
+			"$SRCDIR$/filesystem/packfile.cpp"
+			"$SRCDIR$/filesystem/filesystem_async.cpp"
+			"$SRCDIR$/filesystem/filesystem_stdio.cpp"
+			"$SRCDIR$/filesystem/QueuedLoader.cpp"
+			"$SRCDIR$/public/zip_utils.cpp"
+			"$SRCDIR$/filesystem/linux_support.cpp" [$POSIX$]
+		}
+	}
+
+	folder "Header Files"
+	{
+		"$SRCDIR$/filesystem/filetracker.h"
+		"$SRCDIR$/filesystem/threadsaferefcountedobject.h"
+		"$SRCDIR$/public/ifilelist.h"
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/tier0/commonmacros.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"dedicated.h"
+		"$SRCDIR$/public/engine_hlds_api.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/common/IAdminServer.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier0/icommandline.h"
+		"$SRCDIR$/public/idedicatedexports.h"
+		"$SRCDIR$/common/IManageServer.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"isys.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"$SRCDIR$/common/netapi.h"
+		"$SRCDIR$/common/GameUI/ObjectList.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier0/protected_things.h"
+		"$SRCDIR$/common/SteamAppStartup.h"
+		"$SRCDIR$/public/string_t.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/tier0/vcr_shared.h"
+		"$SRCDIR$/public/tier0/vcrmode.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+
+		folder "Console Headers"
+		{
+			"console/conproc.h"
+			"$SRCDIR$/common/IObjectContainer.h"
+			"console/textconsole.h"
+			"console/TextConsoleWin32.h"
+		}
+
+		folder "VGUI Headers"
+		{
+			"vgui/CreateMultiplayerGameServerPage.h"
+			"vgui/MainPanel.h"
+			"vgui/vguihelpers.h"
+		}
+	}
+}

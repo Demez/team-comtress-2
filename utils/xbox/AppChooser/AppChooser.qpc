@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------
+// AppChooser.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "AppChooser"
+
+macro SRCDIR "../../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"xaudiod.lib" "xmediad.lib" [$X360$ && $DEBUG$]
+			"xnet.lib" "xonline.lib" "xmp.lib" [$X360$]
+			"xaudio.lib" "xmedia.lib" [$X360$ && $RELEASE$]
+			"appframework"
+			"mathlib"
+			"tier2"
+			"tier3"
+			"vtf"
+			"bitmap"
+			"vgui_controls"
+			"vgui_surfacelib"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"main.cpp"
+		"$SRCDIR$/public/vgui_controls/vgui_controls.cpp"
+	}
+}

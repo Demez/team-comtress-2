@@ -1,0 +1,89 @@
+// ---------------------------------------------------------------
+// filesystem_steam.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "FileSystem_Steam"
+
+macro SRCDIR ".."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"FILESYSTEM_STDIO_EXPORTS"
+			"DONT_PROTECT_FILEIO_FUNCTIONS"
+			"PROTECTED_THINGS_ENABLE"
+			"FILESYSTEM_STEAM"
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/public"
+			"$SRCDIR$/public/tier1"
+			"$SRCDIR$/common"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"iconv" [$MACOS$]
+			"$LIBPUBLIC$/steam_api" [$WIN32$]
+			"$SRCDIR$/lib/$PLATFORM$/$_IMPLIB_PREFIXsteam$$_IMPLIB_EXT$" "$SRCDIR$/lib/$PLATFORM$/$_IMPLIB_PREFIXsteam_api$$_IMPLIB_EXT$" [$LINUX$]
+			"tier2"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"basefilesystem.cpp"
+		"packfile.cpp"
+		"filetracker.cpp"
+		"filesystem_async.cpp"
+		"filesystem_steam.cpp"
+		"linux_support.cpp" [$POSIX$]
+		"QueuedLoader.cpp"
+		"$SRCDIR$/public/kevvaluescompiler.cpp"
+		"$SRCDIR$/public/keyvaluescompiler.h"
+		"$SRCDIR$/public/zip_utils.cpp"
+	}
+
+	folder "Header Files"
+	{
+		"basefilesystem.h"
+		"packfile.h"
+		"filetracker.h"
+		"threadsaferefcountedobject.h"
+		"$SRCDIR$/public/tier0/basetypes.h"
+		"$SRCDIR$/public/bspfile.h"
+		"$SRCDIR$/public/bspflags.h"
+		"$SRCDIR$/public/mathlib/bumpvects.h"
+		"$SRCDIR$/public/tier1/characterset.h"
+		"$SRCDIR$/public/tier0/dbg.h"
+		"$SRCDIR$/public/tier0/fasttimer.h"
+		"$SRCDIR$/public/filesystem.h"
+		"$SRCDIR$/public/ifilelist.h"
+		"$SRCDIR$/public/appframework/IAppSystem.h"
+		"$SRCDIR$/public/tier1/interface.h"
+		"$SRCDIR$/public/mathlib/mathlib.h"
+		"$SRCDIR$/public/tier0/platform.h"
+		"$SRCDIR$/public/tier1/strtools.h"
+		"$SRCDIR$/public/tier1/utlmemory.h"
+		"$SRCDIR$/public/tier1/utlrbtree.h"
+		"$SRCDIR$/public/tier1/utlsymbol.h"
+		"$SRCDIR$/public/tier1/utlvector.h"
+		"$SRCDIR$/public/mathlib/vector.h"
+		"$SRCDIR$/public/mathlib/vector2d.h"
+		"$SRCDIR$/public/mathlib/vector4d.h"
+		"$SRCDIR$/public/vstdlib/vstdlib.h"
+		"$SRCDIR$/public/zip_utils.h"
+	}
+}

@@ -1,0 +1,134 @@
+// ---------------------------------------------------------------
+// stdshader_dx8.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "stdshader_dx8"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+macro DISABLE_FTOL3_OVERRIDE "1"
+
+include "$SRCDIR$/_qpc_scripts/source_dll_base.qpc"
+
+config
+{
+	general
+	{
+		build_dir "$BUILD_DIR$/dx8"
+	}
+	
+	compile
+	{
+		defines
+		{
+			"STDSHADER_DX8_DLL_EXPORT"
+			"FAST_MATERIALVAR_ACCESS"
+		}
+		
+		inc_dirs
+		{
+			"fxctmp9"
+			"vshtmp9"
+			"../../dx9sdk/include"
+		}
+	}
+	
+	link
+	{
+		libs
+		{
+			"version.lib"
+			"winmm.lib"
+			"$DX9_LIB$/d3dx9"
+			"mathlib"
+			"shaderlib"
+		}
+	}
+}
+
+requires
+{
+	"mathlib"
+	"shaderlib"
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"BaseVSShader.cpp"
+		"BlurFilterX_dx80.cpp"
+		"Bik_dx80.cpp"
+		"Bik_dx81.cpp"
+		"BlurFilterY_dx80.cpp"
+		"BufferClearObeyStencil_dx8.cpp"
+		"cable_dx8.cpp"
+		"cloak_blended_pass_dx8_helper.cpp"
+		"cloud_dx8.cpp"
+		"core_dx8.cpp"
+		"DecalBaseTimesLightmapAlphaBlendSelfIllum_dx8.cpp"
+		"detail.cpp"
+		"downsample_nohdr_dx80.cpp"
+		"dx8fallbacks.cpp"
+		"eyes.cpp"
+		"emissive_scroll_blended_pass_dx8_helper.cpp"
+		"flesh_interior_blended_pass_dx8_helper.cpp"
+		"eyes_dx8_dx9_helper.cpp"
+		"filmdust_dx8_dx9.cpp"
+		"filmgrain_dx8_dx9.cpp"
+		"gooinglass.cpp"
+		"introscreenspaceeffect_dx80.cpp"
+		"lightmappedgeneric_decal.cpp"
+		"lightmappedgeneric_dx8.cpp"
+		"modulate_dx8.cpp"
+		"MonitorScreen_dx8.cpp"
+		"occlusion_dx8.cpp"
+		"overlay_fit.cpp"
+		"particlesphere_dx8.cpp"
+		"portal_dx80.cpp"
+		"portal_refract_dx8.cpp"
+		"portal_refract_dx8_helper.cpp"
+		"portalstaticoverlay_dx80.cpp"
+		"predator.cpp"
+		"refract_dx80.cpp"
+		"screenspace_general_dx8.cpp"
+		"shadow_dx8.cpp"
+		"shadowbuild_dx8.cpp"
+		"shadowmodel_dx8.cpp"
+		"shatteredglass_dx8.cpp"
+		"sprite.cpp"
+		"spritecard.cpp"
+		"teeth_dx8.cpp"
+		"unlitgeneric_dx8.cpp"
+		"unlittwotexture_dx8.cpp"
+		"vertexlitgeneric_dx8.cpp"
+		"vortwarp_dx8.cpp"
+		"water_dx80.cpp"
+		"water_dx81.cpp"
+		"windowimposter_dx80.cpp"
+		"wireframe_dx8.cpp"
+		"worldtwotextureblend_dx8.cpp"
+		"worldvertexalpha_dx8.cpp"
+		"WorldVertexTransition_dx8.cpp"
+		"worldvertextransition_dx8_helper.cpp"
+		"writez_dx8.cpp"
+		"writestencil_dx8.cpp"
+		"yuv.cpp"
+
+		folder "Remove me when VAC2 is out"
+		{
+			"../shader_dll_verify.cpp"
+			"../shader_dll_verify.h"
+		}
+	}
+
+	folder "Header Files"
+	{
+		"eyes_dx8_dx9_helper.h"
+		"worldvertextransition_dx8_helper.h"
+		"BaseVSShader.h"
+	}
+
+	"$SRCDIR$/devtools/bin/fxc_prep.pl"
+	"$SRCDIR$/devtools/bin/vsh_prep.pl"
+	"$SRCDIR$/devtools/bin/psh_prep.pl"
+}

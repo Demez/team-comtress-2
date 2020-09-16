@@ -1,0 +1,27 @@
+// ---------------------------------------------------------------
+// source_video_base.qpc
+// ---------------------------------------------------------------
+macro GL "1" [!$DEDICATED$ && !$WIN32$ && !$WIN64$]
+macro SDL "1" [$GL$ && !$DEDICATED$]
+
+config
+{
+	compile
+	{
+		defines
+		{
+			"QUICKTIME_VIDEO" [$OSX$ && $WIN32$ && $QUICKTIME_WIN32$]
+			"FORCE_QUICKTIME" [$OSX$]
+			"BINK_VIDEO" [$WIN32$ && !$QUICKTIME_WIN32$ && $X360$ && $LINUX$]
+			"AVI_VIDEO" "WMV_VIDEO" [$WIN32$ && !$QUICKTIME_WIN32$]
+			"GL_GLEXT_PROTOTYPES" "DX_TO_GL_ABSTRACTION" [$GL$]
+			"USE_SDL" [$SDL$]
+		}
+		
+		inc_dirs
+		{
+			"$SRCDIR$/thirdparty/SDL2" [$SDL$ || $DEDICATED$]
+		}
+	}
+}
+

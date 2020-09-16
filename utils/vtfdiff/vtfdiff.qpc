@@ -1,0 +1,31 @@
+// ---------------------------------------------------------------
+// vtfdiff.qpc
+// ---------------------------------------------------------------
+macro PROJECT_NAME "Vtfdiff"
+
+macro SRCDIR "../.."
+macro OUTBINDIR "$SRCDIR$/../game/bin"
+
+include "$SRCDIR$/_qpc_scripts/source_exe_con_base.qpc"
+
+config
+{
+	link
+	{
+		libs
+		{
+			"bitmap"
+			"mathlib"
+			"tier2"
+			"vtf"
+		}
+	}
+}
+
+files
+{
+	folder "Source Files"
+	{
+		"vtfdiff.cpp"
+	}
+}
